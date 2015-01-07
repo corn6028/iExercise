@@ -1,0 +1,69 @@
+.circle {
+    width: 5em;
+    height: 5em;
+    font-size: 5.5em;
+    vertical-align:middle;
+    text-align:center;
+    color: white;
+    border-radius: 50%;
+    background: rgba(50, 70, 255, .5);
+    box-sizing: border-box;
+    border-top: 2em;
+    box-shadow: 
+}
+.ch{
+	padding: 5em;
+}
+
+/*--------------
+    Masthead
+---------------*/
+
+#home .masthead {
+  background-image: url(images/ex1.jpg);
+  margin: 0em;
+  padding: 5rem 0rem;
+}
+#home .masthead .column {
+  position: relative;
+}
+#home .masthead .information {
+  margin: 10em 1em 1em 350px;
+}
+#home .masthead .information p {
+  font-color:red;
+  max-width: 600px;
+}
+#home .masthead .image {
+  position: absolute;
+  left: 0%;
+  bottom: -110px;
+}
+
+/*--------------
+    Ribbons
+---------------*/
+
+#home .segment h1 {
+  font-size: 4em;
+  padding-top: 1em;
+  margin-right: 1em;
+}
+
+
+#home .feature.segment {
+  margin: 0em;
+  padding: 6rem 0rem;
+}
+#home .feature.segment p {
+  min-height: 50px;
+}
+
+#home .selection.list {
+  margin: 0em -0.5em;
+}
+
+#home .logo.row {
+  height: 10rem;
+}
+
