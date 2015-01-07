@@ -17,6 +17,9 @@ function validate_form(thisform)
 }
 
 $(function() {
+  $('.green').click(function(){
+	window.location.href = "katy.html";
+  })
   $('#me').click(function(){
 	window.location.href = "myprofile.html";
   })
