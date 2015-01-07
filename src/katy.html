@@ -40,7 +40,7 @@
     <div class="two wide column">
       <div class="center aligned column">
         <div class="ui buttons">
-          <div class="ui white button">Log in</div>
+          <div class="ui grey button">Log in</div>
    <!--       <div class="or"></div>--!>
           <div class="ui signup red button">Sign up</div>
         </div>
@@ -50,7 +50,7 @@
   </div>
 </div>
 
-<div class="ui modal">
+<div class="ui modal" id="signupmodal">
   <div class="ui fluid form segment">
 	<h2 class="ui dividing header" style=margin-bottom:25px>
 		Sign up
@@ -96,46 +96,129 @@
  </div>
 </div>
 
+<div id="loginmodal" class="ui modal">
+  <div class="ui form segment">
+	<h2 class="ui dividing header" style=margin-bottom:25px>
+		Log in
+	<i class="close icon" style=float:right;font-size:1em></i>
+	</h2>
+	<div class="ui grid">
+		<div class="six wide column">
+		<div class="center aligned column">
+		</br></br></br>
+		<div class="ui facebook button">
+		<i class="facebook icon"></i>
+		Log in with Facebook
+	  </div>
+		<!--<button class="ui blue submit button">Log in <br> with <br> Facebook</button>-->
+		</div>
+		</div>
+		<div class="eight wide column">
+		<div class="two column row">
+		<div class="column">
+		<div class="left aligned column">
+			<div class="two field">
+				<div class="field">
+					<label>Username</label>
+						<div class="ui icon input">
+							<input type="text" name="user-name" placeholder="Username">
+							<i class="user icon"></i>
+						</div>
+				</div>
+				<div class="field">
+					<label>Password</label>
+						<div class="ui icon input">
+							<input type="password" name="password" placeholder="Password">
+							<i class="lock icon"></i>
+						</div>
+				</div>
+				</div>
+				</div>
+				</div>
+				<div class="column">
+				<div class="right aligned column">
+				</br></br>
+				<button class="ui orange login button">Log in</button>
+				</div>
+			</div>
+			</div>
+			</div>
+	</div>
+  </div>
+</div>
+
+
 <div class="ui inverted masthead segment">
   <div class="ui page grid" style=padding:50px>
 	<div class="seven wide column">
 	  <h1 class="ui inverted header">
 		Get More Fit
 	  </h1>
-	  <h2>Here you can meet new friends with<br> same intends, join us and<br>you won't regret</h2>
-		<div class="ui orange button" style=font-size:1.5em>Join us</div>
-		<div class="ui button" style=font-size:1.5em>Free trail</div>
+	  <h2>Here you can meet new friends with<br> same goals, join us and<br>you won't regret</h2>
+		<div class="ui red button" style=font-size:1.5em>Join us</div>
 	</div>
   </div>
 </div>
 <!--	<img class="ui centered image" src="images/ex1.jpg">-->
 
-<div class="ui vertical segment">
-  <div class="ui middle aligned relaxed fitted stackable grid">
-  <div class="row">
-    <div class="right aligned column">
+<br/>
+<br/>
+<br/>
+<div class="ui grid">
+	<div class="two wide column">
+	</div>
+	<div class="six wide column">
+		<div class="center aligned column">
+			<img src="../images/timeline.jpg" width="100%" height="100%">
+		</div>
+	</div>
+	<div class="six wide column">
+		<div class="center aligned column">
+			<br/><br/>
+			<h3><font face="微軟正黑體" size="6">動態時報</font></h3>
+			<p><font face="微軟正黑體" size="4">追蹤朋友或成功者來瞭解其運動習慣</font></p>
+			<p><font face="微軟正黑體" size="4">激勵與督促自己往正確的方向走</font></p>
+		</div>
     </div>
-  </div>
-  </div>
-  <div class="circle">
-    <h2 class="ch">距離目標還有</h2>
-    <h1 class="ui header">? kg</h1>
-  </div>
-    <div class="ui circular segment">
-      <h1 class="ui header"></h1>
-      <h2 class="ui header">距離目標還有</h2>
-      <h2 class="ui header"></h2>
-      <h1 class="ui header">? kg</h1>
-      <h2 class="ui header"></h2>
+	<div class="two wide column">
+	</div>
+	<div class="two wide column">
+	</div>
+	<div class="six wide column">
+		<div class="center aligned column">
+			<br/><br/><br/><br/><br/>
+			<h3><font face="微軟正黑體" size="6">體重紀錄</font></h3>
+			<p><font face="微軟正黑體" size="4">記錄體重變化趨勢以檢視運動成效</font></p>
+			<p><font face="微軟正黑體" size="4">進而調整自己運動及飲食習慣</font></p>
+		</div>
+	</div>
+	<div class="six wide column">
+		<div class="center aligned column">
+		<img src="../images/weight_record.jpg" width="100%" height="100%"/>
+		</div>
     </div>
-    <div class="ui circular segment">
-      <h1 class="ui header"></h1>
-      <p> </p><h2 class="ui header"> 目前跑了 </h2><p> </p>
-      <h2 class="ui header"></h2>
-      <h1 class="ui header">? km</h1>
-      <h2 class="ui header"></h2>
-    </div>  
+		<div class="two wide column">
+	</div>
+	<div class="two wide column">
+	</div>
+	<div class="six wide column">
+		<div class="center aligned column">
+			<img src="../images/excercise_record.jpg" width="100%" height="100%">
+		</div>
+	</div>
+	<div class="six wide column">
+		<div class="center aligned column">
+			<br/><br/><br/><br/><br/><br/><br/>
+			<h3><font face="微軟正黑體" size="6">運動紀錄</font></h3>
+			<p><font face="微軟正黑體" size="4">紀錄每週運動量的變化以檢視自身運動習慣</font></P>
+			<P><font face="微軟正黑體" size="4">進而規劃改善未來的運動計畫</font></p>
+		</div>
+    </div>
+	<div class="two wide column">
+	</div>
+	
 </div>
+<br/><br/>
 
 </body>
 </html>

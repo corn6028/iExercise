@@ -6,11 +6,14 @@ $('.toggle.button')
 ;
 
 $(function(){
-  $('.signup.button').click(function(){
-	$('.modal')
+  $('.red').click(function(){
+	$('#signupmodal')
 	//  .modal('setting', 'closable', ture)
 	  .modal('show')
 	;
+  })
+  $('.grey').click(function(){
+	$('#loginmodal').modal('show');
   })
 });
 
