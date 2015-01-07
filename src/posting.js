@@ -15,3 +15,15 @@ function validate_form(thisform)
       {distance.focus();return false}
     }
 }
+
+$(function() {
+  $('#friend-post').click(function(){
+	window.location.href = "posting.html";
+  })
+  $('#winner-post').click(function(){
+	window.location.href = "posting.html";
+  })
+  $('#i-exercise').click(function(){
+	window.location.href = "home.html";
+  })
+});

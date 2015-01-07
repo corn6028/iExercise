@@ -53,6 +53,7 @@ $(function() {
 	user.signUp(null, {
     success: function(user) {
     	// Hooray! Let them use the app now.
+		window.location.href = "home.html";
   	},
   	error: function(user, error) {
     	// Show the error message somewhere and let the user try again.
@@ -65,9 +66,11 @@ $(function() {
 	Parse.FacebookUtils.logIn(null, {
     success: function(user) {
       if (!user.existed()) {
-        alert("User signed up and logged in through Facebook!");
+		window.location.href = "home.html";
+        //alert("User signed up and logged in through Facebook!");
       } else {
-        alert("User logged in through Facebook!");
+		window.location.href = "home.html";
+       // alert("User logged in through Facebook!");
       }
     },
     error: function(user, error) {
