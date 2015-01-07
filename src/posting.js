@@ -17,9 +17,13 @@ function validate_form(thisform)
 }
 
 $(function() {
+  $('#me').click(function(){
+	window.location.href = "myprofile.html";
+  })
   $('#friend-post').click(function(){
 	window.location.href = "posting.html";
   })
+
   $('#winner-post').click(function(){
 	window.location.href = "posting.html";
   })

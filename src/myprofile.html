@@ -19,6 +19,7 @@
   <script src="../dist/semantic.js"></script>
   <script src="//www.parsecdn.com/js/parse-1.3.3.min.js"></script>
   <script src="myprofile.js"></script>
+  <script src="posting.js"></script>
 
   <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -97,7 +98,7 @@
   <div class="equal height row">
     <div class="one wide column">
       <div class="center aligned column">
-        <h2 color="white" style=margin:0px> iExercise</h2>
+        <h2 color="white" style=margin:0px id="i-exercise"> iExercise</h2>
       </div>
     </div>
     <div class="four wide column">
@@ -108,16 +109,16 @@
         </div>
       </div>
     </div>
-    <div class="two wide column">
+	<div class="two wide column">
       <div class="center aligned column">
-        <div class="ui buttons">
-          <div class="ui grey button">Log in</div>
-		  
-          <div class="ui red button">Sign up</div>
-        </div>
+		<img class="ui avatar image" src="../images/katy.jpg" id="me">
+		<a style="text-align:center;color:white;font-size:15pt"> Hi, Katy Wu</a>
+        <div class="circular ui green icon button">
+		<i class="sign out icon"></i>
+		Log out</div>
       </div>     
+     </div>
     </div>
-  </div>
   </div>
 </div>  
 
@@ -129,15 +130,24 @@
       <div class='circle'>
         <div class='inner'></div>
       </div>
-      <h3 class="ui header">
-        <i class="users icon "></i>
-        朋友動態
-      </h3>
-      <h3 class="ui header">
-        <i class="users icon "></i>
-        成功者動態
-      </h3>
-      </div>
+	  
+	  <div class="ui items"> 
+	    <div class="item" id="friend-post">
+		  <div class="middle aligned content">
+            <a class="header" style=font-size:1.5em>	
+		    <i class="users icon "></i>
+			朋友動態</a>
+		  </div>
+	    </div>
+	  <div class="item" id="winner-post">
+		<div class="middle aligned content">
+          <a class="header" style=font-size:1.5em>	
+		  <i class="users icon "></i>
+		  成功者動態</a>
+		 </div>
+	  </div>
+	 </div>
+    </div>
     </div>
     <div class="seven wide column"> 
       <div class="ui two column grid">
@@ -169,7 +179,7 @@
     <div class="five wide column">
       <div class="ui list">
         <div style="background:#FDF5E6;" class="item">
-          <img class="ui image" src="images/1003201_10201359651852703_2052888243_n.jpg" width="20%" height="20%">
+          <img class="ui image" src="../images/katy.jpg" width="20%" height="20%">
           <div class="content">
           <div style="font-size:13pt;" class="ui header">5公里達成</div>
           <div style="font-size:8pt;color:gray;" class="description">2天前・5km </div>
@@ -177,7 +187,7 @@
         </div>
         <div class="ui fitted divider"></div>
         <div style="background:white;" class="item">
-          <img class="ui image" src="images/cat.png" width="20%" height="20%">
+          <img class="ui image" src="../images/cat.png" width="20%" height="20%">
           <div class="content">
           <div style="font-size:13pt;" class="ui header">好累</div>
           <div style="font-size:8pt;color:gray;" class="description">3天前・7km </div>
@@ -185,7 +195,7 @@
         </div>
         <div class="ui fitted divider"></div>
         <div style="background:#FDF5E6;" class="item">
-          <img class="ui image" src="images/cat.png" width="20%" height="20%">
+          <img class="ui image" src="../images/cat.png" width="20%" height="20%">
           <div class="content">
           <div style="font-size:13pt;" class="ui header">^_^</div>
           <div style="font-size:8pt;color:gray;" class="description">5天前・4.4km </div>
