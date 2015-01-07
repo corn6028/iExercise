@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+ <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <!--<meta http-equiv="Content-Type" c> -->
+
+  <!-- Site Properities -->
+  <title>iExercise 一起運動吧！</title>
+
+  <link rel="stylesheet" type="text/css" href="../dist/semantic.css">
+  <link rel="stylesheet" type="text/css" href="myprofile.css">
+
+  
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+  <script src="../dist/semantic.js"></script>
+  <script src="//www.parsecdn.com/js/parse-1.3.3.min.js"></script>
+  <script src="myprofile.js"></script>
+
+  <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+      google.setOnLoadCallback(drawChart1);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+         var data = google.visualization.arrayToDataTable([
+         ['day', 'Km', { role: 'style' } ],
+         ['Sunday', 8.9, '#1E90FF' ],
+         ['Monday', 10.4, '#87CEFA' ],
+         ['Tuesday', 9.3, '#AFEEEE' ],
+         ['Wednesday', 2.5, '#4169E1' ],
+         ['Thursday', 8.4, '#33CCFF' ],
+         ['Friday', 8.4, '#0066FF' ],
+         ['Saturday', 4.9, '#77DDFF' ]
+        ]);
+
+        // Set chart options
+        var options = {'title':'一週運動量',
+                       'width':355,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+
+      function drawChart1() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'X');
+      data.addColumn('number', 'Kg');
+
+      data.addRows([
+        [new Date(2015, 0, 1), 45.6],
+        [new Date(2015, 0, 2), 46],
+        [new Date(2015, 0, 3), 45.4],
+        [new Date(2015, 0, 4), 45.7],
+        [new Date(2015, 0, 5), 46.2],
+        [new Date(2015, 0, 6), 46.4]
+      ]);
+
+      var options = {
+        width: 530,
+        height: 360,
+        hAxis: {
+          title: 'Date'
+        },
+        vAxis: {
+          title: 'Kilograms'
+        }
+      };
+
+      var chart = new google.visualization.LineChart(
+        document.getElementById('ex0'));
+
+      chart.draw(data, options);
+
+    }
+    </script>
+</head>
+<body >
+<div class="ui inverted orange vertical segment" >
+  <div class="ui middle aligned relaxed fitted stackable grid">
+  <div class="equal height row">
+    <div class="one wide column">
+      <div class="center aligned column">
+        <h2 color="white" style=margin:0px> iExercise</h2>
+      </div>
+    </div>
+    <div class="four wide column">
+      <div class="center aligned column">
+        <div class="ui fluid icon input">
+          <input type="text" placeholder="Search...">
+          <i class="orange search icon"></i>
+        </div>
+      </div>
+    </div>
+    <div class="two wide column">
+      <div class="center aligned column">
+        <div class="ui buttons">
+          <div class="ui grey button">Log in</div>
+		  
+          <div class="ui red button">Sign up</div>
+        </div>
+      </div>     
+    </div>
+  </div>
+  </div>
+</div>  
+
+<br/>
+  <div class="ui grid"style="padding:0;">
+    <div class="four wide column">
+      <div class="center aligned column">
+      <a style="text-align:center;color:#E63F00;font-size:20pt">user name</a>
+      <div class='circle'>
+        <div class='inner'></div>
+      </div>
+      <h3 class="ui header">
+        <i class="users icon "></i>
+        朋友動態
+      </h3>
+      <h3 class="ui header">
+        <i class="users icon "></i>
+        成功者動態
+      </h3>
+      </div>
+    </div>
+    <div class="seven wide column"> 
+      <div class="ui two column grid">
+        <div class="five wide column">
+          <div class="ui form segment">
+            <div class="ui top orange attached label"><p style="font-size:13pt">基本資料</p></div>
+            <br/>
+            <h4 class="ui header"> 年齡： 21</h4>
+            <h4 class="ui header"> 身高： 162 cm</h4>
+            <h4 class="ui header"> 體重： 40 kg</h4>
+          </div>
+        </div>
+        <div class="eleven wide column">
+          <div class="ui form segment">
+            <div class="ui top orange attached label"><p style="font-size:13pt">運動紀錄</p></div>
+            <div class="ui middle aligned relaxed fitted stackable grid">
+            <div id="chart_div"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui form segment">
+        <div class="ui top orange attached label"><p style="font-size:13pt">體重變化</p></div>
+        <div class="ui middle aligned relaxed fitted stackable grid">
+        <div id="ex0" ></div>
+      </div>
+      </div>
+    </div>
+    <div class="five wide column">
+      <div class="ui list">
+        <div style="background:#FDF5E6;" class="item">
+          <img class="ui image" src="images/1003201_10201359651852703_2052888243_n.jpg" width="20%" height="20%">
+          <div class="content">
+          <div style="font-size:13pt;" class="ui header">5公里達成</div>
+          <div style="font-size:8pt;color:gray;" class="description">2天前・5km </div>
+          </div>
+        </div>
+        <div class="ui fitted divider"></div>
+        <div style="background:white;" class="item">
+          <img class="ui image" src="images/cat.png" width="20%" height="20%">
+          <div class="content">
+          <div style="font-size:13pt;" class="ui header">好累</div>
+          <div style="font-size:8pt;color:gray;" class="description">3天前・7km </div>
+          </div>
+        </div>
+        <div class="ui fitted divider"></div>
+        <div style="background:#FDF5E6;" class="item">
+          <img class="ui image" src="images/cat.png" width="20%" height="20%">
+          <div class="content">
+          <div style="font-size:13pt;" class="ui header">^_^</div>
+          <div style="font-size:8pt;color:gray;" class="description">5天前・4.4km </div>
+          </div>    
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

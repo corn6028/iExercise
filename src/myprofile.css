@@ -1,0 +1,34 @@
+.circle {
+    display: inline-block;
+    width: 220px;
+    height:220px;
+    border-radius: 50%;
+    border: 1px solid #eee;
+    padding: 5px;
+    background:#fff;
+}
+.scircle {
+    display: inline-block;
+    width: 70px;
+    height:70px;
+    border-radius: 50%;
+    border: 1px solid #eee;
+    padding: 0px;
+    background:#fff;
+}
+.inner {
+    background-image: url(http://shinychang.net/uploads/cover.jpg);
+    background-size:cover;
+    background-position:center center;
+    height: 100%;
+    border-radius:50%;
+}
+.sscircle {
+    display: inline-block;
+    width: 50px;
+    height:50px;
+    border-radius: 50%;
+    border: 1px solid #eee;
+    padding: 0px;
+    background:#fff;
+}
