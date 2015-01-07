@@ -20,7 +20,7 @@
 ---------------*/
 
 #home .masthead {
-  background-image: url(images/ex1.jpg);
+  background-image: url(../images/ex1.jpg);
   margin: 0em;
   padding: 5rem 0rem;
 }
