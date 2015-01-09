@@ -1,27 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
- <!-- Standard Meta -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>iExercise 一起運動吧！</title>
+	<meta name="author" content="Alvaro Trigo Lopez" />
+	<meta name="description" content="fullPage full-screen backgrounds." />
+	<meta name="keywords"  content="fullpage,jquery,demo,screen,fullscreen,backgrounds,full-screen" />
+	<meta name="Resource-type" content="Document" />
 
-  <!-- Site Properities -->
-  <title>iExercise 一起運動吧！</title>
 
-  <link rel="stylesheet" type="text/css" href="../dist/semantic.css">
-  <link rel="stylesheet" type="text/css" href="katy.css">
-  <link rel='stylesheet' type='text/css' href="jeffry.in.slider.css">
+	<link rel="stylesheet" type="text/css" href="../dist/jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="examples.css" />
+	<link rel="stylesheet" type="text/css" href="../dist/semantic.css">
+  	<link rel="stylesheet" type="text/css" href="katy.css">
+  	<link rel='stylesheet' type='text/css' href="jeffry.in.slider.css">
+	<style>
 
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
-  <script src="../dist/semantic.js"></script>
-  <script src="https://www.parsecdn.com/js/parse-1.3.3.min.js"></script>
-  <script type='text/javascript' src="katy.js"></script>	
+	/* Style for our header texts
+	* --------------------------------------- */
+
+
+	/* Centered texts in each section
+	* --------------------------------------- */
+
+
+
+	/* Backgrounds will cover all the section
+	* --------------------------------------- */
+	#section0,
+	#section1,
+	#section2,
+	#section3{
+		background-size: cover;
+	}
+
+	/* Defining each section background and styles
+	* --------------------------------------- */
+	#section0{
+		background-image: url(../images/ex1.png);
+		padding: 30% 0 0 0;
+	}
+	#section2{
+		background-image: url(../images/timeline.png);
+		padding: 6% 0 0 0;
+	}
+	#section3{
+		background-image: url(../images/linegraph.png);
+		padding: 6% 0 0 0;
+	}
+	#section3 h1{
+		color: #000;
+	}
+
+
+ 	/*Adding background for the slides
+	* --------------------------------------- */
+	#slide1{
+		background-image: url(../images/ex1.png);
+		padding: 6% 0 0 0;
+	}
+	#slide2{
+		background-image: url(../images/ex2.jpg);
+		padding: 6% 0 0 0;
+	}
+
+
+	/* Bottom menu
+	* --------------------------------------- */
+	#infoMenu li a {
+		color: #fff;
+	}
+	</style>
+
+	<!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+  	<script src="../dist/semantic.js"></script>
+  	<script src="https://www.parsecdn.com/js/parse-1.3.3.min.js"></script>
+  	<script type='text/javascript' src="katy.js"></script>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
+	<script type="text/javascript" src="../dist/jquery.fullPage.js"></script>
+	<script type="text/javascript" src="examples.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				verticalCentered: false
+
+			});
+		});
+
+	</script>
 
 </head>
-<body id="home">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
-<div class="ui inverted orange vertical segment" >
+<body id="home">
+	<div class="ui inverted orange vertical segment" style="position:fixed; top:0px; left:0px; right:0px; z-index:500">
   <div class="ui grid">
   <div class="equal height row">
     <div class="one wide column">
@@ -154,80 +236,74 @@
 	</div>
   </div>
 </div>
+<div id="fullpage">
 
-
-<div class="ui inverted masthead segment">
-  <div class="ui page grid" style=padding:50px>
-	<div class="seven wide column">
-	  <h1 class="ui inverted header">
-		Get More Fit
-	  </h1>
-	  <h2>Here you can meet new friends with<br> same goals, join us and<br>you won't regret</h2>
-		<div class="ui red button" style=font-size:1.5em>Join us</div>
-		</br></br></br></br>
+	<div class="section" id="section1">
+	    <div class="slide" id="slide1">
+	    	<div class="ui page grid" style=padding:50px>
+	    	<div class="seven wide column">
+	    		<h1 class="ui inverted header" style="font-family:Calibri;font-weight:bold;font-size:40pt">
+	    			Get More Fit
+	    		</h1>
+	    		<h2 class="ui inverted header" style="font-family:Calibri;font-weight:bold;color:#AAAAAA;font-size:20pt">Here you can meet new friends with<br> same goals, join us and<br>you won't regret !</h2>
+	    	<div class="ui red button" style="font-family:Calibri;font-size:1.5em">Join us</div>
+	    </div>
 	</div>
-  </div>
-</div>
-<!--	<img class="ui centered image" src="images/ex1.jpg">-->
-
-<br/>
-<br/>
-<br/>
-<div class="ui grid">
-	<div class="two wide column">
+	    </div>
+	    <div class="slide" id="slide2">
+	    	<div class="ui page grid" style=padding:50px>
+	    	<div class="seven wide column">
+	    		<h1 class="ui inverted header" style="color:BLACK;font-family:Calibri;font-weight:bold;font-size:40pt">
+	    			Get More Fit
+	    		</h1>
+	    		<h2 class="ui inverted header" style="font-family:Calibri;font-weight:bold;color:black;font-size:20pt">Here you can meet new friends with<br> same goals, join us and<br>you won't regret !</h2>
+	    	<div class="ui red button" style="font-family:Calibri;font-size:1.5em">Join us</div>
+	    </div>
 	</div>
-	<div class="six wide column">
-		<div class="center aligned column">
-			<img src="../images/timeline.jpg" width="100%" height="100%">
+	    </div>
+	</div>
+	<div class="section" id="section2">
+		<div class="ui grid">
+			<div class="two wide column"></div>
+			<div class="six wide column"></div>
+			<div class="six wide column">
+				<div class="center aligned column">
+					<br/><br/><br/></br></br>
+					<h3><font face="微軟正黑體" size="6">動態時報</font></h3>
+					<br/></br>
+					<p><font face="微軟正黑體" size="4">追蹤朋友或成功者來瞭解其運動習慣</font></p>
+					<p><font face="微軟正黑體" size="4">激勵與督促自己往正確的方向走</font></p>
+				</div>
+			</div>
 		</div>
 	</div>
-	<div class="six wide column">
-		<div class="center aligned column">
-			<br/><br/>
-			<h3><font face="微軟正黑體" size="6">動態時報</font></h3>
-			<p><font face="微軟正黑體" size="4">追蹤朋友或成功者來瞭解其運動習慣</font></p>
-			<p><font face="微軟正黑體" size="4">激勵與督促自己往正確的方向走</font></p>
+	<div class="section" id="section3">
+		<div class="ui grid">
+			<div class="eight wide column">
+				<div class="center aligned column">
+					<h3><font face="微軟正黑體" size="6">運動紀錄</font></h3>
+					</br></br>
+					<p><font face="微軟正黑體" size="4">紀錄每週運動量的變化以檢視自身運動習慣</font></P>
+					<P><font face="微軟正黑體" size="4">進而規劃改善未來的運動計畫</font></p>
+				</div>
+			</div>
+			<div class="eight wide column"></div>
 		</div>
-    </div>
-	<div class="two wide column">
-	</div>
-	<div class="two wide column">
-	</div>
-	<div class="six wide column">
-		<div class="center aligned column">
-			<br/><br/><br/><br/><br/>
+		<div class="ui grid">
+			<div class="two wide column"></div>
+			<div class="six wide column"></div>
+			<div class="six wide column">
+				<div class="center aligned column">
+			<br/><br/><br/></br></br></br>
 			<h3><font face="微軟正黑體" size="6">體重紀錄</font></h3>
+			</br></br>
 			<p><font face="微軟正黑體" size="4">記錄體重變化趨勢以檢視運動成效</font></p>
 			<p><font face="微軟正黑體" size="4">進而調整自己運動及飲食習慣</font></p>
 		</div>
-	</div>
-	<div class="six wide column">
-		<div class="center aligned column">
-		<img src="../images/weight_record.jpg" width="100%" height="100%"/>
+			</div>
 		</div>
     </div>
-		<div class="two wide column">
-	</div>
-	<div class="two wide column">
-	</div>
-	<div class="six wide column">
-		<div class="center aligned column">
-			<img src="../images/excercise_record.jpg" width="100%" height="100%">
-		</div>
-	</div>
-	<div class="six wide column">
-		<div class="center aligned column">
-			<br/><br/><br/><br/><br/><br/><br/>
-			<h3><font face="微軟正黑體" size="6">運動紀錄</font></h3>
-			<p><font face="微軟正黑體" size="4">紀錄每週運動量的變化以檢視自身運動習慣</font></P>
-			<P><font face="微軟正黑體" size="4">進而規劃改善未來的運動計畫</font></p>
-		</div>
-    </div>
-	<div class="two wide column">
-	</div>
-	
 </div>
-<br/><br/>
 
 </body>
 </html>
