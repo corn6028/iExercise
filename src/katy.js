@@ -15,44 +15,49 @@ window.fbAsyncInit = function() {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {return;}
     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-$(function(){
+//alert(Parse.User.current().get('username'));
+
+//$(function(){
+jQuery(document).ready(function(){
   $('.red').click(function(){
 //	alert("ha");
-	$('#signupmodal').fadeToggle();
+//	$('#signupmodal').fadeToggle();
 	//window.location.href = "home.html";
 	//$('#home').append(html);
 	//  .modal('setting', 'closable', ture)
-//	$('#signupmodal').modal('show');
+	$('#signupmodal').modal('show');
   })
-  $('#close-signup').click(function() {
+/*  $('#close-signup').click(function() {
 	$('#signupmodal').fadeOut();
-  })
+  })*/
 
   $('.grey').click(function(){
 //	alert("no");
-	$('#loginmodal').fadeToggle();
-//	$('#loginmodal').modal('show');
+//	$('#loginmodal').fadeToggle();
+	$('#loginmodal').modal('show');
   })
-  $('#close-login').click(function() {
+/*  $('#close-login').click(function() {
 	$('#loginmodal').fadeOut();
-  })
+  })*/
 
-  $('.green').click(function() {
+/*  $('.green').click(function() {
 	alert("no!!!!");
+	window.location.href = "katy.html";
 	Parse.FacebookUtils.unlink(user, {
   	  success: function(user) {
       alert("The user is no longer associated with their Facebook account.");
   	  }
 	});
-  })
+  })*/
   $('#log-in').click(function() {
 	Parse.User.logIn($('#user-name-in').val(), $('#password-in').val(), {
   	  success: function(user) {
     	// Do stuff after successful login.
+		//var url = "home.html?username="+user.get('username');
 		window.location.href = "home.html";
   	  },
   	  error: function(user, error) {
@@ -88,16 +93,6 @@ $(function(){
     success: function(user) {
       if (!user.existed()) {
         alert("User signed up and logged in through Facebook!");
-		if (!Parse.FacebookUtils.isLinked(user)) {
- 		  Parse.FacebookUtils.link(user, null, {
-    		success: function(user) {
-      		  alert("Woohoo, user logged in with Facebook!");
-    		},
-    		error: function(user, error) {
-      		  alert("User cancelled the Facebook login or did not fully authorize.");
-    		}
-  		  });
-		}
 		window.location.href = "home.html";
       } else {
 		alert("User logged in through Facebook!");
