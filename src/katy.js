@@ -1,21 +1,23 @@
-$('.left.demo.sidebar').first()
-  .sidebar('attach events', '.toggle.button')
-;
-$('.toggle.button')
-  .removeClass('disabled')
-;
-
 $(function(){
   $('.red').click(function(){
-	alert("ha");
-	window.location.href = "home.html";
+//	alert("ha");
+	$('#signupmodal').fadeToggle();
+	//window.location.href = "home.html";
 	//$('#home').append(html);
 	//  .modal('setting', 'closable', ture)
-	$('#signupmodal').modal('show');
+//	$('#signupmodal').modal('show');
   })
+  $('#close-signup').click(function() {
+	$('#signupmodal').fadeOut();
+  })
+
   $('.grey').click(function(){
-	alert("no");
-	$('#loginmodal').modal('show');
+//	alert("no");
+	$('#loginmodal').fadeToggle();
+//	$('#loginmodal').modal('show');
+  })
+  $('#close-login').click(function() {
+	$('#loginmodal').fadeOut();
   })
 });
 

@@ -51,15 +51,12 @@
 	#section3 h1{
 		color: #000;
 	}
-	#section4{
-		padding: 6% 0 0 0;
-	}
 
 
  	/*Adding background for the slides
 	* --------------------------------------- */
 	#slide1{
-		background-image: url(../images/ex1.png);
+		background-image: url(../images/ex1.jpg);
 		padding: 6% 0 0 0;
 	}
 	#slide2{
@@ -80,8 +77,8 @@
 			 var console = { log: function() {} };
 		</script>
 	<![endif]-->
+	<script src="../dist/semantic.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
-  	<script src="../dist/semantic.js"></script>
   	<script src="https://www.parsecdn.com/js/parse-1.3.3.min.js"></script>
   	<script type='text/javascript' src="katy.js"></script>
 
@@ -104,7 +101,7 @@
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 <body id="home">
-	<div class="ui inverted orange vertical segment" style="position:fixed; top:0px; left:0px; right:0px; z-index:500">
+ <div class="ui inverted orange vertical segment" style="position:fixed; top:0px; left:0px; right:0px; z-index:500">
   <div class="ui grid">
   <div class="equal height row">
     <div class="one wide column">
@@ -122,26 +119,25 @@
     </div>
     <div class="two wide column">
       <div class="center aligned column">
-		<div class="ui facebook button">
+<!--		<div class="ui facebook button">
 		  <i class="facebook icon"></i>
 		  Log in with Facebook
-	  	</div>
-    <!--    <div class="ui buttons">
+	  	</div>-->
+        <div class="ui buttons">
           <div class="ui grey button">Log in</div>
-         <div class="or"></div>-
           <div id="sign-up" class="ui signup red button">Sign up</div>
-        </div>-->
+        </div>
       </div>     
     </div>
   </div>
   </div>
 </div>
 
-<div class="ui modal" id="signupmodal">
+<div class="ui modal" id="signupmodal" style="position:fixed; top:100px;">
   <div class="ui fluid form segment">
 	<h2 class="ui dividing header" style=margin-bottom:25px>
 		Sign up
-	<i class="close icon" style=float:right;font-size:1em></i>
+	<i id="close-signup" class="close icon" style=float:right;font-size:1em></i>
 	</h2>
   <div class="ui grid">
    <div class="six wide column">
@@ -191,11 +187,11 @@
  </div>
 </div>
 
-<div id="loginmodal" class="ui modal">
+<div id="loginmodal" class="ui modal" style="position:fixed; top:100px;">
   <div class="ui form segment">
 	<h2 class="ui dividing header" style=margin-bottom:25px>
 		Log in
-	<i class="close icon" style=float:right;font-size:1em></i>
+	<i id="close-login" class="close icon" style=float:right;font-size:1em></i>
 	</h2>
 	<div class="ui grid">
 		<div class="six wide column">
@@ -250,7 +246,7 @@
 	    		<h1 class="ui inverted header" style="font-family:Calibri;font-weight:bold;font-size:40pt">
 	    			Get More Fit
 	    		</h1>
-	    		<h2 class="ui inverted header" style="font-family:Calibri;font-weight:bold;color:#AAAAAA;font-size:20pt">Here you can meet new friends with<br> same goals, join us and<br>you won't regret !</h2>
+	    		<h2 class="ui inverted header" style="font-family:Calibri;font-weight:bold;color:#AAAAAA;font-size:20pt">Here you can meet new friends<br> with same goals, join us and<br>you won't regret !</h2>
 	    	<div class="ui red button" style="font-family:Calibri;font-size:1.5em">Join us</div>
 	    </div>
 	</div>
@@ -261,7 +257,7 @@
 	    		<h1 class="ui inverted header" style="color:BLACK;font-family:Calibri;font-weight:bold;font-size:40pt">
 	    			Get More Fit
 	    		</h1>
-	    		<h2 class="ui inverted header" style="font-family:Calibri;font-weight:bold;color:black;font-size:20pt">Here you can meet new friends with<br> same goals, join us and<br>you won't regret !</h2>
+	    		<h2 class="ui inverted header" style="font-family:Calibri;font-weight:bold;color:black;font-size:20pt">Here you can meet new friends<br> with same goals, join us and<br>you won't regret !</h2>
 	    	<div class="ui red button" style="font-family:Calibri;font-size:1.5em">Join us</div>
 	    </div>
 	</div>
