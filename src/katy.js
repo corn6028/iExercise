@@ -51,6 +51,18 @@ $(function() {
   	  }
 	});
   })
+  $('#log-in').click(function() {
+	Parse.User.logIn($('#user-name-in').val(), $('#password-in').val(), {
+  	  success: function(user) {
+    	// Do stuff after successful login.
+		window.location.href = "home.html";
+  	  },
+  	  error: function(user, error) {
+    	// The login failed. Check error to see why.
+		alert("Your username or password is uncorrect!");
+  	  }
+	});
+  })
   $('.submit').click(function() {
 	var user = new Parse.User();
 	user.set("username", $('#user-name').val());
@@ -74,7 +86,7 @@ $(function() {
 	$('.modal').modal('hide');
   })
   $('.facebook').click(function() {
-	Parse.FacebookUtils.logIn(null, {
+	Parse.FacebookUtils.logIn("email,public_profile,user_friends", {
     success: function(user) {
       if (!user.existed()) {
 		window.location.href = "home.html";
