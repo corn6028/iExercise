@@ -87,11 +87,21 @@ $(function(){
 	Parse.FacebookUtils.logIn("email,public_profile,user_friends", {
     success: function(user) {
       if (!user.existed()) {
+        alert("User signed up and logged in through Facebook!");
+		if (!Parse.FacebookUtils.isLinked(user)) {
+ 		  Parse.FacebookUtils.link(user, null, {
+    		success: function(user) {
+      		  alert("Woohoo, user logged in with Facebook!");
+    		},
+    		error: function(user, error) {
+      		  alert("User cancelled the Facebook login or did not fully authorize.");
+    		}
+  		  });
+		}
 		window.location.href = "home.html";
-        //alert("User signed up and logged in through Facebook!");
       } else {
+		alert("User logged in through Facebook!");
 		window.location.href = "home.html";
-       // alert("User logged in through Facebook!");
       }
     },
     error: function(user, error) {
