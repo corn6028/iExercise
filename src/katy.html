@@ -2,19 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<title>iExercise 一起運動吧！</title>
 	<meta name="author" content="Alvaro Trigo Lopez" />
 	<meta name="description" content="fullPage full-screen backgrounds." />
 	<meta name="keywords"  content="fullpage,jquery,demo,screen,fullscreen,backgrounds,full-screen" />
-	<meta name="Resource-type" content="Document" />
 
 
 	<link rel="stylesheet" type="text/css" href="../dist/jquery.fullPage.css" />
-	<link rel="stylesheet" type="text/css" href="examples.css" />
 	<link rel="stylesheet" type="text/css" href="../dist/semantic.css">
   	<link rel="stylesheet" type="text/css" href="katy.css">
-  	<link rel='stylesheet' type='text/css' href="jeffry.in.slider.css">
 	<style>
 
 	/* Style for our header texts
@@ -52,6 +51,9 @@
 	#section3 h1{
 		color: #000;
 	}
+	#section4{
+		padding: 6% 0 0 0;
+	}
 
 
  	/*Adding background for the slides
@@ -87,7 +89,6 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 
 	<script type="text/javascript" src="../dist/jquery.fullPage.js"></script>
-	<script type="text/javascript" src="examples.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -121,11 +122,15 @@
     </div>
     <div class="two wide column">
       <div class="center aligned column">
-        <div class="ui buttons">
+		<div class="ui facebook button">
+		  <i class="facebook icon"></i>
+		  Log in with Facebook
+	  	</div>
+    <!--    <div class="ui buttons">
           <div class="ui grey button">Log in</div>
-   <!--       <div class="or"></div>--!>
-          <div class="ui signup red button">Sign up</div>
-        </div>
+         <div class="or"></div>-
+          <div id="sign-up" class="ui signup red button">Sign up</div>
+        </div>-->
       </div>     
     </div>
   </div>

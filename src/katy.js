@@ -7,12 +7,14 @@ $('.toggle.button')
 
 $(function(){
   $('.red').click(function(){
-	$('#signupmodal')
+	alert("ha");
+	window.location.href = "home.html";
+	//$('#home').append(html);
 	//  .modal('setting', 'closable', ture)
-	  .modal('show')
-	;
+	$('#signupmodal').modal('show');
   })
   $('.grey').click(function(){
+	alert("no");
 	$('#loginmodal').modal('show');
   })
 });
