@@ -7,7 +7,8 @@ var name = params.split('=')[1];
 var currentUser = Parse.User.current();
 if (currentUser) {
     // do stuff with the user
-	$('#my-name').html('HI');
+	alert(currentUser.get('username'));
+	$('.my_name').html('HI');
 	
 } else {
     // show the signup or login page
