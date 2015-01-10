@@ -73,3 +73,20 @@
   height: 10rem;
 }
 
+#left{
+	position: relative;
+	width: 20%;
+	height: 100%;
+	float: left;
+	padding-top: 65px;
+	background-color:#FAF0E6;
+	padding-bottom: 0px;
+	text-align: center;
+}
+#right{
+	position: relative;
+	width: 80%;
+	float: right;
+	padding-top: 65px;
+	text-align: center;
+}

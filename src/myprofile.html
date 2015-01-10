@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +14,7 @@
 
   <link rel="stylesheet" type="text/css" href="../dist/semantic.css">
   <link rel="stylesheet" type="text/css" href="myprofile.css">
+  <link rel="stylesheet" type="text/css" href="katy.css">
 
   
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
@@ -74,8 +76,8 @@
       ]);
 
       var options = {
-        width: 530,
-        height: 360,
+        width: 630,
+        height: 380,
         hAxis: {
           title: 'Date'
         },
@@ -93,7 +95,7 @@
     </script>
 </head>
 <body >
-<div class="ui inverted orange vertical segment" >
+<div class="ui inverted orange vertical segment" style="position:fixed; top:0px; left:0px; right:0px; z-index:500">
   <div class="ui grid">
   <div class="equal height row">
     <div class="one wide column">
@@ -122,8 +124,30 @@
   </div>
 </div>  
 
-<br/>
-  <div class="ui grid"style="padding:0;">
+<div id="left" style="position:fixed;" >
+		<a style="text-align:center;color:#E63F00;font-size:20pt">user name</a>
+		<div class='ccircle'>
+			<div class='inner'></div>
+		</div>
+		<div class="ui items"> 
+			<div class="item" id="friend-post">
+				<div class="middle aligned content">
+					<a class="header" style=font-size:1.5em>	
+					<i class="users icon "></i>
+					朋友動態</a>
+				</div>
+			</div>
+			<div class="item" id="winner-post">
+				<div class="middle aligned content">
+					<a class="header" style=font-size:1.5em>	
+					<i class="users icon "></i>
+					成功者動態</a>
+				</div>
+			</div>
+		</div>
+		</div>
+
+<!--  <div class="ui grid"style="padding:0;">
     <div class="four wide column">
       <div class="center aligned column">
       <a style="text-align:center;color:#E63F00;font-size:20pt">user name</a>
@@ -149,9 +173,12 @@
 	 </div>
     </div>
     </div>
-    <div class="seven wide column"> 
+    <div class="seven wide column"> -->
+	<div id="right">
+	<div class="ui two column grid">
+	 <div class="ten wide column">
       <div class="ui two column grid">
-        <div class="five wide column">
+        <div class="six wide column">
           <div class="ui form segment">
             <div class="ui top orange attached label"><p style="font-size:13pt">基本資料</p></div>
             <br/>
@@ -160,7 +187,7 @@
             <h4 class="ui header"> 體重： 40 kg</h4>
           </div>
         </div>
-        <div class="eleven wide column">
+        <div class="ten wide column">
           <div class="ui form segment">
             <div class="ui top orange attached label"><p style="font-size:13pt">運動紀錄</p></div>
             <div class="ui middle aligned relaxed fitted stackable grid">
@@ -168,15 +195,17 @@
             </div>
           </div>
         </div>
-      </div>
+     </div>
+	 
       <div class="ui form segment">
         <div class="ui top orange attached label"><p style="font-size:13pt">體重變化</p></div>
         <div class="ui middle aligned relaxed fitted stackable grid">
         <div id="ex0" ></div>
       </div>
       </div>
-    </div>
-    <div class="five wide column">
+	  </div>
+  
+    <div class="six wide column">
       <div class="ui list">
         <div style="background:#FDF5E6;" class="item">
           <img class="ui image" src="../images/katy.jpg" width="20%" height="20%">
@@ -203,7 +232,9 @@
         </div>
       </div>
     </div>
+	</div>
   </div>
 
 </body>
 </html>
+

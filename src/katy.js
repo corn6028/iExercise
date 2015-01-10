@@ -1,26 +1,3 @@
-$(function(){
-  $('.red').click(function(){
-//	alert("ha");
-	$('#signupmodal').fadeToggle();
-	//window.location.href = "home.html";
-	//$('#home').append(html);
-	//  .modal('setting', 'closable', ture)
-//	$('#signupmodal').modal('show');
-  })
-  $('#close-signup').click(function() {
-	$('#signupmodal').fadeOut();
-  })
-
-  $('.grey').click(function(){
-//	alert("no");
-	$('#loginmodal').fadeToggle();
-//	$('#loginmodal').modal('show');
-  })
-  $('#close-login').click(function() {
-	$('#loginmodal').fadeOut();
-  })
-});
-
 Parse.initialize("lGJxaJjLAeZewHob85fxeWXeXVOlFUFHWKjSazzH", "HnbslyPWRrrj13cw4koWYAo6UxWMbxIpgoYCpx6f");
 
 window.fbAsyncInit = function() {
@@ -42,9 +19,30 @@ window.fbAsyncInit = function() {
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
+$(function(){
+  $('.red').click(function(){
+//	alert("ha");
+	$('#signupmodal').fadeToggle();
+	//window.location.href = "home.html";
+	//$('#home').append(html);
+	//  .modal('setting', 'closable', ture)
+//	$('#signupmodal').modal('show');
+  })
+  $('#close-signup').click(function() {
+	$('#signupmodal').fadeOut();
+  })
 
-$(function() {
+  $('.grey').click(function(){
+//	alert("no");
+	$('#loginmodal').fadeToggle();
+//	$('#loginmodal').modal('show');
+  })
+  $('#close-login').click(function() {
+	$('#loginmodal').fadeOut();
+  })
+
   $('.green').click(function() {
+	alert("no!!!!");
 	Parse.FacebookUtils.unlink(user, {
   	  success: function(user) {
       alert("The user is no longer associated with their Facebook account.");

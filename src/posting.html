@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +13,7 @@
 
   <link rel="stylesheet" type="text/css" href="../dist/semantic.css">
   <link rel="stylesheet" type="text/css" href="myprofile.css">
+  <link rel="stylesheet" type="text/css" href="katy.css">
 
   
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
@@ -191,7 +193,7 @@
 
 </head>
 <body >  
-<div class="ui inverted orange vertical segment" >
+<div class="ui inverted orange vertical segment" style="position:fixed; top:0px; left:0px; right:0px; z-index:500">
   <div class="ui grid">
   <div class="equal height row">
     <div class="one wide column">
@@ -219,10 +221,10 @@
   </div>
   </div>
 </div>
-</br>
-  <div class="ui grid">
 
-    <div class="four wide column" style="background:white">
+ <!--  <div class="ui grid">
+
+  <div class="four wide column" style="background:white">
       <div class="center aligned column">
       <a style="text-align:center;color:#E63F00;font-size:20pt">user name</a>
       <div class='circle'>
@@ -246,9 +248,33 @@
 	   </div>
 	  </div>
 	 </div>
-    </div>
+    </div>-->
+	
+	<div id="left" style="position:fixed;">
+		<a style="text-align:center;color:#E63F00;font-size:20pt">user name</a>
+      <div class='ccircle'>
+        <div class='inner'></div>
+      </div>
+		<div class="ui items"> 
+			<div class="item" id="friend-post">
+				<div class="middle aligned content">
+					<a class="header" style=font-size:1.5em>	
+					<i class="users icon "></i>
+					朋友動態</a>
+				</div>
+			</div>
+			<div class="item" id="winner-post">
+				<div class="middle aligned content">
+					<a class="header" style=font-size:1.5em>	
+					<i class="users icon "></i>
+					成功者動態</a>
+				</div>
+			</div>
+		</div>
+		</div>
 
-    <div class="twelve wide column" style="background:#FAF0E6"> 
+		<div id="right">
+  <!-- <div class="twelve wide column" style="background:#FAF0E6"> -->
       <form class="ui form segment" action="submitpage.htm" onsubmit="return validate_form(this)" method="post">
         <div class="three fields">
           <div class="field">
@@ -376,3 +402,4 @@
 
 </body>
 </html>
+
