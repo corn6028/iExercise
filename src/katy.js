@@ -42,6 +42,13 @@ window.fbAsyncInit = function() {
 
 
 $(function() {
+  $('.green').click(function() {
+	Parse.FacebookUtils.unlink(user, {
+  	  success: function(user) {
+      alert("The user is no longer associated with their Facebook account.");
+  	  }
+	});
+  })
   $('.submit').click(function() {
 	var user = new Parse.User();
 	user.set("username", $('#user-name').val());
