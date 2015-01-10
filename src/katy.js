@@ -40,6 +40,16 @@ window.fbAsyncInit = function() {
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
+if (!Parse.FacebookUtils.isLinked(user)) {
+  Parse.FacebookUtils.link(user, null, {
+    success: function(user) {
+      alert("Woohoo, user logged in with Facebook!");
+    },
+    error: function(user, error) {
+      alert("User cancelled the Facebook login or did not fully authorize.");
+    }
+  });
+}
 
 $(function() {
   $('.green').click(function() {
