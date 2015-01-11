@@ -14,7 +14,7 @@
   <link rel="stylesheet" type="text/css" href="../dist/semantic.css">
   <link rel="stylesheet" type="text/css" href="myprofile.css">
   <link rel="stylesheet" type="text/css" href="katy.css">
-
+  <link rel="stylesheet" type="text/css" href="posting.css">
   
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
   <script src="../dist/semantic.js"></script>
@@ -22,10 +22,10 @@
   <script type='text/javascript' src="katy.js"></script>  
   <script type='text/javascript' src="posting.js"></script>  
 
- <!-- <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.2.min.js'></script>-->
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.2.min.js'></script>
     <script type='text/javascript'>
         $(document).ready(function() {
-            $('#photo').uploadPreview({ width: 90, height: 110, imgDiv: "#imgDiv"});
+            $('#photo').uploadPreview({ width: 290, height: 200, imgDiv: "#imgDiv"});
         });
         //說明：圖片上傳預覽插件
         //上傳的時候可以生成固定寬高範圍內的等比例縮放圖
@@ -44,7 +44,7 @@
                         width: 0,
                         height: 0,
                         imgDiv: $(opts.imgDiv),
-                        maxSize:300,
+                        maxSize:1500,
                         imgType: ["gif", "jpeg", "jpg", "bmp", "png"],
                         callback: function() { return false; }
                     }, opts || {});
@@ -73,8 +73,9 @@
                             }
                             var left = (opts.width - imgDiv.width()) * 0.5;
                             var top = (opts.height - imgDiv.height()) * 0.5;
-                            imgDiv.css({ "margin-left": left, "margin-top": top });
+                            imgDiv.css({ "margin-left": left});
                             imgDiv.show();
+							$("#upload_image").hide();
                         }
                     },
                    
@@ -222,10 +223,9 @@
   </div>
   </div>
 </div>
-
  <!--  <div class="ui grid">
 
-  <div class="four wide column" style="background:white">
+    <div class="four wide column" style="background:white">
       <div class="center aligned column">
       <a style="text-align:center;color:#E63F00;font-size:20pt">user name</a>
       <div class='circle'>
@@ -277,22 +277,29 @@
 		<div id="right">
   <!-- <div class="twelve wide column" style="background:#FAF0E6"> -->
       <form class="ui form segment" action="submitpage.htm" onsubmit="return validate_form(this)" method="post">
-        <div class="three fields">
+        <div class="ui three column middle aligned stackable divided grid">
+          <div class="column" >
+              <div id="imgDiv" style="">
+                <img id="upload_image" src="../images/image.png" style="position:absolute;top:30px;width:90%;height:73%;margin-top:top"> 
+                <input id="photo" type="file" value="上傳文件" class="hide_input" style="position:absolute;left:280px;top:30px;width:90%;height:73%;margin-top:top">
+			  </div>
+          </div>
+<!--        <div class="three fields">
           <div class="field">
             <div class="ui horizontal segment">
               <div style="width:90px; height:110px; overflow:hidden;">
-              <div id="imgDiv"> </div>
+              <div id="imgDiv" style="float:left"> </div>
               </div>
               <br>
               <input id="photo" type="file" value="上傳文件">
             </div>
-          </div>
-          <div class="field">
+-->
+          <div class="column">
             <div class="ui horizontal segment">
               <textarea></textarea>
             </div>
           </div>
-          <div class="field">
+          <div class="column" style="padding-top:40px">
             <div class="ui horizontal segment">
             <div class="field">
               <div class="ui left icon input">
@@ -329,11 +336,11 @@
                 <div class="ui two column grid">
                   <div class="ui middle aligned relaxed fitted stackable grid">
                   
-                <<div class="seven wide column" >
+                <div class="seven wide column" >
                 <a class="user" style="font-size:14pt;vertical-align: top;">Elliot Fu</a>
                 <div class="date" style="font-size:8pt;vertical-align: top;color:#666666;"}>2小時前</div>
                 </div>
-                <<div class="nine wide column" >
+                <div class="nine wide column" >
                 <p style="font-size:14pt;color:#227700;"}>5.3Km，45Kg</p>
                 </div>
                 </div>
@@ -370,11 +377,11 @@
                 <div class="ui two column grid">
                   <div class="ui middle aligned relaxed fitted stackable grid">
                   
-                <<div class="seven wide column" >
+                <div class="seven wide column" >
                 <a class="user" style="font-size:14pt;vertical-align: top;">Linda Wu</a>
                 <div class="date" style="font-size:8pt;vertical-align: top;color:#666666;"}>3小時前</div>
                 </div>
-                <<div class="nine wide column" >
+                <div class="nine wide column" >
                 <p style="font-size:14pt;color:#227700;"}>5Km，56Kg</p>
                 </div>
                 </div>
