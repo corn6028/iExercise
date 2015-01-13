@@ -1,32 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
- <!-- Standard Meta -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<title>iExercise 一起運動吧！</title>
 
-  <!-- Site Properities -->
-  <title>iExercise 一起運動吧！</title>
+	<link rel="stylesheet" type="text/css" href="../dist/jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="../dist/semantic.css">
+  	<link rel="stylesheet" type="text/css" href="katy.css">
+	<style>
 
-  <link rel="stylesheet" type="text/css" href="../dist/semantic.css">
-  <link rel="stylesheet" type="text/css" href="katy.css">
-  <link rel='stylesheet' type='text/css' href="jeffry.in.slider.css">
+	/* Style for our header texts
+	* --------------------------------------- */
 
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
-  <script src="../dist/semantic.js"></script>
-  <script src="https://www.parsecdn.com/js/parse-1.3.3.min.js"></script>
-  <script type='text/javascript' src="katy.js"></script>	
+
+	/* Centered texts in each section
+	* --------------------------------------- */
+
+
+
+	/* Backgrounds will cover all the section
+	* --------------------------------------- */
+	#section0,
+	#section1,
+	#section2,
+	#section3{
+		background-size: cover;
+	}
+
+	/* Defining each section background and styles
+	* --------------------------------------- */
+	#section0{
+		background-image: url(../images/ex1.png);
+		padding: 30% 0 0 0;
+	}
+	#section2{
+		background-image: url(../images/timeline.png);
+		padding: 6% 0 0 0;
+	}
+	#section3{
+		background-image: url(../images/linegraph.png);
+		padding: 6% 0 0 0;
+	}
+	#section3 h1{
+		color: #000;
+	}
+
+
+ 	/*Adding background for the slides
+	* --------------------------------------- */
+	#slide1{
+		background-image: url(../images/ex1.jpg);
+		padding: 6% 0 0 0;
+	}
+	#slide2{
+		background-image: url(../images/ex2.jpg);
+		padding: 6% 0 0 0;
+	}
+
+
+	/* Bottom menu
+	* --------------------------------------- */
+	#infoMenu li a {
+		color: #fff;
+	}
+	</style>
+
+	<!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+	<script type='text/javascript' src="../dist/semantic.js"></script>
+  	<script src="https://www.parsecdn.com/js/parse-1.3.3.min.js"></script>
+  	<script type='text/javascript' src="katy.js"></script>
+
+<!--	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+-->
+	<script type="text/javascript" src="../dist/jquery.fullPage.js"></script>
+	<link rel="icon" type="image/jpg" href="../images/icon.jpg" size="16x16" /> 
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				verticalCentered: false
+
+			});
+		});
+
+	</script>
 
 </head>
-<body id="home">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
-<div class="ui inverted orange vertical segment" >
-  <div class="ui middle aligned relaxed fitted stackable grid">
+<body id="home">
+ <div class="ui inverted orange vertical segment" style="position:fixed; top:0px; left:0px; right:0px; z-index:500">
+  <div class="ui grid">
   <div class="equal height row">
     <div class="one wide column">
       <div class="center aligned column">
-        <h2 color="white" style=margin:0px> iExercise</h2>
+		<!--<img src="../images/iExercise.jpg"></img>-->
+        <h2 color="white" style=margin:0px id="iexercise"> iExercise</h2>
       </div>
     </div>
     <div class="four wide column">
@@ -39,10 +117,13 @@
     </div>
     <div class="two wide column">
       <div class="center aligned column">
+<!--		<div class="ui facebook button">
+		  <i class="facebook icon"></i>
+		  Log in with Facebook
+	  	</div>-->
         <div class="ui buttons">
-          <div class="ui white button">Log in</div>
-   <!--       <div class="or"></div>--!>
-          <div class="ui signup red button">Sign up</div>
+          <div class="ui grey button">Log in</div>
+          <div id="sign-up" class="ui signup red button">Sign up</div>
         </div>
       </div>     
     </div>
@@ -50,12 +131,23 @@
   </div>
 </div>
 
-<div class="ui modal">
+<div class="ui modal" id="signupmodal" style="position:fixed;">
   <div class="ui fluid form segment">
 	<h2 class="ui dividing header" style=margin-bottom:25px>
 		Sign up
-	<i class="close icon" style=float:right;font-size:1em></i>
+	<i id="close-signup" class="close icon" style=float:right;font-size:1em></i>
 	</h2>
+  <div class="ui grid">
+   <div class="six wide column">
+	<div class="center aligned column">
+		</br></br></br></br></br></br>
+	   <div class="ui facebook button">
+	   <i class="facebook icon"></i>
+		Sign up with Facebook
+	   </div>
+	 </div>
+   </div>
+   <div class="eight wide column">
 	<div class="two field">
 	  <div class="field">
 		<label>First Name</label>
@@ -86,55 +178,130 @@
 	  <label>Email Address</label>
 	  <input type="email" id="email" placeholder="Email Address">
 	</div>
-	<div class="row">
 	  <button class="ui orange submit button">Sign up</button>
-	  <div class="ui facebook button">
-		<i class="facebook icon"></i>
-		Sign up with Facebook
 	  </div>
 	</div>
+  </div>
  </div>
 </div>
 
-<div class="ui inverted masthead segment">
-  <div class="ui page grid" style=padding:50px>
-	<div class="seven wide column">
-	  <h1 class="ui inverted header">
-		Get More Fit
-	  </h1>
-	  <h2>Here you can meet new friends with<br> same intends, join us and<br>you won't regret</h2>
-		<div class="ui orange button" style=font-size:1.5em>Join us</div>
-		<div class="ui button" style=font-size:1.5em>Free trail</div>
+<div id="loginmodal" class="ui modal" style="position:fixed; top:100px;">
+  <div class="ui form segment">
+	<h2 class="ui dividing header" style=margin-bottom:25px>
+		Log in
+	<i id="close-login" class="close icon" style=float:right;font-size:1em></i>
+	</h2>
+	<div class="ui grid">
+		<div class="six wide column">
+		<div class="center aligned column">
+		</br></br></br>
+		<div class="ui facebook button">
+		<i class="facebook icon"></i>
+		Log in with Facebook
+	  </div>
+		<!--<button class="ui blue submit button">Log in <br> with <br> Facebook</button>-->
+		</div>
+		</div>
+		<div class="eight wide column">
+		<div class="two column row">
+		<div class="column">
+		<div class="left aligned column">
+			<div class="two field">
+				<div class="field">
+					<label>Username</label>
+						<div class="ui icon input">
+							<input type="text" id="user-name-in" placeholder="Username">
+							<i class="user icon"></i>
+						</div>
+				</div>
+				<div class="field">
+					<label>Password</label>
+						<div class="ui icon input">
+							<input type="password" id="password-in" placeholder="Password">
+							<i class="lock icon"></i>
+						</div>
+				</div>
+				</div>
+				</div>
+				</div>
+				<div class="column">
+				<div class="right aligned column">
+				</br></br>
+				<button id="log-in" class="ui orange login button">Log in</button>
+				</div>
+			</div>
+			</div>
+			</div>
 	</div>
   </div>
 </div>
-<!--	<img class="ui centered image" src="images/ex1.jpg">-->
+<div id="fullpage">
 
-<div class="ui vertical segment">
-  <div class="ui middle aligned relaxed fitted stackable grid">
-  <div class="row">
-    <div class="right aligned column">
+	<div class="section" id="section1">
+	    <div class="slide" id="slide1">
+	    	<div class="ui page grid" style=padding:50px>
+	    	<div class="seven wide column">
+	    		<h1 class="ui inverted header" style="font-family:Calibri;font-weight:bold;font-size:40pt">
+	    			Get More Fit
+	    		</h1>
+	    		<h2 class="ui inverted header" style="font-family:Calibri;font-weight:bold;color:#AAAAAA;font-size:20pt">Here you can meet new friends<br> with same goals, join us and<br>you won't regret !</h2>
+	    	<div class="ui red button" style="font-family:Calibri;font-size:1.5em">Join us</div>
+	    </div>
+	</div>
+	    </div>
+	    <div class="slide" id="slide2">
+	    	<div class="ui page grid" style=padding:50px>
+	    	<div class="seven wide column">
+	    		<h1 class="ui inverted header" style="color:BLACK;font-family:Calibri;font-weight:bold;font-size:40pt">
+	    			Get More Fit
+	    		</h1>
+	    		<h2 class="ui inverted header" style="font-family:Calibri;font-weight:bold;color:black;font-size:20pt">Here you can meet new friends<br> with same goals, join us and<br>you won't regret !</h2>
+	    	<div class="ui red button" style="font-family:Calibri;font-size:1.5em">Join us</div>
+	    </div>
+	</div>
+	    </div>
+	</div>
+	<div class="section" id="section2">
+		<div class="ui grid">
+			<div class="two wide column"></div>
+			<div class="six wide column"></div>
+			<div class="six wide column">
+				<div class="center aligned column">
+					<br/><br/><br/></br></br>
+					<h3><font face="微軟正黑體" size="6">動態時報</font></h3>
+					<br/></br>
+					<p><font face="微軟正黑體" size="4">追蹤朋友或成功者來瞭解其運動習慣</font></p>
+					<p><font face="微軟正黑體" size="4">激勵與督促自己往正確的方向走</font></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="section" id="section3">
+		<div class="ui grid">
+			<div class="eight wide column">
+				<div class="center aligned column">
+					<h3><font face="微軟正黑體" size="6">運動紀錄</font></h3>
+					</br></br>
+					<p><font face="微軟正黑體" size="4">紀錄每週運動量的變化以檢視自身運動習慣</font></P>
+					<P><font face="微軟正黑體" size="4">進而規劃改善未來的運動計畫</font></p>
+				</div>
+			</div>
+			<div class="eight wide column"></div>
+		</div>
+		<div class="ui grid">
+			<div class="two wide column"></div>
+			<div class="six wide column"></div>
+			<div class="six wide column">
+				<div class="center aligned column">
+			<br/><br/><br/></br></br></br>
+			<h3><font face="微軟正黑體" size="6">體重紀錄</font></h3>
+			</br></br>
+			<p><font face="微軟正黑體" size="4">記錄體重變化趨勢以檢視運動成效</font></p>
+			<p><font face="微軟正黑體" size="4">進而調整自己運動及飲食習慣</font></p>
+		</div>
+			</div>
+		</div>
     </div>
-  </div>
-  </div>
-  <div class="circle">
-    <h2 class="ch">距離目標還有</h2>
-    <h1 class="ui header">? kg</h1>
-  </div>
-    <div class="ui circular segment">
-      <h1 class="ui header"></h1>
-      <h2 class="ui header">距離目標還有</h2>
-      <h2 class="ui header"></h2>
-      <h1 class="ui header">? kg</h1>
-      <h2 class="ui header"></h2>
-    </div>
-    <div class="ui circular segment">
-      <h1 class="ui header"></h1>
-      <p> </p><h2 class="ui header"> 目前跑了 </h2><p> </p>
-      <h2 class="ui header"></h2>
-      <h1 class="ui header">? km</h1>
-      <h2 class="ui header"></h2>
-    </div>  
 </div>
 
 </body>

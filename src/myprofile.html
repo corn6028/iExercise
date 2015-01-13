@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+ <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <!--<meta http-equiv="Content-Type" c> -->
+
+  <!-- Site Properities -->
+  <title>iExercise 一起運動吧！</title>
+
+  <link rel="stylesheet" type="text/css" href="../dist/semantic.css">
+  <link rel="stylesheet" type="text/css" href="myprofile.css">
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/hot-sneaks/jquery-ui.css" rel="stylesheet">
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+ <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>-->
+  <script src="../dist/semantic.js"></script>
+  <script src="https://www.parsecdn.com/js/parse-1.3.3.min.js"></script>
+  <script src="katy.js"></script>
+  <script src="myprofile.js"></script>
+  <script src="posting.js"></script>
+
+  <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<link rel="icon" type="image/jpg" href="../images/icon.jpg" size="16x16" /> 
+
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+      google.setOnLoadCallback(drawChart1);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+         var data = google.visualization.arrayToDataTable([
+         ['day', 'Km', { role: 'style' } ],
+         ['Sunday', 8.9, '#1E90FF' ],
+         ['Monday', 10.4, '#87CEFA' ],
+         ['Tuesday', 9.3, '#AFEEEE' ],
+         ['Wednesday', 2.5, '#4169E1' ],
+         ['Thursday', 8.4, '#33CCFF' ],
+         ['Friday', 8.4, '#0066FF' ],
+         ['Saturday', 4.9, '#77DDFF' ]
+        ]);
+
+        // Set chart options
+        var options = {'title':'一週運動量',
+                       'width':330,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+
+      function drawChart1() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'X');
+      data.addColumn('number', 'Kg');
+
+      data.addRows([
+        [new Date(2015, 0, 1), 45.6],
+        [new Date(2015, 0, 2), 46],
+        [new Date(2015, 0, 3), 45.4],
+        [new Date(2015, 0, 4), 45.7],
+        [new Date(2015, 0, 5), 46.2],
+        [new Date(2015, 0, 6), 46.4]
+      ]);
+
+      var options = {
+        width: 490,
+        height: 360,
+        hAxis: {
+          title: 'Date'
+        },
+        vAxis: {
+          title: 'Kilograms'
+        }
+      };
+
+      var chart = new google.visualization.LineChart(
+        document.getElementById('ex0'));
+
+      chart.draw(data, options);
+
+    }
+    </script>
+</head>
+<body >
+<div class="ui inverted orange vertical segment" >
+  <div class="ui grid">
+  <div class="equal height row">
+    <div class="one wide column">
+      <div class="center aligned column">
+        <h2 color="white" style=margin:0px id="i-exercise"> iExercise</h2>
+      </div>
+    </div>
+    <div class="four wide column">
+      <div class="center aligned column">
+        <div class="ui fluid icon input">
+          <input type="text" placeholder="Search...">
+          <i class="orange search icon"></i>
+        </div>
+      </div>
+    </div>
+	<div class="two wide column">
+    <div class="center aligned column">
+      <img class="ui avatar image" src="../images/katy.jpg" id="me">
+      <a id="my_name" style="text-align:center;color:white;font-size:14pt"></a>
+      <div class="circular ui green icon button">
+        <i class="sign out icon"></i>
+        Log out</div>
+      </div>     
+     </div>
+    </div>
+  </div>
+</div>  
+
+<br/>
+  <div class="ui grid"style="padding:0;">
+    <div class="four wide column">
+      <div class="center aligned column">
+        <a style="text-align:center;color:#E63F00;font-size:22pt" id="user_name"></a>
+      <div class='circle'>
+        <div class='inner'></div>
+      </div>
+	  
+	  <div class="ui items"> 
+      <div class="ui inverted orange button">
+        <i class="plus icon"></i>
+        Add Friend
+      </div>
+	    <div class="item" id="friend-post">
+		  <div class="middle aligned content">
+        <a class="header" style=font-size:1.5em>	
+		    <i class="users icon "></i>
+        朋友動態</a>
+		  </div>
+	    </div>
+	  <div class="item" id="winner-post">
+		<div class="middle aligned content">
+          <a class="header" style=font-size:1.5em>	
+		  <i class="users icon "></i>
+		  成功者動態</a>
+		 </div>
+	  </div>
+	 </div>
+    </div>
+    </div>
+    <div class="seven wide column"> 
+      <div class="ui two column grid">
+        <div class="five wide column">
+          <div class="ui form segment">
+            <div class="ui top orange attached label"><p style="font-size:13pt">基本資料<i class="write icon" style="float:right;line-height:22px;height:20px;margin:0" onclick="CanModify_P()"></i></p></div>
+            <div class="ui three column grid">
+              <div class="seven wide column" style="padding:0px">
+                <h4> 年齡：</h4>
+                <h4> 身高：</h4>
+                <h4> 體重：</h4>
+              </div>
+              <div class="seven wide column" style="padding:0px;text-align:center">
+                <h4 id="age">21</h4>
+                <h4 id="height">162</h4>
+                <h4 id="weight">40</h4>
+                <input type="text" id="ageinput" name="test" style="display:none; height:25px; width:60px; z-index: 1; position: absolute; top:23px; left:0px;" onKeyDown="DisModify()" onKeyPress="DisModify()">
+                <input type="text" id="heightinput" name="test" style="display:none; height:25px; width:60px; z-index: 1; position: absolute; top:67px; left:-3px;" onKeyDown="DisModify()" onKeyPress="DisModify()">
+                <input type="text" id="weightinput" name="test" style="display:none; height:25px; width:48px; z-index: 1; position: absolute; top:112px; left:0px;" onKeyDown="DisModify()" onKeyPress="DisModify()">
+              </div>
+              <div class="two wide column" style="padding:0px">
+                <h4> <br/></h4>
+                <h4>cm</h4>
+                <h4>kg</h4>
+              </div>
+          </div>
+          </div>
+        </div>
+        <div class="eleven wide column">
+          <div class="ui form segment">
+            <div class="ui top orange attached label">
+              <p style="font-size:13pt">運動紀錄 
+                <i class="write icon" style="float:right;line-height:22px;height:20px;margin:0" id="eedit"></i>
+                <i class="plus icon" style="float:right;line-height:22px;height:20px;" id="eadd"></i>
+              </p>
+            </div>
+            <div class="ui middle aligned relaxed fitted stackable grid">
+            <div id="chart_div" ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui small modal" id="eaddmodal">
+        <div class="ui fluid form segment">
+          <h2 class="ui dividing header" style=margin-bottom:25px>
+            新增紀錄
+            <i class="close icon" style=float:right;font-size:1em></i>
+          </h2>
+          <div class="ui grid">
+            <div class="column">
+              <div class="required field">
+                <div class="field">
+                  <label>日期</label>
+                  <input id="datepicker1" type="text" />
+                </div>
+                <div class="field">
+                  <label>公里數</label>
+                  <input type="text" id="distance" onkeyup="if(isNaN(value))execCommand('undo')"onafterpaste="if(isNaN(value))execCommand('undo')">
+                </div>
+              </div>
+              <button class="ui orange submit button">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui small modal" id="eeditmodal">
+        <div class="ui fluid form segment">
+          <h2 class="ui dividing header" style=margin-bottom:25px>
+            編輯紀錄
+            <i class="close icon" style=float:right;font-size:1em></i>
+          </h2>
+          <table class="ui very basic table" >
+            <thead >
+              <tr>
+                <th class="center aligned">Date</th>
+                <th class="center aligned">Distance</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="center aligned" id="ed">1/1</td>
+                <td class="center aligned" id="edis">5</td>
+                <td><i class="write icon" onclick="CanModify_E()"></i></td>
+                <input type="text" id="edinput" name="test" style="display:none; height:25px; width:60px; z-index: 1; position: absolute; top:98px; left:57px;" onKeyDown="DisModify()" onKeyPress="DisModify()">
+                <input type="text" id="edisinput" name="test" style="display:none; height:25px; width:60px; z-index: 1; position: absolute; top:98px; left:279px;" onKeyDown="DisModify()" onKeyPress="DisModify()">
+              </tr>
+              <tr>
+                <td class="center aligned">1/2</td>
+                <td class="center aligned">6.4</td>
+                <td><i class="write icon"></i></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="ui form segment" style="margin:14px">
+        <div class="ui top orange attached label">
+          <p style="font-size:13pt">體重變化
+            <i class="write icon" style="float:right;line-height:22px;height:20px;margin:0" id="wedit"></i>
+            <i class="plus icon" style="float:right;line-height:22px;height:20px;" id="wadd"></i>
+          </p>
+        </div>
+        <div class="ui middle aligned relaxed fitted stackable grid">
+        <div id="ex0" ></div>
+      </div>
+      </div>
+    </div>
+      <div class="ui small modal" id="waddmodal">
+        <div class="ui fluid form segment">
+          <h2 class="ui dividing header" style=margin-bottom:25px>
+            新增紀錄
+            <i class="close icon" style=float:right;font-size:1em></i>
+          </h2>
+          <div class="ui grid">
+            <div class="column">
+              <div class="required field">
+                <div class="field">
+                  <label>日期</label>
+                  <input id="datepicker2" type="text" />
+                </div>
+                <div class="field">
+                  <label>體重</label>
+                  <input type="text" id="weight" onkeyup="if(isNaN(value))execCommand('undo')"onafterpaste="if(isNaN(value))execCommand('undo')">
+                </div>
+              </div>
+              <button class="ui orange submit button">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui small modal" id="weditmodal">
+        <div class="ui fluid form segment">
+          <h2 class="ui dividing header" style=margin-bottom:25px>
+            編輯紀錄
+            <i class="close icon" style=float:right;font-size:1em></i>
+          </h2>
+          <table class="ui very basic table" >
+            <thead >
+              <tr>
+                <th class="center aligned">Date</th>
+                <th class="center aligned">Weight</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="center aligned" id="wd">1/1</td>
+                <td class="center aligned" id="ww">45</td>
+                <td><i class="write icon" onclick="CanModify_W()"></i></td>
+                <input type="text" id="wdinput" name="test" style="display:none; height:25px; width:60px; z-index: 1; position: absolute; top:98px; left:62px;" onKeyDown="DisModify()" onKeyPress="DisModify()">
+                <input type="text" id="wwinput" name="test" style="display:none; height:25px; width:60px; z-index: 1; position: absolute; top:98px; left:279px;" onKeyDown="DisModify()" onKeyPress="DisModify()">
+              </tr>
+              <tr>
+                <td class="center aligned">1/2</td>
+                <td class="center aligned">45.5</td>
+                <td><i class="write icon"></i></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <div class="five wide column">
+      <div class="ui list">
+        <div style="background:#FDF5E6;" class="item">
+          <img class="ui image" src="../images/katy.jpg" width="20%" height="20%">
+          <div class="content">
+          <div style="font-size:13pt;" class="ui header">5公里達成</div>
+          <div style="font-size:8pt;color:gray;" class="description">2天前・5km </div>
+          </div>
+        </div>
+        <div class="ui fitted divider"></div>
+        <div style="background:white;" class="item">
+          <img class="ui image" src="../images/cat.png" width="20%" height="20%">
+          <div class="content">
+          <div style="font-size:13pt;" class="ui header">好累</div>
+          <div style="font-size:8pt;color:gray;" class="description">3天前・7km </div>
+          </div>
+        </div>
+        <div class="ui fitted divider"></div>
+        <div style="background:#FDF5E6;" class="item">
+          <img class="ui image" src="../images/cat.png" width="20%" height="20%">
+          <div class="content">
+          <div style="font-size:13pt;" class="ui header">^_^</div>
+          <div style="font-size:8pt;color:gray;" class="description">5天前・4.4km </div>
+          </div>    
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

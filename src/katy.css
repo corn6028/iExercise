@@ -1,4 +1,10 @@
-.circle {
+.ui.grid{
+	margin:0px;
+}
+.orange.segment{
+	padding:0px;
+}
+.ccircle {
     width: 5em;
     height: 5em;
     font-size: 5.5em;
@@ -20,7 +26,7 @@
 ---------------*/
 
 #home .masthead {
-  background-image: url(./images/ex1.jpg);
+  background-image: url(../images/ex1.jpg);
   margin: 0em;
   padding: 5rem 0rem;
 }
@@ -67,3 +73,20 @@
   height: 10rem;
 }
 
+#left{
+	position: relative;
+	width: 20%;
+	height: 100%;
+	float: left;
+	padding-top: 65px;
+	background-color:#FAF0E6;
+	padding-bottom: 0px;
+	text-align: center;
+}
+#right{
+	position: relative;
+	width: 80%;
+	float: right;
+	padding-top: 65px;
+	text-align: center;
+}
