@@ -8,8 +8,8 @@ window.fbAsyncInit = function() {
       xfbml      : true,  // initialize Facebook social plugins on the page
       version    : 'v2.2' // point to the latest Facebook Graph API version
     });
- 
     // Run code after the Facebook SDK is loaded.
+	window.fbLoaded();
 }; 
 (function(d, s, id){
     var js, fjs = d.getElementsByTagName(s)[0];
