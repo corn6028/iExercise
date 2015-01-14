@@ -10,6 +10,7 @@ if (currentUser) {
 	alert(currentUser.get('username'));
   $(document).ready(function(){
 	if(currentUser.get('notFB')){
+	  window.fbLoaded = function() {
 		FB.api('/me', function(response) {
             var my_name = response.name;
            // var my_gender = response.gender;
@@ -17,13 +18,14 @@ if (currentUser) {
             var my_facebook_id = response.id;
             $("#my_name").html(my_name);
            // $("#my-profile-gender").html(my_gender);
-            $("#user_name").html(my_username);
+            $("#user_name").html(my_name);
            // $("#my-profile-facebook-id").html(my_facebook_id);
         });
 		FB.api('/me/picture?width=250', function(response) {
             var my_picture_url = response.data.url;
             $("#my_picture").attr('src', my_picture_url);
         });
+	  }
 	} else {
 		$("#my_name").html("Hi, "+currentUser.get('last_name'));
   		$("#user_name").html(currentUser.get('username'));
