@@ -1,4 +1,25 @@
 Parse.initialize("lGJxaJjLAeZewHob85fxeWXeXVOlFUFHWKjSazzH", "HnbslyPWRrrj13cw4koWYAo6UxWMbxIpgoYCpx6f");
+window.fbAsyncInit = function() {
+// init the FB JS SDK
+    FB.init({
+        appId      : '315243075347265',                        // App ID from the app dashboard
+        cookie     : true,                                 // Allowed server-side to fetch fb auth cookie
+        status     : true,                                 // Check Facebook Login status
+        xfbml      : true                                  // Look for social plugins on the page
+        });
+        // Additional initialization code such as adding Event Listeners goes here
+        window.fbLoaded();
+};
+// Load the SDK asynchronously
+(function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    //js.src = "http://connect.facebook.net/en_US/all.js";
+    // Debug version of Facebook JS SDK
+    js.src = "http://connect.facebook.net/en_US/all/debug.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 
 //alert(Parse.User.current().get('username'));
 
@@ -81,7 +102,22 @@ jQuery(document).ready(function(){
     success: function(user) {
       if (!user.existed()) {
         alert("User signed up and logged in through Facebook!");
-		user.set("notFB",false);
+		window.fbLoaded = function() {
+			FB.api('/me', function(response) {
+            	var my_name = response.name;
+           		// var my_gender = response.gender;
+            	//var my_username = response.username;
+            	var my_facebook_id = response.id;
+				Parse.User.current().set("last.name",my_name);
+            	Parse.User.current().save();
+           		// $("#my-profile-facebook-id").html(my_facebook_id);
+       	 	});
+			FB.api('/me/picture?width=250', function(response) {
+            	//var my_picture_url = response.data.url;
+            	//$("#my_picture").attr('src', my_picture_url);
+        	});
+	  	}
+
 		window.location.href = "home.html";
       } else {
 		alert("User logged in through Facebook!");
