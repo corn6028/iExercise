@@ -9,14 +9,31 @@ if (currentUser) {
     // do stuff with the user
 	alert(currentUser.get('username'));
   $(document).ready(function(){
-	$("#my_name").html("Hi, "+currentUser.get('username'));
-  $("#user_name").html(currentUser.get('username'));
-  $("#age").html('x');
-  $("#height").html('x');
-  $("#weight").html('x');
-  $("#pdis").html('x');
-  $("#pweight").html('x');
-  $("#goal").html('x'+" Kg");
+	if(currentUser.get('isFB')){
+		FB.api('/me', function(response) {
+            var my_name = response.name;
+           // var my_gender = response.gender;
+            var my_username = response.username;
+            var my_facebook_id = response.id;
+            $("#my_name").html(my_name);
+           // $("#my-profile-gender").html(my_gender);
+            $("#user_name").html(my_username);
+           // $("#my-profile-facebook-id").html(my_facebook_id);
+        });
+		FB.api('/me/picture?width=250', function(response) {
+            var my_picture_url = response.data.url;
+            $("#my_picture").attr('src', my_picture_url);
+        });
+	} else {
+		$("#my_name").html("Hi, "+currentUser.get('username'));
+  		$("#user_name").html(currentUser.get('username'));
+  		$("#age").html('x');
+  		$("#height").html('x');
+  		$("#weight").html('x');
+  		$("#pdis").html('x');
+  		$("#pweight").html('x');
+  		$("#goal").html('x'+" Kg");
+	}
 
   });
 	
