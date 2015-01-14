@@ -100,7 +100,7 @@ jQuery(document).ready(function(){
     success: function(user) {
       if (!user.existed()) {
         alert("User signed up and logged in through Facebook!");
-		user.set("isFB",true);
+		Parse.User.current().set("isFB",true);
 		window.location.href = "home.html";
       } else {
 		alert("User logged in through Facebook!");
