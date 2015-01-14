@@ -13,6 +13,7 @@
 
   <link rel="stylesheet" type="text/css" href="../dist/semantic.css">
   <link rel="stylesheet" type="text/css" href="myprofile.css">
+  <link rel="stylesheet" type="text/css" href="katy.css">
   <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/hot-sneaks/jquery-ui.css" rel="stylesheet">
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -29,7 +30,23 @@
 	<link rel="icon" type="image/jpg" href="../images/icon.jpg" size="16x16" /> 
 
     <script type="text/javascript">
+	
+//	var engine = new Bloodhound({ /* options */ });
 
+//engine.initialize();
+
+//$('#searchbar').typeahead({
+  //minLength: 3,
+  //highlight: true,
+//},
+//{
+ // name: 'my-dataset',
+// displayKey: myDisplayKey // if not set, will default to 'value',
+ // source: engine.ttAdapter()
+//});
+
+	
+	<!--$('#searchbar').Typeahead{};-->
       // Load the Visualization API and the piechart package.
       google.load('visualization', '1.0', {'packages':['corechart']});
 
@@ -56,7 +73,7 @@
 
         // Set chart options
         var options = {'title':'一週運動量',
-                       'width':330,
+                       'width':355,
                        'height':300};
 
         // Instantiate and draw our chart, passing in some options.
@@ -79,8 +96,8 @@
       ]);
 
       var options = {
-        width: 490,
-        height: 360,
+        width: 600,
+        height: 380,
         hAxis: {
           title: 'Date'
         },
@@ -97,52 +114,51 @@
     }
     </script>
 </head>
+
 <body >
-<div class="ui inverted orange vertical segment" >
+<div class="ui inverted orange vertical segment" style="position:fixed; top:0px; left:0px; right:0px; z-index:500">
   <div class="ui grid">
   <div class="equal height row">
     <div class="one wide column">
       <div class="center aligned column">
-        <h2 color="white" style=margin:0px id="i-exercise"> iExercise</h2>
+        <!--<h2 color="white" style=margin:0px id="i-exercise"> iExercise</h2>-->
+		<img class="logo image" src="../images/logo.png" id="i-exercise" style="top:0px;width:70%">
       </div>
     </div>
     <div class="four wide column">
       <div class="center aligned column">
         <div class="ui fluid icon input">
           <input type="text" placeholder="Search...">
-          <i class="orange search icon"></i>
+          <i class="orange search icon" id="searchbar"></i>
         </div>
       </div>
     </div>
-	<div class="two wide column">
-    <div class="center aligned column">
-      <img class="ui avatar image" src="../images/katy.jpg" id="me"/>
-      <a id="my_name" style="text-align:center;color:white;font-size:14pt"></a>
-      <div class="circular ui green icon button">
-        <i class="sign out icon"></i>
-        Log out</div>
+    <div class="two wide column">
+      <div class="center aligned column">
+        <img class="ui avatar image" src="../images/katy.jpg" id="me"/>
+        <a id="my_name" style="text-align:center;color:white;font-size:14pt"></a>
+        <div class="circular ui green icon button">
+          <i class="sign out icon"></i>
+          Log out</div>
       </div>     
-     </div>
     </div>
   </div>
-</div>  
+  </div>
+</div>
 
-<br/>
-  <div class="ui grid"style="padding:0;">
-    <div class="four wide column">
-      <div class="center aligned column">
-        <a style="text-align:center;color:#E63F00;font-size:22pt" id="user_name"></a>
-      <div class='circle'>
-        <div id="inner" class='inner'>
-			<!--<img id='my_picture' src="../images/katy.jpg">-->
+<div id="left" style="position:fixed;">
+		<div class="row" style="padding:15px">
+      <a style="text-align:center;color:#E63F00;font-size:22pt" id="user_name"></a>
+    </div>
+		<div class='circle'>
+			<div id="inner" class='inner'></div>
 		</div>
-      </div>
-	  
-	  <div class="ui items"> 
+		<div class="ui items"> 
       <div class="ui inverted orange button">
         <i class="plus icon"></i>
         Add Friend
       </div>
+		<div class="ui items"> 
 	    <div class="item" id="friend-post">
 		  <div class="middle aligned content">
         <a class="header" style=font-size:1.5em>	
@@ -159,8 +175,33 @@
 	  </div>
 	 </div>
     </div>
+	</div>
+ <!--<div class="row" style="padding:15px">
+      <a style="text-align:center;color:#E63F00;font-size:22pt" id="user_name"></a>
     </div>
-    <div class="seven wide column"> 
+      <div class='circle'>
+        <div class='inner'></div>
+      </div>
+		<div class="ui items"> 
+			<div class="item" id="friend-post">
+				<div class="middle aligned content">
+					<a class="header" style=font-size:1.5em>	
+					<i class="users icon "></i>
+					朋友動態</a>
+				</div>
+			</div>
+			<div class="item" id="winner-post">
+				<div class="middle aligned content">
+					<a class="header" style=font-size:1.5em>	
+					<i class="users icon "></i>
+					成功者動態</a>
+				</div>
+			</div>
+		</div>
+		</div>-->
+	<div id="right">
+	<div class="ui two column grid">
+	 <div class="ten wide column">
       <div class="ui two column grid">
         <div class="five wide column">
           <div class="ui form segment">
@@ -170,11 +211,13 @@
                 <h4> 年齡：</h4>
                 <h4> 身高：</h4>
                 <h4> 體重：</h4>
+				        <h4> 目標：</h4>
               </div>
               <div class="seven wide column" style="padding:0px;text-align:center">
                 <h4 id="age">21</h4>
                 <h4 id="height">162</h4>
                 <h4 id="weight">40</h4>
+				        <h4 id="goal">35</h4>
                 <input type="text" id="ageinput" name="test" style="display:none; height:25px; width:60px; z-index: 1; position: absolute; top:23px; left:0px;" onKeyDown="DisModify()" onKeyPress="DisModify()">
                 <input type="text" id="heightinput" name="test" style="display:none; height:25px; width:60px; z-index: 1; position: absolute; top:67px; left:-3px;" onKeyDown="DisModify()" onKeyPress="DisModify()">
                 <input type="text" id="weightinput" name="test" style="display:none; height:25px; width:48px; z-index: 1; position: absolute; top:112px; left:0px;" onKeyDown="DisModify()" onKeyPress="DisModify()">
@@ -183,8 +226,12 @@
                 <h4> <br/></h4>
                 <h4>cm</h4>
                 <h4>kg</h4>
+                <h4>kg</h4>
               </div>
           </div>
+            <!--<h4 class="ui header"> 年齡： 21</h4>
+            <h4 class="ui header"> 身高： 162 cm</h4>
+            <h4 class="ui header"> 體重： 40 kg</h4>-->
           </div>
         </div>
         <div class="eleven wide column">
@@ -196,13 +243,21 @@
               </p>
             </div>
             <div class="ui middle aligned relaxed fitted stackable grid">
-            <div id="chart_div" ></div>
+            <div id="chart_div"></div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="ui small modal" id="eaddmodal">
+        <!--<div class="ten wide column">
+          <div class="ui form segment">
+            <div class="ui top orange attached label"><p style="font-size:13pt">運動紀錄</p></div>
+            <div class="ui middle aligned relaxed fitted stackable grid">
+            <div id="chart_div"></div>
+            </div>
+          </div>
+        </div>-->
+     </div>
+	 
+	 <div class="ui small modal" id="eaddmodal">
         <div class="ui fluid form segment">
           <h2 class="ui dividing header" style=margin-bottom:25px>
             新增紀錄
@@ -264,11 +319,17 @@
           </p>
         </div>
         <div class="ui middle aligned relaxed fitted stackable grid">
+        <div id="ex0" style="width: 550px; height: 380px"></div>
+      </div>
+      </div>
+      <!--<div class="ui form segment">
+        <div class="ui top orange attached label"><p style="font-size:13pt">體重變化</p></div>
+        <div class="ui middle aligned relaxed fitted stackable grid">
         <div id="ex0" ></div>
       </div>
-      </div>
-    </div>
-      <div class="ui small modal" id="waddmodal">
+      </div>-->
+	  </div>
+	  <div class="ui small modal" id="waddmodal">
         <div class="ui fluid form segment">
           <h2 class="ui dividing header" style=margin-bottom:25px>
             新增紀錄
@@ -322,7 +383,8 @@
           </table>
         </div>
       </div>
-    <div class="five wide column">
+  
+    <div class="six wide column">
       <div class="ui list">
         <div style="background:#FDF5E6;" class="item">
           <img class="ui image" src="../images/katy.jpg" width="20%" height="20%">
@@ -349,6 +411,7 @@
         </div>
       </div>
     </div>
+	</div>
   </div>
 
 </body>

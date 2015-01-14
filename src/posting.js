@@ -16,7 +16,11 @@ if (currentUser) {
   		$("#weight").html('x');
   		$("#pdis").html('x');
   		$("#pweight").html('x');
-  		$("#goal").html('x'+" Kg");
+  		$("#goal").html('x');
+		$("#no1").html('name');
+		$("#no2").html('name');
+  		$("#no3").html('name');
+
 		if(!currentUser.get('notFB')){
 			$('#me').attr('src',currentUser.get('my_pic'));
 			//alert(currentUser.get('my_pic'));
