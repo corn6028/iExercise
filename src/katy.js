@@ -77,7 +77,7 @@ jQuery(document).ready(function(){
   	user.set("pdis", $('#pdis').val());
   	user.set("pweight", $('#pweight').val());
   	user.set("goal", $('#goal').val());
-	user.set("isFB",Boolean("false"));
+	user.set("isFB",false);
   
 	// other fields can be set just like with Parse.Object
 	user.set("first_name", $('#first-name').val());
@@ -100,7 +100,7 @@ jQuery(document).ready(function(){
     success: function(user) {
       if (!user.existed()) {
         alert("User signed up and logged in through Facebook!");
-		user.set("isFB",Boolean("true"));
+		user.set("isFB",true);
 		window.location.href = "home.html";
       } else {
 		alert("User logged in through Facebook!");

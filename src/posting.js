@@ -25,7 +25,7 @@ if (currentUser) {
             $("#my_picture").attr('src', my_picture_url);
         });
 	} else {
-		$("#my_name").html("Hi, "+currentUser.get('username'));
+		$("#my_name").html("Hi, "+currentUser.get('lastname'));
   		$("#user_name").html(currentUser.get('username'));
   		$("#age").html('x');
   		$("#height").html('x');
