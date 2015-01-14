@@ -9,7 +9,7 @@ if (currentUser) {
     // do stuff with the user
 	alert(currentUser.get('username'));
   $(document).ready(function(){
-	if(currentUser.get('isFB')){
+	if(currentUser.get('notFB')){
 		FB.api('/me', function(response) {
             var my_name = response.name;
            // var my_gender = response.gender;
@@ -25,7 +25,7 @@ if (currentUser) {
             $("#my_picture").attr('src', my_picture_url);
         });
 	} else {
-		$("#my_name").html("Hi, "+currentUser.get('lastname'));
+		$("#my_name").html("Hi, "+currentUser.get('last_name'));
   		$("#user_name").html(currentUser.get('username'));
   		$("#age").html('x');
   		$("#height").html('x');
