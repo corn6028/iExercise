@@ -45,7 +45,6 @@ $("#datepicker1").datepicker(opt);
 $("#datepicker2").datepicker(opt);
 });
 
-<<<<<<< HEAD
     function CanModify_P()
     {
         document.getElementById('ageinput').style.display='block';
@@ -109,5 +108,3 @@ $("#datepicker2").datepicker(opt);
         }
     }
 
-=======
->>>>>>> origin/gh-pages

@@ -8,7 +8,6 @@ var currentUser = Parse.User.current();
 if (currentUser) {
     // do stuff with the user
 	alert(currentUser.get('username'));
-<<<<<<< HEAD
   $(document).ready(function(){
 	$("#my_name").html("Hi, "+currentUser.get('username'));
   $("#user_name").html(currentUser.get('username'));
@@ -20,9 +19,6 @@ if (currentUser) {
   $("#goal").html('x'+" Kg");
 
   });
-=======
-	$('.my_name').html('HI');
->>>>>>> origin/gh-pages
 	
 } else {
     // show the signup or login page
