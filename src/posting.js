@@ -10,13 +10,16 @@ if (currentUser) {
 	alert(currentUser.get('username'));
     $(document).ready(function(){
 		$("#my_name").html("Hi, "+currentUser.get('last_name'));
-  		$("#user_name").html(currentUser.get('username'));
+  		$("#user_name").html(currentUser.get('last_name'));
   		$("#age").html('x');
   		$("#height").html('x');
   		$("#weight").html('x');
   		$("#pdis").html('x');
   		$("#pweight").html('x');
   		$("#goal").html('x'+" Kg");
+		if(!currentUser.get('notFB')){
+			$('#me').attr('src',currentUser.get('my_pic'));
+		}
     });	
 } else {
     // show the signup or login page

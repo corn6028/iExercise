@@ -13,7 +13,12 @@ window.fbAsyncInit = function() {
         Parse.User.current().set('last_name', my_name);
 		Parse.User.current().set('notFB',false);
         Parse.User.current().save();	
-	});
+	 });
+	 FB.api('/me/picture?width=250', function(response) {
+        var my_picture_url = response.data.url;
+        Parse.User.current().set('my_pic',response.data.url);
+		Parse.User.current.save();
+     });
 };
 // Load the SDK asynchronously
 (function(d, s, id){
@@ -107,7 +112,7 @@ jQuery(document).ready(function(){
     success: function(user) {
       if (!user.existed()) {
         alert("User signed up and logged in through Facebook!");
-			FB.api('/me', function(response) {
+		/*	FB.api('/me', function(response) {
 				alert("load me");
             	var my_name = response.name;
            		// var my_gender = response.gender;
@@ -120,7 +125,7 @@ jQuery(document).ready(function(){
 			FB.api('/me/picture?width=250', function(response) {
             	//var my_picture_url = response.data.url;
             	//$("#my_picture").attr('src', my_picture_url);
-        	});
+        	});*/
 		window.location.href = "home.html";
       } else {
 		alert("User logged in through Facebook!");
