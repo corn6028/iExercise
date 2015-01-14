@@ -19,8 +19,8 @@ if (currentUser) {
   		$("#goal").html('x'+" Kg");
 		if(!currentUser.get('notFB')){
 			$('#me').attr('src',currentUser.get('my_pic'));
-			alert(currentUser.get('my_pic'));
-			document.getElementsByClassName("inner").style.backgroundImage="url('"+currentUser.get('my_pic')+"')";
+			//alert(currentUser.get('my_pic'));
+			document.getElementById("inner").style.backgroundImage="url('"+currentUser.get('my_pic')+"')";
 		//	$(".inner").attr('backgroundImage',currentUser.get('my_pic')) ;
 		}
     });	
