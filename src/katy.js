@@ -1,7 +1,7 @@
 Parse.initialize("lGJxaJjLAeZewHob85fxeWXeXVOlFUFHWKjSazzH", "HnbslyPWRrrj13cw4koWYAo6UxWMbxIpgoYCpx6f");
 window.fbAsyncInit = function() {
 // init the FB JS SDK
-    FB.init({
+    Parse.FacebookUtils.init({
         appId      : '315243075347265',                        // App ID from the app dashboard
         cookie     : true,                                 // Allowed server-side to fetch fb auth cookie
         status     : true,                                 // Check Facebook Login status
