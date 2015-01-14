@@ -8,7 +8,7 @@ window.fbAsyncInit = function() {
         xfbml      : true                                  // Look for social plugins on the page
         });
         // Additional initialization code such as adding Event Listeners goes here
-        //window.fbLoaded();
+        window.fbLoaded();
 };
 // Load the SDK asynchronously
 (function(d, s, id){
