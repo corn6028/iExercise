@@ -12,7 +12,7 @@ window.fbAsyncInit = function() {
                         var my_name = response.name;
                         Parse.User.current().set('last_name', my_name);
                         Parse.User.current().save();	
-	}
+	});
 };
 // Load the SDK asynchronously
 (function(d, s, id){
