@@ -4,7 +4,12 @@
 .orange.segment{
 	padding:0px;
 }
-
+#user_name{
+	font-family:微軟正黑體;
+}
+#my_name{
+	font-family:微軟正黑體;
+}
 .circle {
     display: inline-block;
     width: 220px;
@@ -24,7 +29,7 @@
     background:#fff;
 }
 .inner {
-    background-image: url(http://shinychang.net/uploads/cover.jpg);
+  /*  background-image: url(http://shinychang.net/uploads/cover.jpg);*/
     background-size:cover;
     background-position:center center;
     height: 100%;

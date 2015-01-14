@@ -10,9 +10,7 @@ if (currentUser) {
 	alert(currentUser.get('username'));
     $(document).ready(function(){
 		$("#my_name").html("Hi, "+currentUser.get('last_name'));
-		document.getElementById("#my_name").style.font-family = 微軟正黑體;
   		$("#user_name").html(currentUser.get('last_name'));
-		document.getElementById("#user_name").style.font-family = 微軟正黑體;
   		$("#age").html('x');
   		$("#height").html('x');
   		$("#weight").html('x');
@@ -21,7 +19,7 @@ if (currentUser) {
   		$("#goal").html('x'+" Kg");
 		if(!currentUser.get('notFB')){
 			$('#me').attr('src',currentUser.get('my_pic'));
-		//	document.getElementById("inner").style.font-family = 微軟正黑體;
+			document.getElementsByClassName("inner").style.background-image = currentUser.get('my_pic') ;
 		}
     });	
 } else {
