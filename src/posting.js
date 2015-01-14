@@ -20,8 +20,8 @@ if (currentUser) {
 		if(!currentUser.get('notFB')){
 			$('#me').attr('src',currentUser.get('my_pic'));
 			alert(currentUser.get('my_pic'));
-			//document.getElementByClassName("inner").style.backgroundImage="url()";
-			$(".inner").attr('backgroundImage',currentUser.get('my_pic')) ;
+			document.getElementByClassName("inner").style.backgroundImage="url('"+currentUser.get('my_pic')+"')";
+		//	$(".inner").attr('backgroundImage',currentUser.get('my_pic')) ;
 		}
     });	
 } else {
