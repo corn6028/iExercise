@@ -8,6 +8,11 @@ window.fbAsyncInit = function() {
         xfbml      : true                                  // Look for social plugins on the page
      });
      // Additional initialization code such as adding Event Listeners goes here
+	 FB.api('/me', function(response) {
+                        var my_name = response.name;
+                        Parse.User.current().set('last_name', my_name);
+                        Parse.User.current().save();	
+	}
 };
 // Load the SDK asynchronously
 (function(d, s, id){
