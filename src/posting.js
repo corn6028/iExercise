@@ -20,7 +20,7 @@ if (currentUser) {
 		if(!currentUser.get('notFB')){
 			$('#me').attr('src',currentUser.get('my_pic'));
 			alert(currentUser.get('my_pic'));
-			$(".inner").attr('src',currentUser.get('my_pic')) ;
+			$(".inner").attr('background-image',url(currentUser.get('my_pic'))) ;
 		}
     });	
 } else {
