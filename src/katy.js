@@ -8,36 +8,6 @@ window.fbAsyncInit = function() {
         xfbml      : true                                  // Look for social plugins on the page
      });
      // Additional initialization code such as adding Event Listeners goes here
-	var fblogin = function() {
-		$('.facebook').css("display","none");
-		  Parse.FacebookUtils.logIn("email,public_profile,user_friends", {
-    		success: function(user) {
-      			if (!user.existed()) {
-        		  alert("User signed up and logged in through Facebook!");
-				  FB.api('/me', function(response) {
-            		var my_name = response.name;
-           			// var my_gender = response.gender;
-            		//var my_username = response.username;
-            		var my_facebook_id = response.id;
-					Parse.User.current().set("last.name",my_name);
-            		Parse.User.current().save();
-           			// $("#my-profile-facebook-id").html(my_facebook_id);
-       	 		  });
-				  FB.api('/me/picture?width=250', function(response) {
-            	  //var my_picture_url = response.data.url;
-            	  //$("#my_picture").attr('src', my_picture_url);
-        		  });
-				  window.location.href = "home.html";
-      		    } else {
-				  alert("User logged in through Facebook!");
-				  window.location.href = "home.html";
-      		  }
-    		},
-    		error: function(user, error) {
-      			alert("User cancelled the Facebook login or did not fully authorize.");
-   	 		}
-    	  });
-	}
 };
 // Load the SDK asynchronously
 (function(d, s, id){
@@ -126,12 +96,13 @@ jQuery(document).ready(function(){
 	});
 	$('.modal').modal('hide');
   })
- /* $('.facebook').click(function() {
+  $('.facebook').click(function() {
 	Parse.FacebookUtils.logIn("email,public_profile,user_friends", {
     success: function(user) {
       if (!user.existed()) {
         alert("User signed up and logged in through Facebook!");
 			FB.api('/me', function(response) {
+				alert("load me");
             	var my_name = response.name;
            		// var my_gender = response.gender;
             	//var my_username = response.username;
@@ -154,6 +125,6 @@ jQuery(document).ready(function(){
       alert("User cancelled the Facebook login or did not fully authorize.");
     }
     });
-  })*/
+  })
 });
 
