@@ -9,7 +9,7 @@ window.fbAsyncInit = function() {
      });
      // Additional initialization code such as adding Event Listeners goes here
 	var fblogin = function() {
-		$('.facebook').click(function() {
+		$('.facebook').css("display","none");
 		  Parse.FacebookUtils.logIn("email,public_profile,user_friends", {
     		success: function(user) {
       			if (!user.existed()) {
@@ -37,7 +37,6 @@ window.fbAsyncInit = function() {
       			alert("User cancelled the Facebook login or did not fully authorize.");
    	 		}
     	  });
-  		})
 	}
 };
 // Load the SDK asynchronously
