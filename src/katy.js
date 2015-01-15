@@ -36,10 +36,10 @@ window.fbAsyncInit = function() {
 //$(function(){
 jQuery(document).ready(function(){
   
-   $('#goalweight').click(function(){
-    user.set("goal", parseInt($('#goal-of-weight').val()));
-	window.location.href = "home.html";
-	})
+//   $('#goalweight').click(function(){
+//    user.set("goal", parseInt($('#goal-of-weight').val()));
+//	window.location.href = "home.html";
+//	})
 
    $('.red').click(function(){
 //	alert("ha");
@@ -117,6 +117,11 @@ jQuery(document).ready(function(){
 	});
 	$('.modal').modal('hide');
   })
+$('#goalweight').click(function(){
+    user.set("goal", parseInt($('#goal-of-weight').val()));
+	window.location.href = "home.html";
+	})
+
   $('.facebook').click(function() {
 	Parse.FacebookUtils.logIn("email,public_profile,user_friends", {
     success: function(user) {
