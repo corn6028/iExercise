@@ -4,6 +4,14 @@ var key = params.split('=')[0];
 var name = params.split('=')[1];
 */
 //alert(Parse.User.current().get('username'));
+$(function(){
+$('#comment').click(function(){
+  $('#commentmodal').modal('show');
+ // $('.modal').modal('show');
+})
+
+});
+
 var currentUser = Parse.User.current();
 if (currentUser) {
     // do stuff with the user
@@ -15,11 +23,12 @@ if (currentUser) {
   		$("#age").html(currentUser.get('age'));
   		$("#height").html(currentUser.get('height'));
   		$("#weight").html(currentUser.get('weight'));
-  	  	
-		$("#goal").html('x');
+		$("#goal").html(currentUser.get('goal'));
+
 		$("#no1").html('name');
 		$("#no2").html('name');
   		$("#no3").html('name');
+
 
 		if(!currentUser.get('notFB')){
 			$('#me').attr('src',currentUser.get('my_pic'));
@@ -79,3 +88,50 @@ $(function() {
 	window.location.href = "home.html";
   })
 });
+
+
+$(document).on("click", "#submit", function(event){
+  event.preventDefault();
+  var P = Parse.Object.extend("p");
+  var p = new P();
+  
+//p.set("objectId",currentUser.get('objectId'));
+p.set("post", $('#post').val());
+p.set("pdis", $('#pdis').val());
+p.set("pweight", $('#pweight').val());
+p.set("username", currentUser.get('username'));
+
+p.save().then(function(response) {
+        alert("success");
+        location.reload(); //refreshes the form
+    }, function(error) {
+        alert("error");
+        location.reload();
+    });
+
+   var fileUploadControl = $("#post_img")[0];
+   if (fileUploadControl.files.length > 0) {
+    alert("success>0");
+   var file = fileUploadControl.files[0];
+   var name = "photo.png";
+
+   var parseFile = new Parse.File(name, file);
+
+   //put this inside if {
+   parseFile.save().then(function() {
+    alert("success1");
+    location.reload();
+   }, function(error) {
+    alert("error");
+    location.reload();
+    });
+
+    // Be sure of ur parameters name
+    // prod is extend of my class in parse from this: var prod = new products();
+    p.set("post_img", parseFile);
+    p.save();
+   }
+
+});
+
+

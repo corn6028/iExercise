@@ -52,6 +52,10 @@ jQuery(document).ready(function(){
 //	$('#loginmodal').fadeToggle();
 	$('#loginmodal').modal('show');
   })
+  $('.purple').click(function(){
+    user.set("goal", parseInt($('#goal-of-weight').val()));
+	window.location.href = "home.html";
+	})
 /*  $('#close-login').click(function() {
 	$('#loginmodal').fadeOut();
   })*/
@@ -88,7 +92,7 @@ jQuery(document).ready(function(){
   	user.set("weight", 0);
   	user.set("pdis", $('#pdis').val());
   	user.set("pweight", $('#pweight').val());
-  	user.set("goal", 0);
+  	user.set("goal", parseInt($('#goal-of-weight').val()));
 	user.set("achieve",true);
    /* user.set("no1", $('#no1').val());
     user.set("no2", $('#no2').val());
@@ -130,7 +134,8 @@ jQuery(document).ready(function(){
             	//var my_picture_url = response.data.url;
             	//$("#my_picture").attr('src', my_picture_url);
         	});*/
-		window.location.href = "home.html";
+		$('#goalofweightmodal').modal('show');
+		/*window.location.href = "home.html";*/
       } else {
 		alert("User logged in through Facebook!");
 		window.location.href = "home.html";

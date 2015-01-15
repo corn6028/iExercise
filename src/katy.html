@@ -154,7 +154,7 @@
 		<label>First Name</label>
 	  	<input type="text" id="first-name" placeholder="First Name">
 	  </div>
-	  <div class="field">
+	  <div class="required field">
 		<label>Last Name</label>
 		<input type="text" id="last-name" placeholder="Last Name">
 	  </div>
@@ -175,9 +175,15 @@
         </div>
       </div>
     </div>
+	<div class="two fields">
 	<div class="required field">
 	  <label>Email Address</label>
 	  <input type="email" id="email" placeholder="Email Address">
+	</div>
+	<div class="required field">
+		<label>Goal of Weight</label>
+		<input type="text" id="goal-of-weight" placeholder="Goal of Weight">
+	</div>
 	</div>
 	  <button class="ui orange submit button">Sign up</button>
 	  </div>
@@ -236,6 +242,15 @@
 	</div>
   </div>
 </div>
+
+<div class="ui modal" id="goalofweightmodal" style="position:fixed;">
+	<div class="required field">
+		<label>Goal of Weight</label>
+		<input type="text" id="goal-of-weight" placeholder="Goal of Weight">
+		<button class="ui purple button">Submit</button>
+	</div>
+</div>
+
 <div id="fullpage">
 
 	<div class="section" id="section1">

@@ -110,6 +110,7 @@ $(document).ready(function(){
 });
 
 function comments(initValue){
+		
 	var Post = Parse.Object.extend("p");
 	var post = new Parse.Query(Post);
 	post.equalTo("objectId",initValue);
@@ -120,6 +121,7 @@ function comments(initValue){
 			var time_new = now.getTime();
 			var time_old = posted.createdAt.getTime();
 			var t = time_new-time_old;
+		//	alert(posted.get('username'));
 			if(t>60000){
 				if(t>3600000){
 					if(t>86400000){
@@ -143,7 +145,8 @@ function comments(initValue){
 			}else{
 				time_z = "1 minute ago";
 			}
-			header_list =   "<div class='ui segment' style='padding:10%'>"+
+			alert("1");
+			var header_list ="<div class='ui segment' style='padding:10%'>"+
     						"<div class='row' style='padding:0;'>"+
             				"<div class='ui column grid'>"+
             				"<div class='four wide column'>"+
@@ -151,14 +154,15 @@ function comments(initValue){
                   			"<div class='scircle'>"+
                    			"<div class='inner'></div></div></div></div>"+
               				"<div class='twelve wide column' style='padding-left:0'>"+
-               				"<a style='font-size:25px'>"+posted.get('last_name')+"</a>";
+               				"<a style='font-size:25px'>"+posted.get('last_name')+"</a>"+
 							"<div class='date'>"+time_z+"</div>"+
                				"<h3>"+posted.get('post')+"</h3></div></div></div>"+     
            					"<div class='ui center aligned grid'>"+
                 			"<img src='"+posted.get('my_pic')+"' style='width:70%;height:70%'></img></div>"+
             				"<div class='ui gray stacked segment' style='background:#FFEFD5'>"+
               				"<h4 style='margin-top:0;'>Comment</h4>"+
-             				"<div class='ui divider'></div>";
+             				"<div class='ui divider'></div>"+
+							"<div class='ui column grid'>";
 			document.getElementById('commentmodal').innerHTML = document.getElementById('commentmodal').innerHTML + header_list;
     	},
 		error: function(error) {
@@ -171,7 +175,8 @@ function comments(initValue){
 	comment_mine.find({
   		success: function(results) {
     		if(results.length == 0){
-				no_comment ='<div class="equal height row" style="padding:0">'+
+				alert("2");
+				var no_comment ='<div class="equal height row" style="padding:0">'+
               				'<div class="two wide column" style="padding-right:0;padding-top:0">'+
                 			'<img class="ui avatar image" src="'+currentUser.get('my_pic')+'"></img></div>'+
              				'<div class="fourteen wide column" style="padding-left:5px">'+
@@ -179,6 +184,9 @@ function comments(initValue){
                 			'<input type="text" placeholder="Comment..">'+
                 			'<i class="write icon"></i></div></div></div></div></div></div></div></div>';
   				document.getElementById('commentmodal').innerHTML = document.getElementById('commentmodal').innerHTML + no_comment;
+				$('#commentmodal').modal('show');
+				//var init = '<div class="ui small modal" id="commentmodal" >';
+				//document.getElementById('commentmodal').innerHTML = init;
 			}else{
 			// Do something with the returned Parse.Object values
     		for (var i = 0; i < results.length; i++) { 
@@ -230,7 +238,7 @@ function comments(initValue){
              				'<div class="fourteen wide column" style="padding-left:5px">'+
               				'<div class="ui fluid icon input">'+
                 			'<input type="text" placeholder="Comment..">'+
-                			'<i class="write icon"></i></div></div></div></div></div></div></div></div>';
+                			'<i class="write icon"></i></div></div></div></div></div></div></div></div></div>';
 			document.getElementById('commentmodal').innerHTML = document.getElementById('comment_modal').innerHTML + end_list;
 			}
   		},
@@ -238,8 +246,8 @@ function comments(initValue){
     		alert("Error: " + error.code + " " + error.message);
   		}
 	});
-	$('#commentmodal').modal('show');
- 	alert(initValue);         
+	//$('#commentmodal').modal('show');
+ 	//alert(initValue);         
 }
 
 $(document).ready(function(){ 
