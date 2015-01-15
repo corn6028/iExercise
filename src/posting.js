@@ -100,6 +100,8 @@ p.set("post", $('#post').val());
 p.set("pdis", $('#pdis').val());
 p.set("pweight", $('#pweight').val());
 p.set("username", currentUser.get('username'));
+p.set("my_pic",currentUser.get('my_pic'));
+p.set("last_name",currentUser.get('last_name'));
 
 p.save().then(function(response) {
         alert("success");

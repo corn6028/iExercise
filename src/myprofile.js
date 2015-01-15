@@ -156,7 +156,7 @@ function comments(initValue){
               				"<div class='twelve wide column' style='padding-left:0'>"+
                				"<a style='font-size:25px'>"+posted.get('last_name')+"</a>"+
 							"<div class='date'>"+time_z+"</div>"+
-               				"<h3>"+posted.get('post')+"</h3></div></div></div>"+     
+               				"<h3>"+"哈哈哈"+"</h3></div></div></div>"+     
            					"<div class='ui center aligned grid'>"+
                 			"<img src='"+posted.get('my_pic')+"' style='width:70%;height:70%'></img></div>"+
             				"<div class='ui gray stacked segment' style='background:#FFEFD5'>"+
