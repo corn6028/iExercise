@@ -4,13 +4,13 @@ var key = params.split('=')[0];
 var name = params.split('=')[1];
 */
 //alert(Parse.User.current().get('username'));
-$(function(){
+/*$(function(){
 $('#comment').click(function(){
   $('#commentmodal').modal('show');
  // $('.modal').modal('show');
 })
 
-});
+});*/
 
 var currentUser = Parse.User.current();
 if (currentUser) {
@@ -24,7 +24,7 @@ if (currentUser) {
   		$("#height").html(currentUser.get('height'));
   		$("#weight").html(currentUser.get('weight'));
 		$("#goal").html(currentUser.get('goal'));
-
+		$('#howmuch').html(currentUser.get('weight')-currentUser.get('goal'));
 		$("#no1").html('name');
 		$("#no2").html('name');
   		$("#no3").html('name');

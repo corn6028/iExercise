@@ -494,6 +494,7 @@
 $(document).ready(function(){ 
 	var Post = Parse.Object.extend("p");
 	var post_friend = new Parse.Query(Post);
+//	post_friend.ascending("post_friend.createdAt");
 	post_friend.find({
   		success: function(results) {
     		if(results.length == 0){
@@ -572,6 +573,10 @@ $(document).ready(function(){
     		alert("Error: " + error.code + " " + error.message);
   		}
 	});
+});
+
+$('#comment').click(function(){
+	$('#commentmodal').modal('show');	
 });
 
 </script>
