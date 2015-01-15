@@ -315,8 +315,8 @@
       </form>
     </div>
 
-      <div class="ui two column grid">
-        <div class="row">
+      <div class="ui two column grid" id="post_board">
+<!--        <div class="row">
           <div class="column">
             <div class="ui Compact segment" >
               <div class="ui two column grid">
@@ -372,7 +372,7 @@
             </div>
             </div>
           </div>  
-        </div>
+        </div>-->
 
         <div class="ui small modal" id="commentmodal" >
         <div class="ui segment" style="padding:10%" >
@@ -433,7 +433,7 @@
 
    
 
-        <div class="row">
+    <!--    <div class="row">
           <div class="eight wide column">
           </div>
           <div class="eight wide column">
@@ -483,13 +483,98 @@
             </div>
             </div>
           </div>  
-        </div>
+        </div>-->
       </div>
       
     </div>
     
   </div>
 
+<script>
+$(document).ready(function(){ 
+	var Post = Parse.Object.extend("p");
+	var post_friend = new Parse.Query(Post);
+	post_friend.find({
+  		success: function(results) {
+    		if(results.length == 0){
+			}
+			function float2int (value) {
+    			return value | 0;
+			}
+			// Do something with the returned Parse.Object values
+    		for (var i = 0; i < results.length; i++) { 
+      			var object = results[i];
+				var now = new Date();
+				var time_new = now.getTime();
+				var time_old = object.createdAt.getTime();
+				var t = time_new-time_old;
+				if(t>60000){
+					if(t>3600000){
+						if(t>86400000){
+							if(t>604800000){
+								var time_z = new Date(time_old);
+							}else{
+								t = float2int(t/86400000);
+								var time_z = t + " days ago";
+								if(t==1){	var time_z ="1 day ago";}
+							}			
+						}else{
+							t = float2int(t/3600000);
+							var time_z = t + " hours ago";
+							if(t==1){	var time_z ="1 hour ago";}
+						}
+					}else{
+						t = float2int(t/60000);
+						var time_z = t + " minutes ago";
+						if(t==1){	var time_z ="1 minute ago";}
+					}
+				}else{
+					time_z = "1 minute ago";
+				}
+				if(i%2==0){	var pos = '<div class="column">';}
+				else{	var pos = '<div class="eight wide column"></div><div class="eight wide column">';}
+				var post_list = '<div class="row">'+pos+
+            					'<div class="ui Compact segment" >'+
+              					'<div class="ui two column grid">'+
+              					'<div class="four wide column" >'+
+                				"<div class='scircle'>"+
+                  				"<div class='inner' style='background-image:url("+object.get('my_pic')+");'></div></div></div>"+
+              					'<div class="twelve wide column" >'+
+              					'<div class="row">'+
+                				'<div class="ui two column grid">'+
+                				'<div class="seven wide column" style="padding:0px">'+
+                				'<a class="user" style="font-size:16pt;vertical-align: top;">'+object.get('last_name')+'</a>'+
+                				'<div class="date" style="font-size:8pt;vertical-align: top;color:#666666;">'+time_z+'</div></div>'+
+                				'<div class="nine wide column" style="padding:0px;">'+
+                  				'<div class="ui column grid">'+
+                  				'<div class="five wide column" style="padding:8px;padding-left:0px;padding-right:0px">'+
+                    			'<p style="font-size:16pt;color:#227700;text-align:center" >'+object.get('pdis')+'</p></div>'+
+                  				'<div class="five wide column" style="padding:8px;padding-left:0px;padding-right:0px">'+
+                    			'<p style="font-size:16pt;color:#227700;">Km，</p></div>'+
+                  				'<div class="three wide column" style="padding:8px;padding-left:0px;padding-right:0px">'+
+                    			'<p style="font-size:16pt;color:#227700;" >'+object.get('pweight')+'</p></div>'+
+                  				'<div class="three wide column" style="padding:8px;padding-left:0px;padding-right:0px">'+
+                    			'<p style="font-size:16pt;color:#227700;">Kg</p></div></div></div></div></div>'+
+              					'<div class="row" style="margin-top:15px">'+
+                				'<p style="font-size:14pt;">'+object.get('post')+'</p></div>'+
+                				'<div class="row" style="margin-top:15px">'+ 
+                				'<div class="meta" style="float:right;font-size:14px">'+
+                				'<a class="like"><i class="large like icon"></i> 4 Likes</a></div>'+
+                				'<div class="meta" style="float:center">'+
+                    			'<a class="comment" id="comment">'+
+                      			'<i class="large comment outline icon" ></i>Comments</a></div></div></div></div></div></div></div>';
+
+				document.getElementById('post_board').innerHTML = document.getElementById('post_board').innerHTML + post_list;
+		
+    		}
+  		},
+  		error: function(error) {
+    		alert("Error: " + error.code + " " + error.message);
+  		}
+	});
+});
+
+</script>
+
 </body>
 </html>
-

@@ -35,11 +35,13 @@ window.fbAsyncInit = function() {
 
 //$(function(){
 jQuery(document).ready(function(){
-  $('#goalweight').click(function(){
+  
+   $('#goalweight').click(function(){
     user.set("goal", parseInt($('#goal-of-weight').val()));
 	window.location.href = "home.html";
 	})
-  $('.red').click(function(){
+
+   $('.red').click(function(){
 //	alert("ha");
 //	$('#signupmodal').fadeToggle();
 	//window.location.href = "home.html";
