@@ -145,7 +145,7 @@ function comments(initValue){
 			}else{
 				time_z = "1 minute ago";
 			}
-			alert("1");
+			//alert("1");
 			var header_list ="<div class='ui segment' style='padding:10%'>"+
     						"<div class='row' style='padding:0;'>"+
             				"<div class='ui column grid'>"+
@@ -175,7 +175,7 @@ function comments(initValue){
 	comment_mine.find({
   		success: function(results) {
     		if(results.length == 0){
-				alert("2");
+				//alert("2");
 				var no_comment ='<div class="equal height row" style="padding:0">'+
               				'<div class="two wide column" style="padding-right:0;padding-top:0">'+
                 			'<img class="ui avatar image" src="'+currentUser.get('my_pic')+'"></img></div>'+

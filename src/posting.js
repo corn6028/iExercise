@@ -15,7 +15,7 @@ $('#comment').click(function(){
 var currentUser = Parse.User.current();
 if (currentUser) {
     // do stuff with the user
-	alert(currentUser.get('username'));
+//	alert(currentUser.get('username'));
     $(document).ready(function(){
 		$("#my_name").html("Hi, "+currentUser.get('last_name'));
   		$("#user_name").html(currentUser.get('last_name'));
