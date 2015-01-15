@@ -83,12 +83,16 @@ jQuery(document).ready(function(){
 	user.set("username", $('#user-name').val());
 	user.set("password", $('#password').val());
 	user.set("email", $('#email').val());
-  	user.set("age", $('#age').val());
- 	user.set("height", $('#height').val());
-  	user.set("weight", $('#weight').val());
+  	user.set("age", 0);
+ 	user.set("height", 0);
+  	user.set("weight", 0);
   	user.set("pdis", $('#pdis').val());
   	user.set("pweight", $('#pweight').val());
-  	user.set("goal", $('#goal').val());
+  	user.set("goal", 0);
+	user.set("achieve",true);
+   /* user.set("no1", $('#no1').val());
+    user.set("no2", $('#no2').val());
+    user.set("no3", $('#no3').val());*/
 	user.set("notFB",true);
   
 	// other fields can be set just like with Parse.Object

@@ -11,12 +11,12 @@ if (currentUser) {
     $(document).ready(function(){
 		$("#my_name").html("Hi, "+currentUser.get('last_name'));
   		$("#user_name").html(currentUser.get('last_name'));
-  		$("#age").html('x');
-  		$("#height").html('x');
-  		$("#weight").html('x');
-  		$("#pdis").html('x');
-  		$("#pweight").html('x');
-  		$("#goal").html('x');
+
+  		$("#age").html(currentUser.get('age'));
+  		$("#height").html(currentUser.get('height'));
+  		$("#weight").html(currentUser.get('weight'));
+  	  	
+		$("#goal").html('x');
 		$("#no1").html('name');
 		$("#no2").html('name');
   		$("#no3").html('name');

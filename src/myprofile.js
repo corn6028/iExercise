@@ -317,7 +317,23 @@ $("#datepicker2").datepicker(opt);
             document.getElementById('age').innerHTML = contents5;
             document.getElementById('height').innerHTML = contents6;
             document.getElementById('weight').innerHTML = contents7;
-            
+
+
+			var Point = Parse.Object.extend("User");
+			var point = new Point();
+			point.id = currentUser.id;
+
+			point.set("age", parseInt(contents5));
+			point.set("height", parseInt(contents6));
+			point.set("weight", parseInt(contents7));
+
+			point.save(null, {
+				success: function(point) {
+				},
+				error: function(point, error) {
+				}
+			});
+
         }
     }
 
