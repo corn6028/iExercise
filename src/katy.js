@@ -15,21 +15,24 @@ window.fbAsyncInit = function() {
 			Parse.User.current().set("last_name",my_name);
 			Parse.User.current().set('notFB',false);
         	Parse.User.current().save();
-       		 $("#my_name").html("Hi, " + my_name);
+       		$("#my_name").html("Hi, " + my_name);
+			$("user_name").html(my_name);
 			alert("no!");
 		}
         //var my_facebook_id = response.id;
-		Parse.User.current().set("last_name",my_name);
+		//Parse.User.current().set("last_name",my_name);
 		//Parse.User.current().set('notFB',false);
-        Parse.User.current().save();
+        //Parse.User.current().save();
        // $("#my_name").html("Hi, " + my_name);
     });
 	FB.api('/me/picture?width=250', function(response) {
         var my_picture_url = response.data.url;
-		Parse.User.current().set('my_pic',my_picture_url);
-		Parse.User.current().save();
-		$('#me').attr('src',my_picture_url);
-		document.getElementById("inner").style.backgroundImage="url('"+currentUser.get('my_pic')+"')";
+		if(my_name !==undefined){
+			Parse.User.current().set('my_pic',my_picture_url);
+			Parse.User.current().save();
+			$('#me').attr('src',my_picture_url);
+			document.getElementById("inner").style.backgroundImage="url('"+currentUser.get('my_pic')+"')";
+		}
     });
 };
 // Load the SDK asynchronously
