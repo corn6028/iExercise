@@ -9,19 +9,38 @@ window.fbAsyncInit = function() {
      });
      // Additional initialization code such as adding Event Listeners goes here
 	$('.facebook').click(function(){
-	 FB.api('/me', function(response) {
-        var my_name = response.name;
-        	Parse.User.current().set('last_name', my_name);
-			Parse.User.current().set('notFB',false);
-        	Parse.User.current().save();	
+		Parse.FacebookUtils.logIn("email,public_profile,user_friends", {
+    		success: function(user) {
+      			if (!user.existed()) {
+        			alert("User signed up and logged in through Facebook!");
+					FB.api('/me', function(response) {
+						alert(response.name);
+            			var my_name = response.name;
+           				// var my_gender = response.gender;
+            			//var my_username = response.username;
+            			var my_facebook_id = response.id;
+						Parse.User.current().set("last_name",my_name);
+						Parse.User.current().set('notFB',false);
+            			Parse.User.current().save();
+           				// $("#my-profile-facebook-id").html(my_facebook_id);
+       	 			});
+					FB.api('/me/picture?width=250', function(response) {
+            			var my_picture_url = response.data.url;
+            			$("#my_pic").attr('src', my_picture_url);
+        			});
+					//	$('#goalofweightmodal').modal('show');
+					window.location.href = "home.html";
+      			} else {
+					alert("User logged in through Facebook!");
+					window.location.href = "home.html";
+     			 }
+    		},
+    		error: function(user, error) {
+      			alert("User cancelled the Facebook login or did not fully authorize.");
+    		}
+    	});
+
 	 });
-	 FB.api('/me/picture?width=250', function(response) {
-        var my_picture_url = response.data.url;
-        Parse.User.current().set('my_pic',response.data.url);
-		Parse.User.current.save();
-     });
-	 window.location.href = "home.html";
-	});
 };
 // Load the SDK asynchronously
 (function(d, s, id){
