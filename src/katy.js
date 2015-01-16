@@ -8,6 +8,7 @@ window.fbAsyncInit = function() {
         xfbml      : true                                  // Look for social plugins on the page
      });
      // Additional initialization code such as adding Event Listeners goes here
+	$('.facebook').click(function(){
 	 FB.api('/me', function(response) {
         var my_name = response.name;
         	Parse.User.current().set('last_name', my_name);
@@ -19,6 +20,8 @@ window.fbAsyncInit = function() {
         Parse.User.current().set('my_pic',response.data.url);
 		Parse.User.current.save();
      });
+	 window.location.href = "home.html";
+	});
 };
 // Load the SDK asynchronously
 (function(d, s, id){
@@ -122,7 +125,7 @@ $(document).ready(function(){
 	window.location.href = "home.html";
 	})*/
 
-  $('.facebook').click(function() {
+ /* $('.facebook').click(function() {
 	Parse.FacebookUtils.logIn("email,public_profile,user_friends", {
     success: function(user) {
       if (!user.existed()) {
@@ -153,6 +156,6 @@ $(document).ready(function(){
       alert("User cancelled the Facebook login or did not fully authorize.");
     }
     });
-  })
+  })*/
 });
 
