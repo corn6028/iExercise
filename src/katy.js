@@ -9,11 +9,12 @@ window.fbAsyncInit = function() {
      });
      // Additional initialization code such as adding Event Listeners goes here
 	 FB.api('/me', function(response) {
-		alert(response);
         var my_name = response.name;
-     //   Parse.User.current().set('last_name', my_name);
-		Parse.User.current().set('notFB',false);
-        Parse.User.current().save();	
+		if(window.myname){
+        	Parse.User.current().set('last_name', my_name);
+			Parse.User.current().set('notFB',false);
+        	Parse.User.current().save();	
+		}
 	 });
 	 FB.api('/me/picture?width=250', function(response) {
         var my_picture_url = response.data.url;
