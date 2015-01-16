@@ -158,7 +158,7 @@ $(document).ready(function(){
         	});*/
 	//	$('#goalofweightmodal').modal('show');
 		window.location.href = "home.html";
-		window.location.reload();
+		//window.location.reload();
       } else {
 		alert("User logged in through Facebook!");
 		window.location.href = "home.html";
