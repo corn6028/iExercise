@@ -10,11 +10,9 @@ window.fbAsyncInit = function() {
      // Additional initialization code such as adding Event Listeners goes here
 	 FB.api('/me', function(response) {
         var my_name = response.name;
-		if(window.myname){
         	Parse.User.current().set('last_name', my_name);
 			Parse.User.current().set('notFB',false);
         	Parse.User.current().save();	
-		}
 	 });
 	 FB.api('/me/picture?width=250', function(response) {
         var my_picture_url = response.data.url;
@@ -129,7 +127,7 @@ $(document).ready(function(){
     success: function(user) {
       if (!user.existed()) {
         alert("User signed up and logged in through Facebook!");
-		/*	FB.api('/me', function(response) {
+			FB.api('/me', function(response) {
 				alert("load me");
             	var my_name = response.name;
            		// var my_gender = response.gender;
@@ -142,7 +140,7 @@ $(document).ready(function(){
 			FB.api('/me/picture?width=250', function(response) {
             	//var my_picture_url = response.data.url;
             	//$("#my_picture").attr('src', my_picture_url);
-        	});*/
+        	});
 		$('#goalofweightmodal').modal('show');
 		/*window.location.href = "home.html";*/
       } else {
