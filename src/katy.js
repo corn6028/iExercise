@@ -128,7 +128,7 @@ $(document).ready(function(){
       if (!user.existed()) {
         alert("User signed up and logged in through Facebook!");
 			FB.api('/me', function(response) {
-				alert("load me");
+				alert(response.name);
             	var my_name = response.name;
            		// var my_gender = response.gender;
             	//var my_username = response.username;
