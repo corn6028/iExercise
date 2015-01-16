@@ -11,6 +11,13 @@ window.fbAsyncInit = function() {
 	FB.api('/me', function(response) {
 		alert(response.name);
         var my_name = response.name;
+		if(my_name !== undefined){
+			Parse.User.current().set("last_name",my_name);
+			Parse.User.current().set('notFB',false);
+        	Parse.User.current().save();
+       		 $("#my_name").html("Hi, " + my_name);
+			alert("no!");
+		}
         //var my_facebook_id = response.id;
 		Parse.User.current().set("last_name",my_name);
 		//Parse.User.current().set('notFB',false);
@@ -153,7 +160,7 @@ $(document).ready(function(){
 		alert("User logged in through Facebook!");
 		window.location.href = "home.html";
       }
-	  Parse.User.current().set('notFB',false);
+//	  Parse.User.current().set('notFB',false);
     },
     error: function(user, error) {
       alert("User cancelled the Facebook login or did not fully authorize.");
