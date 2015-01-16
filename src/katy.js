@@ -132,9 +132,9 @@ $(document).ready(function(){
 	Parse.FacebookUtils.logIn("email,public_profile,user_friends", {
     success: function(user) {
       if (!user.existed()) {
-        alert("User signed up and logged in through Facebook!");
+       // alert("User signed up and logged in through Facebook!");
 			FB.api('/me', function(response) {
-				alert(response.name);
+				alert("Successful Login!\nPlease Login again.");
             	var my_name = response.name;
            		// var my_gender = response.gender;
             	//var my_username = response.username;
@@ -149,7 +149,7 @@ $(document).ready(function(){
         	});
 	//	$('#goalofweightmodal').modal('show');
 		window.location.href = "home.html";
-		window.location.reload();
+	//	window.location.reload();
       } else {
 		alert("User logged in through Facebook!");
 		window.location.href = "home.html";
