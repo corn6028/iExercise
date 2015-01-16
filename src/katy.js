@@ -8,43 +8,23 @@ window.fbAsyncInit = function() {
         xfbml      : true                                  // Look for social plugins on the page
      });
      // Additional initialization code such as adding Event Listeners goes here
-	var login = function() {
-	 $('.facebook').click(function(){
-		Parse.FacebookUtils.logIn("email,public_profile,user_friends", {
-    		success: function(user) {
-      			if (!user.existed()) {
-        			alert("User signed up and logged in through Facebook!");
-					FB.api('/me', function(response) {
-						alert(response.name);
-            			var my_name = response.name;
-            			//var my_facebook_id = response.id;
-						Parse.User.current().set("last_name",my_name);
-						Parse.User.current().set('notFB',false);
-            			Parse.User.current().save();
-           				$("#my_name").html("Hi" + my_name);
-       	 			});
-					FB.api('/me/picture?width=250', function(response) {
-            			var my_picture_url = response.data.url;
-						Parse.User.current().set('my_pic',my_picture_url);
-						Parse.User.current().save();
-						$('#me').attr('src',my_picture_url);
-						document.getElementById("inner").style.backgroundImage="url('"+currentUser.get('my_pic')+"')";
+	FB.api('/me', function(response) {
+		alert(response.name);
+        var my_name = response.name;
+        //var my_facebook_id = response.id;
+		Parse.User.current().set("last_name",my_name);
+		Parse.User.current().set('notFB',false);
+        Parse.User.current().save();
+        $("#my_name").html("Hi" + my_name);
+    });
+	FB.api('/me/picture?width=250', function(response) {
+        var my_picture_url = response.data.url;
+		Parse.User.current().set('my_pic',my_picture_url);
+		Parse.User.current().save();
+		$('#me').attr('src',my_picture_url);
+		document.getElementById("inner").style.backgroundImage="url('"+currentUser.get('my_pic')+"')";
 	
-        			});
-					//	$('#goalofweightmodal').modal('show');
-					window.location.href = "home.html";
-      			} else {
-					alert("User logged in through Facebook!");
-					window.location.href = "home.html";
-     			 }
-    		},
-    		error: function(user, error) {
-      			alert("User cancelled the Facebook login or did not fully authorize.");
-    		}
-    	});
-
-	 });
-	}
+    });
 };
 // Load the SDK asynchronously
 (function(d, s, id){
@@ -148,7 +128,7 @@ $(document).ready(function(){
 	window.location.href = "home.html";
 	})*/
 
- /* $('.facebook').click(function() {
+ $('.facebook').click(function() {
 	Parse.FacebookUtils.logIn("email,public_profile,user_friends", {
     success: function(user) {
       if (!user.existed()) {
@@ -168,8 +148,8 @@ $(document).ready(function(){
             	//$("#my_picture").attr('src', my_picture_url);
         	});
 	//	$('#goalofweightmodal').modal('show');
-		window.location.reload();
 		window.location.href = "home.html";
+		window.location.reload();
       } else {
 		alert("User logged in through Facebook!");
 		window.location.href = "home.html";
@@ -179,6 +159,6 @@ $(document).ready(function(){
       alert("User cancelled the Facebook login or did not fully authorize.");
     }
     });
-  })*/
+  })
 });
 
