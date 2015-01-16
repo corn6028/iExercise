@@ -132,7 +132,6 @@ $(document).ready(function(){
     success: function(user) {
       if (!user.existed()) {
         alert("User signed up and logged in through Facebook!");
-		user.set('notFB',false);
 			/*FB.api('/me', function(response) {	
 				alert("Successful Login!\nPlease Login again.");
             	var my_name = response.name;
@@ -154,6 +153,7 @@ $(document).ready(function(){
 		alert("User logged in through Facebook!");
 		window.location.href = "home.html";
       }
+	  Parse.User.current().set('notFB',false);
     },
     error: function(user, error) {
       alert("User cancelled the Facebook login or did not fully authorize.");
