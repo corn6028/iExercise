@@ -15,10 +15,17 @@ $('#comment').click(function(){
 var currentUser = Parse.User.current();
 if (currentUser) {
     // do stuff with the user
-//	alert(currentUser.get('username'));
+	alert(currentUser.get("username"));
     $(document).ready(function(){
-		$("#my_name").html("Hi, "+currentUser.get('last_name'));
-  		$("#user_name").html(currentUser.get('last_name'));
+		//alert("1");
+		var name = currentUser.get('last_name');
+		if(!currentUser.get('notFB')){
+			$('#me').attr('src',currentUser.get('my_pic'));
+			//alert(currentUser.get('my_pic'));
+			document.getElementById("inner").style.backgroundImage="url('"+currentUser.get('my_pic')+"')";
+		}
+		$("#my_name").html("Hi, "+ name);
+  		$("#user_name").html(name);
 
   		$("#age").html(currentUser.get('age'));
   		$("#height").html(currentUser.get('height'));
@@ -29,13 +36,6 @@ if (currentUser) {
 		$("#no2").html('name');
   		$("#no3").html('name');
 
-
-		if(!currentUser.get('notFB')){
-			$('#me').attr('src',currentUser.get('my_pic'));
-			//alert(currentUser.get('my_pic'));
-			document.getElementById("inner").style.backgroundImage="url('"+currentUser.get('my_pic')+"')";
-		//	$(".inner").attr('backgroundImage',currentUser.get('my_pic')) ;
-		}
     });	
 } else {
     // show the signup or login page
