@@ -141,8 +141,9 @@ $(document).ready(function(){
             	//var my_picture_url = response.data.url;
             	//$("#my_picture").attr('src', my_picture_url);
         	});
-		$('#goalofweightmodal').modal('show');
-		/*window.location.href = "home.html";*/
+	//	$('#goalofweightmodal').modal('show');
+		window.location.reload();
+		window.location.href = "home.html";
       } else {
 		alert("User logged in through Facebook!");
 		window.location.href = "home.html";
