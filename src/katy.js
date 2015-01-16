@@ -8,7 +8,8 @@ window.fbAsyncInit = function() {
         xfbml      : true                                  // Look for social plugins on the page
      });
      // Additional initialization code such as adding Event Listeners goes here
-	$('.facebook').click(function(){
+	var login = function() {
+	 $('.facebook').click(function(){
 		Parse.FacebookUtils.logIn("email,public_profile,user_friends", {
     		success: function(user) {
       			if (!user.existed()) {
@@ -16,17 +17,19 @@ window.fbAsyncInit = function() {
 					FB.api('/me', function(response) {
 						alert(response.name);
             			var my_name = response.name;
-           				// var my_gender = response.gender;
-            			//var my_username = response.username;
-            			var my_facebook_id = response.id;
+            			//var my_facebook_id = response.id;
 						Parse.User.current().set("last_name",my_name);
 						Parse.User.current().set('notFB',false);
             			Parse.User.current().save();
-           				// $("#my-profile-facebook-id").html(my_facebook_id);
+           				$("#my_name").html("Hi" + my_name);
        	 			});
 					FB.api('/me/picture?width=250', function(response) {
             			var my_picture_url = response.data.url;
-            			$("#my_pic").attr('src', my_picture_url);
+						Parse.User.current().set('my_pic',my_picture_url);
+						Parse.User.current().save();
+						$('#me').attr('src',my_picture_url);
+						document.getElementById("inner").style.backgroundImage="url('"+currentUser.get('my_pic')+"')";
+	
         			});
 					//	$('#goalofweightmodal').modal('show');
 					window.location.href = "home.html";
@@ -41,6 +44,7 @@ window.fbAsyncInit = function() {
     	});
 
 	 });
+	}
 };
 // Load the SDK asynchronously
 (function(d, s, id){
