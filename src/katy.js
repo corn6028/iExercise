@@ -13,7 +13,7 @@ window.fbAsyncInit = function() {
         var my_name = response.name;
         //var my_facebook_id = response.id;
 		Parse.User.current().set("last_name",my_name);
-		Parse.User.current().set('notFB',false);
+		//Parse.User.current().set('notFB',false);
         Parse.User.current().save();
        // $("#my_name").html("Hi, " + my_name);
     });
@@ -132,6 +132,7 @@ $(document).ready(function(){
     success: function(user) {
       if (!user.existed()) {
         alert("User signed up and logged in through Facebook!");
+		user.set('notFB',false);
 			/*FB.api('/me', function(response) {	
 				alert("Successful Login!\nPlease Login again.");
             	var my_name = response.name;
