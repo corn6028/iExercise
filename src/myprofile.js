@@ -89,6 +89,9 @@ $(document).ready(function(){
 				}
 				if(i%2==0){	var bg = "#FDF5E6";}
 				else{	var bg = "white";}
+				var post_pic = currentUser.get("my_pic");
+				var post_name = object.get("last_name");
+				var post_content = object.get("post");
 				var post_list = "<div class='ui fitted divider'></div>"+
 								"<div style='background:"+bg+";' class='item'>"+
 								"<img class='ui image' src='"+currentUser.get("my_pic")+"' width='20%' height='20%'>"+
@@ -97,8 +100,8 @@ $(document).ready(function(){
 								"<div style='font-size:9pt;color:gray;' class='description'>"+time_z+"・"+object.get('pdis')+"km"+" </div></div>"+
 								"<div class='row' style='padding-top:10px'>"+
               					"<a class='like'><i class='like icon'></i> 4 Likes</a>"+
-              					'<a class="comment" id="comment" onclick="comments(\''+object.id+'\')">'+
-                				"<i class=' comment outline icon' id='comment' style='padding-left:5%'></i>  Comments</a></div></div></div>";
+              					'<a class="comment" id="comment" style="padding-left:15%" onclick="comments(\''+object.id+'\',\''+post_pic+'\',\''+post_name+'\',\''+time_z+'\')">'+
+                				"<i class='comment outline icon'></i>  Comments</a></div></div></div>";
 				document.getElementById('post_line').innerHTML = document.getElementById('post_line').innerHTML + post_list;
 		
     		}
@@ -109,74 +112,33 @@ $(document).ready(function(){
 	});
 });
 
-function comments(initValue){
-		
-	var Post = Parse.Object.extend("p");
-	var post = new Parse.Query(Post);
-	post.equalTo("objectId",initValue);
-	post.find({
-		success: function(results) {
-			var posted = results[0];
-			var now = new Date();
-			var time_new = now.getTime();
-			var time_old = posted.createdAt.getTime();
-			var t = time_new-time_old;
-		//	alert(posted.get('username'));
-			if(t>60000){
-				if(t>3600000){
-					if(t>86400000){
-						if(t>604800000){
-							var time_z = new Date(time_old);
-						}else{
-							t = float2int(t/86400000);
-							var time_z = t + " days ago";
-							if(t==1){	var time_z ="1 day ago";}
-						}			
-					}else{
-						t = float2int(t/3600000);
-						var time_z = t + " hours ago";
-						if(t==1){	var time_z ="1 hour ago";}
-					}
-				}else{
-					t = float2int(t/60000);
-					var time_z = t + " minutes ago";
-					if(t==1){	var time_z ="1 minute ago";}
-				}
-			}else{
-				time_z = "1 minute ago";
-			}
-			//alert("1");
-			var header_list ="<div class='ui segment' style='padding:10%'>"+
-    						"<div class='row' style='padding:0;'>"+
-            				"<div class='ui column grid'>"+
-            				"<div class='four wide column'>"+
-               				"<div class='label'>"+
-                  			"<div class='scircle'>"+
-                   			"<div class='inner'></div></div></div></div>"+
-              				"<div class='twelve wide column' style='padding-left:0'>"+
-               				"<a style='font-size:25px'>"+posted.get('last_name')+"</a>"+
-							"<div class='date'>"+time_z+"</div>"+
-               				"<h3>"+"哈哈哈"+"</h3></div></div></div>"+     
-           					"<div class='ui center aligned grid'>"+
-                			"<img src='"+posted.get('my_pic')+"' style='width:70%;height:70%'></img></div>"+
-            				"<div class='ui gray stacked segment' style='background:#FFEFD5'>"+
-              				"<h4 style='margin-top:0;'>Comment</h4>"+
-             				"<div class='ui divider'></div>"+
-							"<div class='ui column grid'>";
-			document.getElementById('commentmodal').innerHTML = document.getElementById('commentmodal').innerHTML + header_list;
-    	},
-		error: function(error) {
-    		alert("Error: " + error.code + " " + error.message);
-  		}
-	});
+function comments(initValue,post_pic,post_name,post_time){
+	
 	var Comment = Parse.Object.extend("comments");
 	var comment_mine = new Parse.Query(Comment);
 	comment_mine.equalTo("postid", initValue);
 	comment_mine.find({
   		success: function(results) {
     		if(results.length == 0){
-				//alert("2");
-				var no_comment ='<div class="equal height row" style="padding:0">'+
+				alert(initValue);
+				var no_comment ="<div class='ui segment' style='padding:10%'>"+
+    						"<div class='row' style='padding:0;'>"+
+            				"<div class='ui column grid'>"+
+            				"<div class='four wide column'>"+
+               				"<div class='label'>"+
+                  			"<div class='scircle'>"+
+                   			"<div class='inner' style='background-image:url("+post_pic+");'></div></div></div></div>"+
+              				"<div class='twelve wide column' style='padding-left:0'>"+
+               				"<a style='font-size:25px'>"+post_name+"</a>"+
+							"<div class='date'>"+post_time+"</div>"+
+               				"<h3>"+post_content+"</h3></div></div></div>"+     
+           					"<div class='ui center aligned grid'>"+
+                	//		"<img src='"+posted.get('my_pic')+"' style='width:70%;height:70%'></img></div>"+
+            				"<div class='ui gray stacked segment' style='background:#FFEFD5'>"+
+              				"<h4 style='margin-top:0;'>Comment</h4>"+
+             				"<div class='ui divider'></div>"+
+							"<div class='ui column grid'>"+
+							'<div class="equal height row" style="padding:0">'+
               				'<div class="two wide column" style="padding-right:0;padding-top:0">'+
                 			'<img class="ui avatar image" src="'+currentUser.get('my_pic')+'"></img></div>'+
              				'<div class="fourteen wide column" style="padding-left:5px">'+

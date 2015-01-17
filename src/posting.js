@@ -146,26 +146,19 @@ $(document).on("click", "#submit", function(event){
   p.set("username", currentUser.get('username'));
   p.set("my_pic", document.getElementById("inner").style.backgroundImage.replace('url(','').replace(')',''));
   p.set("last_name",currentUser.get('last_name'));
- /* var weight_change = Parse.Object.extend("User");
-  var query = new weight_change();
-  query.save(currentUser.id, {
-	success: function(thisUser) {
-	  alert("no");
-	  thisUser.set('weight',parseInt($('#pweight').val()));  
-	},
-	error: function(object, error) {
-	}
-  });*/
-
-p.save().then(function(response) {
+  
+  p.save().then(function(response) {
         alert("success");
         location.reload(); //refreshes the form
     }, function(error) {
         alert("error");
         location.reload();
     });
-
-   var fileUploadControl = $("#post_img")[0];
+  
+ /* var C = Parse.Object.extend("comments");
+  var c = new C();
+  c.set("post",$('#post').val());*/
+  /* var fileUploadControl = $("#post_img")[0];
    if (fileUploadControl.files.length > 0) {
     alert("success>0");
    var file = fileUploadControl.files[0];
@@ -186,7 +179,7 @@ p.save().then(function(response) {
     // prod is extend of my class in parse from this: var prod = new products();
     p.set("post_img", parseFile);
     p.save();
-   }
+   }*/
 
 });
 
