@@ -9,7 +9,7 @@ window.fbAsyncInit = function() {
      });
      // Additional initialization code such as adding Event Listeners goes here
 	FB.api('/me', function(response) {
-		alert(response.name);
+	//	alert(response.name);
         var my_name = response.name;
 		if(my_name !== undefined){
 			Parse.User.current().set("last_name",my_name);
@@ -50,10 +50,10 @@ window.fbAsyncInit = function() {
 
 $(document).ready(function(){
   
-   $('#goalweight').click(function(){
+  /* $('#goalweight').click(function(){
     user.set("goal", parseInt($('#goal-of-weight').val()));
 	window.location.href = "home.html";
-	})
+	})*/
 
    $('.red').click(function(){
 //	alert("ha");

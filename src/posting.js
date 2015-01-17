@@ -1,13 +1,22 @@
 var currentUser = Parse.User.current();
+currentUser.fetch({
+  success: function(currentUser) {
+    // The object was refreshed successfully.
+  },
+  error: function(currentUser, error) {
+    // The object was not refreshed successfully.
+    // error is a Parse.Error with an error code and message.
+  }
+});
 var user = Parse.Object.extend("User");
 var query = new Parse.Query(user);
 query.get(currentUser.id, {
 	success: function(thisUser) {
    		// The object was retrieved successfully.
 		$(document).ready(function() {
-		alert(thisUser.get("notFB"));
+	//	alert(thisUser.get("notFB"));
 		var name = thisUser.get('last_name');
-		if(!thisUser.get('notFB')){
+		if(thisUser.get('notFB')){
 			$('#me').attr('src',thisUser.get('my_pic'));
 			//alert(thisUser.get('my_pic'));
 			document.getElementById("inner").style.backgroundImage="url('"+thisUser.get('my_pic')+"')";
@@ -19,7 +28,9 @@ query.get(currentUser.id, {
   		$("#height").html(thisUser.get('height'));
   		$("#weight").html(thisUser.get('weight'));
 		$("#goal").html(thisUser.get('goal'));
-		$('#howmuch').html(thisUser.get('weight')-thisUser.get('goal'));
+		var weight_gap = thisUser.get('weight')-thisUser.get('goal');
+		$('#howmuch').html(weight_gap + " kg");
+		$('#total_dist').html(thisUser.get('total_dist')+ " km");
 		$("#no1").html('name');
 		$("#no2").html('name');
   		$("#no3").html('name');
@@ -111,16 +122,40 @@ $(function() {
 
 $(document).on("click", "#submit", function(event){
   event.preventDefault();
+  var Change = Parse.Object.extend("User");
+  var change = new Change();
+  change.id = currentUser.id;
+  alert(currentUser.get('total_dist'));
+  change.set('total_dist', parseFloat($('#pdis').val())+ currentUser.get('total_dist'));
+  change.set("weight", parseFloat($('#pweight').val()));
+
+  change.save(null, {
+	success: function(change) {
+	},
+	error: function(change, error) {
+	}
+  });
+
   var P = Parse.Object.extend("p");
   var p = new P();
-  
-//p.set("objectId",currentUser.get('objectId'));
-p.set("post", $('#post').val());
-p.set("pdis", $('#pdis').val());
-p.set("pweight", $('#pweight').val());
-p.set("username", currentUser.get('username'));
-p.set("my_pic",currentUser.get('my_pic'));
-p.set("last_name",currentUser.get('last_name'));
+  //alert(document.getElementById("inner").style.backgroundImage.replace('url(','').replace(')',''));
+  //p.set("objectId",currentUser.get('objectId'));
+  p.set("post", $('#post').val());
+  p.set("pdis", $('#pdis').val());
+  p.set("pweight", $('#pweight').val());
+  p.set("username", currentUser.get('username'));
+  p.set("my_pic", document.getElementById("inner").style.backgroundImage.replace('url(','').replace(')',''));
+  p.set("last_name",currentUser.get('last_name'));
+ /* var weight_change = Parse.Object.extend("User");
+  var query = new weight_change();
+  query.save(currentUser.id, {
+	success: function(thisUser) {
+	  alert("no");
+	  thisUser.set('weight',parseInt($('#pweight').val()));  
+	},
+	error: function(object, error) {
+	}
+  });*/
 
 p.save().then(function(response) {
         alert("success");

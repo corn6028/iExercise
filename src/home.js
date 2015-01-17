@@ -5,3 +5,4 @@ function show(no)
 			else if(no == 0)
 				document.getElementById('point').style.display = "none";
 		}
+

@@ -332,8 +332,8 @@ $("#datepicker2").datepicker(opt);
 			point.id = currentUser.id;
 
 			point.set("age", parseInt(contents5));
-			point.set("height", parseInt(contents6));
-			point.set("weight", parseInt(contents7));
+			point.set("height", parseFloat(contents6));
+			point.set("weight", parseFloat(contents7));
 
 			point.save(null, {
 				success: function(point) {
