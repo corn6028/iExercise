@@ -1,21 +1,40 @@
-//Parse.initialize("lGJxaJjLAeZewHob85fxeWXeXVOlFUFHWKjSazzH", "HnbslyPWRrrj13cw4koWYAo6UxWMbxIpgoYCpx6f");
-/*var params = window.location.search.split('?')[1];
-var key = params.split('=')[0];
-var name = params.split('=')[1];
-*/
-//alert(Parse.User.current().get('username'));
-/*$(function(){
-$('#comment').click(function(){
-  $('#commentmodal').modal('show');
- // $('.modal').modal('show');
-})
-
-});*/
-
 var currentUser = Parse.User.current();
+var user = Parse.Object.extend("User");
+var query = new Parse.Query(user);
+query.get(currentUser.id, {
+	success: function(thisUser) {
+   		// The object was retrieved successfully.
+		$(document).ready(function() {
+		alert(thisUser.get("notFB"));
+		var name = thisUser.get('last_name');
+		if(!thisUser.get('notFB')){
+			$('#me').attr('src',thisUser.get('my_pic'));
+			//alert(thisUser.get('my_pic'));
+			document.getElementById("inner").style.backgroundImage="url('"+thisUser.get('my_pic')+"')";
+		}
+		$("#my_name").html("Hi, "+ name);
+  		$("#user_name").html(name);
+
+  		$("#age").html(thisUser.get('age'));
+  		$("#height").html(thisUser.get('height'));
+  		$("#weight").html(thisUser.get('weight'));
+		$("#goal").html(thisUser.get('goal'));
+		$('#howmuch').html(thisUser.get('weight')-thisUser.get('goal'));
+		$("#no1").html('name');
+		$("#no2").html('name');
+  		$("#no3").html('name');
+		});
+  	},
+  	error: function(object, error) {
+    	// The object was not retrieved successfully.
+    	// error is a Parse.Error with an error code and message.
+  	}
+});
+
+/*var currentUser = Parse.User.current();
 if (currentUser) {
     // do stuff with the user
-	alert(currentUser.get("username"));
+	//alert(currentUser.get("height"));
     $(document).ready(function(){
 		//alert("1");
 		var name = currentUser.get('last_name');
@@ -41,7 +60,7 @@ if (currentUser) {
     // show the signup or login page
 	alert("Please signup or login first");
 	window.location.href = "katy.html";
-}
+}*/
 
 function validate_required(field,alerttxt)
 {
