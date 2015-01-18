@@ -100,7 +100,7 @@ $(document).ready(function(){
 								"<div style='font-size:9pt;color:gray;' class='description'>"+time_z+"・"+object.get('pdis')+"km"+" </div></div>"+
 								"<div class='row' style='padding-top:10px'>"+
               					"<a class='like'><i class='like icon'></i> 4 Likes</a>"+
-              					'<a class="comment" id="comment" style="padding-left:15%" onclick="comments(\''+object.id+'\',\''+post_pic+'\',\''+post_name+'\',\''+time_z+'\')">'+
+              					'<a class="comment" id="comment" style="padding-left:15%" onclick="comments(\''+object.id+'\',\''+post_pic+'\',\''+post_name+'\',\''+escape(post_content)+'\',\''+time_z+'\')">'+
                 				"<i class='comment outline icon'></i>  Comments</a></div></div></div>";
 				document.getElementById('post_line').innerHTML = document.getElementById('post_line').innerHTML + post_list;
 		
@@ -112,8 +112,10 @@ $(document).ready(function(){
 	});
 });
 
-function comments(initValue,post_pic,post_name,post_time){
-	
+function comments(initValue,post_pic,post_name,post_content,post_time){
+	$('#commentmodal').children("div").remove();
+
+	//console.log(unescape(post_content));
 	var Comment = Parse.Object.extend("comments");
 	var comment_mine = new Parse.Query(Comment);
 	comment_mine.equalTo("postid", initValue);
@@ -131,7 +133,7 @@ function comments(initValue,post_pic,post_name,post_time){
               				"<div class='twelve wide column' style='padding-left:0'>"+
                				"<a style='font-size:25px'>"+post_name+"</a>"+
 							"<div class='date'>"+post_time+"</div>"+
-               				"<h3>"+post_content+"</h3></div></div></div>"+     
+               				"<h3>"+unescape(post_content)+"</h3></div></div></div>"+     
            					"<div class='ui center aligned grid'>"+
                 	//		"<img src='"+posted.get('my_pic')+"' style='width:70%;height:70%'></img></div>"+
             				"<div class='ui gray stacked segment' style='background:#FFEFD5'>"+
@@ -144,13 +146,34 @@ function comments(initValue,post_pic,post_name,post_time){
              				'<div class="fourteen wide column" style="padding-left:5px">'+
               				'<div class="ui fluid icon input">'+
                 			'<input type="text" placeholder="Comment..">'+
-                			'<i class="write icon"></i></div></div></div></div></div></div></div></div>';
-  				document.getElementById('commentmodal').innerHTML = document.getElementById('commentmodal').innerHTML + no_comment;
+                			'<i class="write icon"></i></div></div>'+
+							'<div class="ui divider"></div></div></div></div></div></div></div>';
+  				//document.getElementById('commentmodal').innerHTML = document.getElementById('commentmodal').innerHTML + no_comment;
+				$('#commentmodal').append(no_comment);
 				$('#commentmodal').modal('show');
+				//$('#commentmodal').children("div").remove();
 				//var init = '<div class="ui small modal" id="commentmodal" >';
 				//document.getElementById('commentmodal').innerHTML = init;
 			}else{
 			// Do something with the returned Parse.Object values
+			var no_comment ="<div class='ui segment' style='padding:10%'>"+
+    						"<div class='row' style='padding:0;'>"+
+            				"<div class='ui column grid'>"+
+            				"<div class='four wide column'>"+
+               				"<div class='label'>"+
+                  			"<div class='scircle'>"+
+                   			"<div class='inner' style='background-image:url("+post_pic+");'></div></div></div></div>"+
+              				"<div class='twelve wide column' style='padding-left:0'>"+
+               				"<a style='font-size:25px'>"+post_name+"</a>"+
+							"<div class='date'>"+post_time+"</div>"+
+               				"<h3>"+unescape(post_content)+"</h3></div></div></div>"+     
+           					"<div class='ui center aligned grid'>"+
+            				"<div class='ui gray stacked segment' style='background:#FFEFD5' id='comments_list'>"+
+              				"<h4 style='margin-top:0;'>Comment</h4>"+
+             				"<div class='ui divider'></div>"+
+			alert("1");
+			$('#commentmodal').append(no_comment);
+
     		for (var i = 0; i < results.length; i++) { 
       			var object = results[i];
 				var now = new Date();
@@ -181,7 +204,7 @@ function comments(initValue,post_pic,post_name,post_time){
 					time_z = "1 minute ago";
 				}
 
-				$('#commentmodal').modal('show');
+				//$('#commentmodal').modal('show');
 				var comment_list =  "<div class='ui column grid'>"+
                 					"<div class='equal height row' style='padding:0'>"+
               						"<div class='two wide column' style='padding-right:0;padding-top:0'>"+
@@ -192,16 +215,26 @@ function comments(initValue,post_pic,post_name,post_time){
               						'<div class="ten wide column" style="padding-left:0;">'+
                   					'<p style="font-size:16px">'+object.get('comment')+'</p></div></div>'+
               						'<div class="ui divider"></div>';
-              						document.getElementById('commentmodal').innerHTML = document.getElementById('commentmodal').innerHTML + comment_list; 
+				alert("2");
+				$('#comments_list').append(comment_list);
+
+              //	document.getElementById('commentmodal').innerHTML = document.getElementById('commentmodal').innerHTML + comment_list; 
  			}
-			var end_list =  '<div class="equal height row" style="padding:0">'+
+			var end_list =  "<div class='ui column grid'>"+
+							'<div class="equal height row" style="padding:0">'+
               				'<div class="two wide column" style="padding-right:0;padding-top:0">'+
                 			'<img class="ui avatar image" src="'+currentUser.get('my_pic')+'"></img></div>'+
-             				'<div class="fourteen wide column" style="padding-left:5px">'+
+			//				'<div class="four wide column" style="padding-left:5px">'+
+              //  			'<a style="font-size:18px">'+currentUser.get('last_name')+'</a></div>'+
+             				'<div class="ten wide column" style="padding-left:5px">'+
               				'<div class="ui fluid icon input">'+
                 			'<input type="text" placeholder="Comment..">'+
-                			'<i class="write icon"></i></div></div></div></div></div></div></div></div></div>';
-			document.getElementById('commentmodal').innerHTML = document.getElementById('comment_modal').innerHTML + end_list;
+                			'<i class="write icon"></i></div></div>'+
+							'<div class="ui divider"></div></div></div></div></div></div></div></div>';
+			alert("3");
+			$('#comments_list').append(end_list);
+			//document.getElementById('commentmodal').innerHTML = document.getElementById('comment_modal').innerHTML + end_list;
+			$("#commentmodal").modal('show');
 			}
   		},
   		error: function(error) {
