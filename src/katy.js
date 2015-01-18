@@ -106,9 +106,7 @@ $(document).ready(function(){
   	user.set("age", 0);
  	user.set("height", 0);
   	user.set("weight", 0);
-  	user.set("pdis", $('#pdis').val());
-  	user.set("pweight", $('#pweight').val());
-	user.set("howmuch",$('#howmuch').val());
+	user.set("friend_list",[]);
   	user.set("goal", parseInt($('#goal-of-weight').val()));
 	user.set("achieve",true);
    /* user.set("no1", $('#no1').val());

@@ -146,6 +146,9 @@ $(document).on("click", "#submit", function(event){
   p.set("username", currentUser.get('username'));
   p.set("my_pic", document.getElementById("inner").style.backgroundImage.replace('url(','').replace(')',''));
   p.set("last_name",currentUser.get('last_name'));
+  p.set("comment",0);
+  p.set("like",0);
+  p.set("like_list",[]);
   
   p.save().then(function(response) {
         alert("success");

@@ -219,7 +219,7 @@
     </div>
     <div class="two wide column">
       <div class="center aligned column">
-        <img class="ui avatar image" src="../images/katy.jpg" id="me">
+        <img class="ui avatar image" src="../images/face.jpg" id="me">
         <a id="my_name" style="text-align:center;color:white;font-size:14pt"></a>
         <div class="circular ui green icon button">
           <i class="sign out icon"></i>
@@ -229,33 +229,6 @@
   </div>
   </div>
 </div>
- <!--  <div class="ui grid">
-
-    <div class="four wide column" style="background:white">
-      <div class="center aligned column">
-      <a style="text-align:center;color:#E63F00;font-size:20pt">user name</a>
-      <div class='circle'>
-        <div class='inner'></div>
-      </div>
-
-	  <div class="ui items"> 
-	   <div class="item" id="friend-post">
-		<div class="middle aligned content">
-          <a class="header" style=font-size:1.5em>	
-		  <i class="users icon "></i>
-			朋友動態</a>
-		</div>
-	   </div>
-	   <div class="item" id="winner-post">
-		<div class="middle aligned content">
-          <a class="header" style=font-size:1.5em>	
-		  <i class="users icon "></i>
-			成功者動態</a>
-		</div>
-	   </div>
-	  </div>
-	 </div>
-    </div>-->
 	
 	<div id="left" style="position:fixed;">
     <div class="row" style="padding:15px">
@@ -375,116 +348,10 @@
         </div>-->
 
         <div class="ui small modal" id="commentmodal" >
-        <div class="ui segment" style="padding:10%" >
-          <div class="row" style="padding:0;">
-            <div class="ui column grid">
-              <div class="four wide column" >
-                <div class="label">
-                  <div class='scircle'>
-                    <div class='inner'></div>
-                  </div>
-                </div>
-              </div>
-              <div class="twelve wide column" style="padding-left:0">
-                <a style="font-size:25px">Helen Troy</a>
-                <div class="date">
-                  3 days ago
-                </div>
-                <h3>今天也運動了</h3>
-                </div>
-              </div>
-            </div>     
-            
-            <div class="ui gray stacked segment" style="background:#FFEFD5">
-              <h4 style="margin-top:0;">Comment</h4>
-              <div class="ui divider"></div>
-              <div class="ui column grid">
-                <div class="equal height row" style="padding:0">
-              <div class="two wide column" style="padding-right:0;padding-top:0">
-                <img class="ui avatar image" src="../images/katy.jpg"></img>
-              </div>
-              <div class="four wide column" style="padding-left:5px">
-                <a style="font-size:18px">Helen Troy</a>
-                <div class="date" style="font-size:12px">
-                  3 days ago
-                </div>
-              </div>
-              <div class="ten wide column" style="padding-left:0;">
-                  <p style="font-size:16px">一起加油唷！</p>
-                </div>
-              </div>
-              <div class="ui divider"></div>
-              <div class="equal height row" style="padding:0">
-              <div class="two wide column" style="padding-right:0;padding-top:0">
-                <img class="ui avatar image" src="../images/katy.jpg"></img>
-              </div>
-              <div class="fourteen wide column" style="padding-left:5px">
-              <div class="ui fluid icon input">
-                <input type="text" placeholder="Comment..">
-                <i class="write icon"></i>
-              </div>
-            </div>
-          </div>
-              </div>
-            </div>     
-
-            </div>
-        </div>
-
+                    
+     	<div class="ui small modal" id="likemodal">       
    
 
-    <!--    <div class="row">
-          <div class="eight wide column">
-          </div>
-          <div class="eight wide column">
-            <div class="ui Compact segment" >
-              <div class="ui two column grid">
-              <div class="four wide column" >
-                <div class='scircle'>
-                  <div class='inner'></div>
-                </div>
-                </div>
-              <div class="twelve wide column" >
-              <div class="row">
-                <div class="ui two column grid">
-                <div class="seven wide column" style="padding:0px">
-                <a class="user" style="font-size:16pt;vertical-align: top;">Linda Wu</a>
-                <div class="date" style="font-size:8pt;vertical-align: top;color:#666666;"}>3小時前</div>
-                </div>
-                <div class="nine wide column" style="padding:0px;">
-                  <div class="ui column grid">
-                  <div class="five wide column" style="padding:8px;padding-left:0px;padding-right:0px">
-                    <p style="font-size:16pt;color:#227700;text-align:center">5.3</p>
-                  </div>
-                  <div class="five wide column" style="padding:8px;padding-left:0px;padding-right:0px">
-                    <p style="font-size:16pt;color:#227700;">Km，</p>
-                  </div>
-                  <div class="three wide column" style="padding:8px;padding-left:0px;padding-right:0px">
-                    <p style="font-size:16pt;color:#227700;">45</p>
-                  </div>
-                  <div class="three wide column" style="padding:8px;padding-left:0px;padding-right:0px">
-                    <p style="font-size:16pt;color:#227700;">Kg</p>
-                  </div>
-                </div>
-                </div>
-              </div>
-              </div>
-              <div class="row" style="margin-top:15px">
-                <p style="font-size:14pt;">Keep Going~</p>
-              </div>
-                <div class="row" style="margin-top:15px">
-                <div class="meta" style="float:right">
-                <a class="like">
-                <i class="like icon"></i> 7 Likes
-                </a>
-                </div>
-               </div>
-              </div>
-            </div>
-            </div>
-          </div>  
-        </div>-->
-      </div>
       
     </div>
     
@@ -494,10 +361,11 @@
 $(document).ready(function(){ 
 	var Post = Parse.Object.extend("p");
 	var post_friend = new Parse.Query(Post);
-//	post_friend.ascending("post_friend.createdAt");
+	post_friend.descending("createdAt");
 	post_friend.find({
   		success: function(results) {
     		if(results.length == 0){
+				alert("你還沒有朋友喔哭哭");
 			}
 			function float2int (value) {
     			return value | 0;
@@ -534,6 +402,10 @@ $(document).ready(function(){
 				}
 				if(i%2==0){	var pos = '<div class="column">';}
 				else{	var pos = '<div class="eight wide column"></div><div class="eight wide column">';}
+				var post_pic = object.get("my_pic");
+				var post_name = object.get("last_name");
+				var post_content = object.get("post");
+				var likers = object.get("like_list");
 				var post_list = '<div class="row">'+pos+
             					'<div class="ui Compact segment" >'+
               					'<div class="ui two column grid">'+
@@ -544,8 +416,9 @@ $(document).ready(function(){
               					'<div class="row">'+
                 				'<div class="ui two column grid">'+
                 				'<div class="seven wide column" style="padding:0px">'+
-                				'<a class="user" style="font-size:16pt;vertical-align: top;">'+object.get('last_name')+'</a>'+
-                				'<div class="date" style="font-size:8pt;vertical-align: top;color:#666666;">'+time_z+'</div></div>'+
+								'<div class="ui items"><div class="item"><div class="content">'+
+                				'<a class="header" style="font-size:15pt;vertical-align: top;">'+object.get('last_name')+'</a>'+
+                				'<div class="meta" style="font-size:8pt;vertical-align: top;color:#666666;">'+time_z+'</div></div></div></div></div>'+
                 				'<div class="nine wide column" style="padding:0px;">'+
                   				'<div class="ui column grid">'+
                   				'<div class="five wide column" style="padding:8px;padding-left:0px;padding-right:0px">'+
@@ -560,10 +433,11 @@ $(document).ready(function(){
                 				'<p style="font-size:14pt;">'+object.get('post')+'</p></div>'+
                 				'<div class="row" style="margin-top:15px">'+ 
                 				'<div class="meta" style="float:right;font-size:14px">'+
-                				'<a class="like"><i class="large like icon"></i> 4 Likes</a></div>'+
+								'<i class="large like icon" style="color:red" onclick="likes(\''+object.id+'\')"></i>'+
+                				'<a class="like" id="'+object.id+'" onclick="like_list(\''+object.id+'\',\''+likers+'\')">'+object.get("like")+ ' Likes'+'</a></div>'+
                 				'<div class="meta" style="float:center">'+
-                    			'<a class="comment" id="comment">'+
-                      			'<i class="large comment outline icon" ></i>Comments</a></div></div></div></div></div></div></div>';
+                    			'<a class="comment" id="comment" onclick="comments(\''+object.id+'\',\''+post_pic+'\',\''+post_name+'\',\''+escape(post_content)+'\',\''+time_z+'\')">'+
+                      			'<i class="large comment outline icon" ></i>'+object.get("comment")+'  Comments'+'</a></div></div></div></div></div></div></div>';
 
 				document.getElementById('post_board').innerHTML = document.getElementById('post_board').innerHTML + post_list;
 		
@@ -575,9 +449,224 @@ $(document).ready(function(){
 	});
 });
 
-$('#comment').click(function(){
-	$('#commentmodal').modal('show');	
-});
+function likes(initValue){
+	var friend = [currentUser.get("username")];
+	var P = Parse.Object.extend("p");
+	var p = new Parse.Query(P);
+	p.get(initValue, {
+  		success: function(result) {
+    		// The object was retrieved successfully.
+			var found = $.inArray(currentUser.get("username"), result.get("like_list"))>-1;
+			if(found){	alert("你按過讚摟～");}
+			else{
+				friend = friend.concat(result.get("like_list"));
+				result.set("like",result.get("like")+1);
+				result.set("like_list",friend);
+				result.save();
+				document.getElementById(initValue).innerHTML = result.get("like").toString()+" Likes";}
+				//$('#like').html(result.get("like").toString()+" Likess");}
+  		},
+  		error: function(object, error) {
+    		// The object was not retrieved successfully.
+    		// error is a Parse.Error with an error code and message.
+ 	 	}
+	});
+}
+
+function like_list(initValue,likers){
+	$("#likmodal").children("div").remove();
+	var friend = likers.split(",");
+	//alert(Array.isArray(friend));
+	var query = new Parse.Query("User");
+	query.containedIn("username",friend);
+	query.find({
+		success: function(results) {
+			alert(results.length);
+			$('#likemodal').innerHTML = '<div class="ui six doubling cards">';
+    		// Do something with the returned Parse.Object values
+    		for (var i = 0; i < results.length; i++) { 
+      			var object = results[i];
+				var like_list = [];
+				like_list.push(	'<div class="card">',
+    						'<div class="image">',
+      						'<img src="../images/face.jpg" style="width:50px;height"50px;"></div>',
+    						'<div class="content">',
+      						'<a class="header">Elliot Fu</a></div></div>');
+				$('#likemodal').append(like_list.join(''));
+    		}
+			$('#likemodal').innerHTML += "</div>";
+			$('#likemodal').modal('show');
+  		},
+  		error: function(error) {
+    		alert("Error: " + error.code + " " + error.message);
+  		}
+	});
+}
+
+function comments(initValue,post_pic,post_name,post_content,post_time){
+	$('#commentmodal').children("div").remove();
+
+	//console.log(unescape(post_content));
+	var Comment = Parse.Object.extend("comments");
+	var comment_mine = new Parse.Query(Comment);
+	comment_mine.equalTo("postid", initValue);
+	comment_mine.ascending("createdAt");
+	comment_mine.find({
+  		success: function(results) {
+    		if(results.length == 0){
+				//alert(initValue);
+				function float2int (value) {
+    				return value | 0;
+				}
+				var no_comment ="<div class='ui segment' style='padding:10%'>"+
+    						"<div class='row' style='padding:0;'>"+
+            				"<div class='ui column grid'>"+
+            				"<div class='four wide column'>"+
+               				"<div class='label'>"+
+                  			"<div class='scircle'>"+
+                   			"<div class='inner' style='background-image:url("+post_pic+");'></div></div></div></div>"+
+              				"<div class='twelve wide column' style='padding-left:0'>"+
+               				"<a style='font-size:25px'>"+post_name+"</a>"+
+							"<div class='date'>"+post_time+"</div>"+
+               				"<h3>"+unescape(post_content)+"</h3></div></div></div>"+     
+           					"<div class='ui center aligned grid'>"+
+                	//		"<img src='"+posted.get('my_pic')+"' style='width:70%;height:70%'></img></div>"+
+            				"<div class='ui gray stacked segment' style='background:#FFEFD5'>"+
+              				"<h4 style='margin-top:0;'>Comment</h4>"+
+             				"<div class='ui divider'></div>"+
+							"<div class='ui column grid'>"+
+							'<div class="equal height row" style="padding:0">'+
+              				'<div class="two wide column" style="padding-right:0;padding-top:0">'+
+                			'<img class="ui avatar image" src="'+currentUser.get('my_pic')+'"></img></div>'+
+             				'<div class="fourteen wide column" style="padding-left:5px">'+
+              				'<div class="ui fluid icon input">'+
+                			'<input id="input1" type="text" placeholder="Comment.." onkeydown="if (event.keyCode == 13) write_comment(\''+initValue+'\')">'+
+                			'<i class="write icon"></i></div></div>'+
+							'<div class="ui divider"></div></div></div></div></div></div></div>';
+  				//document.getElementById('commentmodal').innerHTML = document.getElementById('commentmodal').innerHTML + no_comment;
+				$('#commentmodal').append(no_comment);
+				$('#commentmodal').modal('show');
+				//$('#commentmodal').children("div").remove();
+				//var init = '<div class="ui small modal" id="commentmodal" >';
+				//document.getElementById('commentmodal').innerHTML = init;
+			}else{
+			// Do something with the returned Parse.Object values
+			var no_comment = [];
+			no_comment.push("<div class='ui segment' style='padding:10%'>",
+    						"<div class='row' style='padding:0;'>",
+            				"<div class='ui column grid'>",
+            				"<div class='four wide column'>",
+               				"<div class='label'>",
+                  			"<div class='scircle'>",
+                   			"<div class='inner' style='background-image:url("+post_pic+");'></div></div></div></div>",
+              				"<div class='twelve wide column' style='padding-left:0'>",
+               				"<a style='font-size:25px'>"+post_name+"</a>",
+							"<div class='date'>"+post_time+"</div>",
+               				"<h3>"+unescape(post_content)+"</h3></div></div></div>",  
+           					"<div class='ui center aligned grid'>",
+            				"<div class='ui gray stacked segment' style='background:#FFEFD5' id='comments_list'>",
+              				"<h4 style='margin-top:0;'>Comment</h4>",
+             				"<div class='ui divider'></div>");
+			//alert("1");
+			$('#commentmodal').append(no_comment.join(''));
+	
+    		for (var i = 0; i < results.length; i++) { 
+      			var object = results[i];
+				var now = new Date();
+				var time_new = now.getTime();
+				var time_old = object.createdAt.getTime();
+				var t = time_new-time_old;
+				if(t>60000){
+					if(t>3600000){
+						if(t>86400000){
+							if(t>604800000){
+								var time_z = new Date(time_old);
+							}else{
+								t = float2int(t/86400000);
+								var time_z = t + " days ago";
+								if(t==1){	var time_z ="1 day ago";}
+							}			
+						}else{
+							t = float2int(t/3600000);
+							var time_z = t + " hours ago";
+							if(t==1){	var time_z ="1 hour ago";}
+						}
+					}else{
+						t = float2int(t/60000);
+						var time_z = t + " minutes ago";
+						if(t==1){	var time_z ="1 minute ago";}
+					}
+				}else{
+					time_z = "1 minute ago";
+				}
+
+				var comment_list = [];
+				comment_list.push(  "<div class='ui column grid'>",
+                					"<div class='equal height row' style='padding:0'>",
+              						"<div class='two wide column' style='padding-right:0;padding-top:0'>",
+                					"<img class='ui avatar image' src='"+object.get('my_pic')+"'></img></div>",
+              						'<div class="four wide column" style="padding-left:5px">',
+                					'<a style="font-size:18px">'+object.get('last_name')+'</a>',
+                					'<div class="date" style="font-size:12px">'+time_z+'</div></div>',
+              						'<div class="ten wide column" style="padding-left:0;">',
+                  					'<p style="font-size:16px">'+object.get('comment')+'</p></div></div>',
+              						'<div class="ui divider"></div>');
+				//alert("2");
+				$('#comments_list').append(comment_list.join(''));
+
+              //	document.getElementById('commentmodal').innerHTML = document.getElementById('commentmodal').innerHTML + comment_list; 
+ 			}
+			var end_list = [];
+			end_list.push(  "<div class='ui column grid'>",
+							'<div class="equal height row" style="padding:0">',
+              				'<div class="two wide column" style="padding-right:0;padding-top:0">',
+                			'<img class="ui avatar image" src="'+currentUser.get('my_pic')+'"></img></div>',
+			//				'<div class="four wide column" style="padding-left:5px">'+
+              //  			'<a style="font-size:18px">'+currentUser.get('last_name')+'</a></div>'+
+             				'<div class="ten wide column" style="padding-left:5px">',
+              				'<div class="ui fluid icon input">',
+                			'<input id="input1" type="text" placeholder="Comment.." onkeydown="if (event.keyCode == 13) write_comment(\''+initValue+'\')">',
+                			'<i class="write icon"></i></div></div>',
+							'<div class="ui divider"></div></div></div></div></div></div></div></div>');
+		//	alert(initValue);
+			$('#comments_list').append(end_list.join(''));
+			//document.getElementById('commentmodal').innerHTML = document.getElementById('comment_modal').innerHTML + end_list;
+			$("#commentmodal").modal('show');
+			}
+  		},
+  		error: function(error) {
+    		alert("Error: " + error.code + " " + error.message);
+  		}
+	});
+
+//	if(event.keyCode == 13){
+//		alert($('#commentmodal').is(visible));
+//	}
+}
+
+function write_comment(post_id){
+	if($('input1').val()==""){
+		//alert("Please comment!");
+	}else{
+		var C = Parse.Object.extend("comments");
+		var c = new C();
+		c.set("postid",post_id);
+		c.set("comment",$("#input1").val());
+		c.set("username",currentUser.get("username"));
+		c.set("last_name",currentUser.get("last_name"));
+		c.set("my_pic",currentUser.get("my_pic"));
+		//alert($("#input1").val());
+		
+		c.save().then(function(response) {
+        	alert("success");
+        	location.reload(); //refreshes the form
+   		 }, function(error) {
+        	alert("error");
+        	location.reload();
+    	});
+		$("#commentmodal").modal('hide');
+	}
+}
 
 </script>
 
