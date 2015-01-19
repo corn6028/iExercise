@@ -103,8 +103,8 @@ $(document).ready(function(){
 								"<div style='font-size:9pt;color:gray;' class='description'>"+time_z+"・"+object.get('pdis')+"km"+" </div></div>"+
 								"<div class='row' style='padding-top:10px'>"+
 								'<i class="like icon" style="color:red" onclick="likes(\''+object.id+'\')"></i>'+
-              					'<a class="like" id="'+object.id+'" onclick="likes_list(\''+object.id+'\',\''+likers+'\')">'+object.get("like")+ ' Likes'+'</a>'+
-              					'<a class="comment" id="comment" style="padding-left:15%" onclick="comments(\''+object.id+'\',\''+post_pic+'\',\''+post_name+'\',\''+escape(post_content)+'\',\''+time_z+'\',\''+comment_num+'\')">'+
+              					'<a class="like" id="'+object.id+'" onclick="likes_list(\''+object.id+'\',\''+likers+'\')">'+object.get("like")+ ' Likes  '+'</a>'+
+              					'<a class="comment" id="comment" style="text-align:center;" onclick="comments(\''+object.id+'\',\''+post_pic+'\',\''+post_name+'\',\''+escape(post_content)+'\',\''+time_z+'\',\''+comment_num+'\')">'+
                 				"<i class='comment outline icon' id='comment_num'></i>"+object.get("comment")+"  Comments"+"</a></div></div></div>";
 				document.getElementById('post_line').innerHTML = document.getElementById('post_line').innerHTML + post_list;
 		
