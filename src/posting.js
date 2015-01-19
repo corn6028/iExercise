@@ -29,7 +29,7 @@ query.get(currentUser.id, {
   		$("#weight").html(thisUser.get('weight'));
 		$("#goal").html(thisUser.get('goal'));
 		var weight_gap = thisUser.get('weight')-thisUser.get('goal');
-		$('#howmuch').html(weight_gap + " kg");
+		$('#howmuch').html(weight_gap.toFixed(1) + " kg");
 		$('#total_dist').html(thisUser.get('total_dist')+ " km");
 		$("#no1").html('name');
 		$("#no2").html('name');

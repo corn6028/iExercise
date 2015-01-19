@@ -107,7 +107,7 @@ $(document).ready(function(){
  	user.set("height", 0);
   	user.set("weight", 0);
 	user.set("friend_list",[]);
-  	user.set("goal", parseInt($('#goal-of-weight').val()));
+  	user.set("goal", parseFloat($('#goal-of-weight').val()));
 	user.set("achieve",true);
 	user.set("total_dist",0);
    /* user.set("no1", $('#no1').val());
