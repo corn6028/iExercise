@@ -93,6 +93,8 @@ $(document).ready(function(){
 				var post_pic = currentUser.get("my_pic");
 				var post_name = object.get("last_name");
 				var post_content = object.get("post");
+				var comment_num = object.get("comment");
+				var likers = object.get("like_list");
 				var post_list = "<div class='ui fitted divider'></div>"+
 								"<div style='background:"+bg+";' class='item'>"+
 								"<img class='ui image' src='"+currentUser.get("my_pic")+"' width='20%' height='20%'>"+
@@ -100,9 +102,10 @@ $(document).ready(function(){
           						"<div style='font-size:13pt;' class='ui header'>"+object.get("post")+"</div>"+
 								"<div style='font-size:9pt;color:gray;' class='description'>"+time_z+"・"+object.get('pdis')+"km"+" </div></div>"+
 								"<div class='row' style='padding-top:10px'>"+
-              					"<a class='like'><i class='like icon'></i> 4 Likes</a>"+
-              					'<a class="comment" id="comment" style="padding-left:15%" onclick="comments(\''+object.id+'\',\''+post_pic+'\',\''+post_name+'\',\''+escape(post_content)+'\',\''+time_z+'\')">'+
-                				"<i class='comment outline icon'></i>"+object.get("comment")+"  Comments"+"</a></div></div></div>";
+								'<i class="like icon" style="color:red" onclick="likes(\''+object.id+'\')"></i>'+
+              					'<a class="like" id="'+object.id+'" onclick="likes_list(\''+object.id+'\',\''+likers+'\')">'+object.get("like")+ ' Likes'+'</a>'+
+              					'<a class="comment" id="comment" style="padding-left:15%" onclick="comments(\''+object.id+'\',\''+post_pic+'\',\''+post_name+'\',\''+escape(post_content)+'\',\''+time_z+'\',\''+comment_num+'\')">'+
+                				"<i class='comment outline icon' id='comment_num'></i>"+object.get("comment")+"  Comments"+"</a></div></div></div>";
 				document.getElementById('post_line').innerHTML = document.getElementById('post_line').innerHTML + post_list;
 		
     		}
@@ -113,7 +116,66 @@ $(document).ready(function(){
 	});
 });
 
-function comments(initValue,post_pic,post_name,post_content,post_time){
+function likes(initValue){
+	var friend = [currentUser.get("username")];
+	var P = Parse.Object.extend("p");
+	var p = new Parse.Query(P);
+	p.get(initValue, {
+  		success: function(result) {
+    		// The object was retrieved successfully.
+			var found = $.inArray(currentUser.get("username"), result.get("like_list"))>-1;
+			if(found){	alert("你按過讚摟～");}
+			else{
+				friend = friend.concat(result.get("like_list"));
+				result.set("like",result.get("like")+1);
+				result.set("like_list",friend);
+				result.save();
+				document.getElementById(initValue).innerHTML = result.get("like").toString()+" Likes";}
+				//$('#like').html(result.get("like").toString()+" Likess");}
+  		},
+  		error: function(object, error) {
+    		// The object was not retrieved successfully.
+    		// error is a Parse.Error with an error code and message.
+ 	 	}
+	});
+}
+
+function likes_list(initValue,likers){
+	$("#likemodal").children("div").remove();
+	$("#likemodal").children("h3").remove();
+
+	var friends = likers.split(",");
+	//alert(Array.isArray(friends));
+	var query = new Parse.Query("User");
+	query.containedIn("username",friends);
+	query.find({
+		success: function(results) {
+		//	alert(results.length);
+			var header = [];
+			header.push('<h3 class="ui black block header">覺得這很讚的人</h3><div class="ui divided list" id="list" style="margin-top:0px">');
+			$('#likemodal').append(header.join(''));
+    		// Do something with the returned Parse.Object values
+    		for (var i = 0; i < results.length; i++) { 
+      			var object = results[i];
+				var like_list = [];
+				like_list.push(	'<div class="item" style="margin:10px;">',
+								'<div class="right floated compact ui button"><i class="add square icon"></i>Add</div>',
+    							'<img class="ui avatar image" src="'+object.get("my_pic")+'"/>',
+			    				'<div class="content">',
+								'<div class="header">'+object.get("last_name")+'</div></div></div>');
+				$('#list').append(like_list.join(''));
+    		}
+			$('#likemodal').innerHTML += "</div></div>";
+			$('#likemodal').modal('show');
+  		},
+  		error: function(error) {
+    		alert("Error: " + error.code + " " + error.message);
+  		}
+	});
+
+}
+
+function comments(initValue,post_pic,post_name,post_content,post_time,comment_num){
 	$('#commentmodal').children("div").remove();
 
 	//console.log(unescape(post_content));
@@ -232,7 +294,7 @@ function comments(initValue,post_pic,post_name,post_content,post_time){
               //  			'<a style="font-size:18px">'+currentUser.get('last_name')+'</a></div>'+
              				'<div class="ten wide column" style="padding-left:5px">',
               				'<div class="ui fluid icon input">',
-                			'<input id="input1" type="text" placeholder="Comment.." onkeydown="if (event.keyCode == 13) write_comment(\''+initValue+'\')">',
+                			'<input id="input1" type="text" placeholder="Comment.." onkeydown="if (event.keyCode == 13) write_comment(\''+initValue+'\',\''+comment_num+'\')">',
                 			'<i class="write icon"></i></div></div>',
 							'<div class="ui divider"></div></div></div></div></div></div></div></div>');
 		//	alert(initValue);
@@ -251,10 +313,17 @@ function comments(initValue,post_pic,post_name,post_content,post_time){
 //	}
 }
 
-function write_comment(post_id){
-	if($('input1').val()==""){
+function write_comment(post_id,num){
+	if(!$('#input1').val()){
 		//alert("Please comment!");
 	}else{
+		var P = Parse.Object.extend("p");
+		var p = new P();
+		p.id = post_id;
+		var total_num = parseInt(num)+1;
+		p.set("comment",total_num);
+		p.save();
+
 		var C = Parse.Object.extend("comments");
 		var c = new C();
 		c.set("postid",post_id);

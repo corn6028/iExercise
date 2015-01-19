@@ -348,9 +348,9 @@
         </div>-->
 
         <div class="ui small modal" id="commentmodal" >
-                    
+        </div>            
      	<div class="ui small modal" id="likemodal">       
-   
+  		</div>
 
       
     </div>
@@ -405,6 +405,7 @@ $(document).ready(function(){
 				var post_pic = object.get("my_pic");
 				var post_name = object.get("last_name");
 				var post_content = object.get("post");
+				var comment_num = object.get("comment");
 				var likers = object.get("like_list");
 				var post_list = '<div class="row">'+pos+
             					'<div class="ui Compact segment" >'+
@@ -432,11 +433,11 @@ $(document).ready(function(){
               					'<div class="row" style="margin-top:15px">'+
                 				'<p style="font-size:14pt;">'+object.get('post')+'</p></div>'+
                 				'<div class="row" style="margin-top:15px">'+ 
-                				'<div class="meta" style="float:right;font-size:14px">'+
+                				'<div class="item" style="float:right;font-size:14px">'+
 								'<i class="large like icon" style="color:red" onclick="likes(\''+object.id+'\')"></i>'+
                 				'<a class="like" id="'+object.id+'" onclick="like_list(\''+object.id+'\',\''+likers+'\')">'+object.get("like")+ ' Likes'+'</a></div>'+
-                				'<div class="meta" style="float:center">'+
-                    			'<a class="comment" id="comment" onclick="comments(\''+object.id+'\',\''+post_pic+'\',\''+post_name+'\',\''+escape(post_content)+'\',\''+time_z+'\')">'+
+                				'<div class="item" style="float:center">'+
+                    			'<a class="comment" id="comment" onclick="comments(\''+object.id+'\',\''+post_pic+'\',\''+post_name+'\',\''+escape(post_content)+'\',\''+time_z+'\',\''+comment_num+'\')">'+
                       			'<i class="large comment outline icon" ></i>'+object.get("comment")+'  Comments'+'</a></div></div></div></div></div></div></div>';
 
 				document.getElementById('post_board').innerHTML = document.getElementById('post_board').innerHTML + post_list;
@@ -474,27 +475,31 @@ function likes(initValue){
 }
 
 function like_list(initValue,likers){
-	$("#likmodal").children("div").remove();
+	$("#likemodal").children("div").remove();
+	$("#likemodal").children("h3").remove();
+
 	var friend = likers.split(",");
 	//alert(Array.isArray(friend));
 	var query = new Parse.Query("User");
 	query.containedIn("username",friend);
 	query.find({
 		success: function(results) {
-			alert(results.length);
-			$('#likemodal').innerHTML = '<div class="ui six doubling cards">';
+			//alert(results.length);
+			var header = [];
+			header.push('<h3 class="ui black block header">覺得這很讚的人</h3><div class="ui divided list" id="list" style="margin-top:0px">');
+			$('#likemodal').append(header.join(''));
     		// Do something with the returned Parse.Object values
     		for (var i = 0; i < results.length; i++) { 
       			var object = results[i];
 				var like_list = [];
-				like_list.push(	'<div class="card">',
-    						'<div class="image">',
-      						'<img src="../images/face.jpg" style="width:50px;height"50px;"></div>',
-    						'<div class="content">',
-      						'<a class="header">Elliot Fu</a></div></div>');
-				$('#likemodal').append(like_list.join(''));
+				like_list.push(	'<div class="item" style="margin:10px;">',
+								'<div class="right floated compact ui button"><i class="add square icon"></i>Add</div>',
+    							'<img class="ui avatar image" src="'+object.get("my_pic")+'"/>',
+			    				'<div class="content">',
+								'<div class="header">'+object.get("last_name")+'</div></div></div>');
+				$('#list').append(like_list.join(''));
     		}
-			$('#likemodal').innerHTML += "</div>";
+			$('#likemodal').innerHTML += "</div></div>";
 			$('#likemodal').modal('show');
   		},
   		error: function(error) {
@@ -503,7 +508,7 @@ function like_list(initValue,likers){
 	});
 }
 
-function comments(initValue,post_pic,post_name,post_content,post_time){
+function comments(initValue,post_pic,post_name,post_content,post_time,comment_num){
 	$('#commentmodal').children("div").remove();
 
 	//console.log(unescape(post_content));
@@ -625,7 +630,7 @@ function comments(initValue,post_pic,post_name,post_content,post_time){
               //  			'<a style="font-size:18px">'+currentUser.get('last_name')+'</a></div>'+
              				'<div class="ten wide column" style="padding-left:5px">',
               				'<div class="ui fluid icon input">',
-                			'<input id="input1" type="text" placeholder="Comment.." onkeydown="if (event.keyCode == 13) write_comment(\''+initValue+'\')">',
+                			'<input id="input1" type="text" placeholder="Comment.." onkeydown="if (event.keyCode == 13) write_comment(\''+initValue+'\',\''+comment_num+'\')">',
                 			'<i class="write icon"></i></div></div>',
 							'<div class="ui divider"></div></div></div></div></div></div></div></div>');
 		//	alert(initValue);
@@ -644,10 +649,17 @@ function comments(initValue,post_pic,post_name,post_content,post_time){
 //	}
 }
 
-function write_comment(post_id){
-	if($('input1').val()==""){
+function write_comment(post_id,num){
+	if(!$('#input1').val()){
 		//alert("Please comment!");
 	}else{
+		var P = Parse.Object.extend("p");
+		var p = new P();
+		p.id = post_id;
+		var total_num = parseInt(num)+1;
+		p.set("comment",total_num);
+		p.save();
+
 		var C = Parse.Object.extend("comments");
 		var c = new C();
 		c.set("postid",post_id);

@@ -29,7 +29,7 @@
     background:#fff;
 }
 .inner {
-    background-image: url(../images/face.jpg);
+   /*background-image: url(../images/face.jpg);*/
     background-size:cover;
     background-position:center center;
     height: 100%;
