@@ -11,6 +11,10 @@ currentUser.fetch({
 $(document).ready(function() {
 	$('#me').attr('src',currentUser.get('my_pic'));
 	$("#my_name").html("Hi, "+ currentUser.get('last_name'));
+	var user_id = document.URL.split("?")[1];
+	user_id = user_id.split("=")[1];
+	var found = $.inArray(user_id, currentUser.get('friend_list')) > -1;
+	if(found){	document.getElementById('add_friend').style.visibility = 'hidden';}
 });
 
 user_id = document.URL.split("?")[1];
@@ -46,26 +50,35 @@ query.find({
 
 $(function() {
   $('.green').click(function(){
-	/*Parse.User.logIn(name,{
-  	  success: function(user){
-		alert('hi');
-  	  },
-  	  error: function(user,error) {
-		alert("LOGIN ERROR");
-  	  }
-	});*/
 	Parse.User.logOut();
 	window.location.href = "katy.html";
+  })
+  $('#add_friend').click(function(){
+	var friends = currentUser.get("friend_list");
+	var Point = Parse.Object.extend("User");
+	var point = new Point();
+	point.id = currentUser.id;
+	friends.push(user_id);
+//	alert(Array.isArray(friends));
+	point.set('friend_list',friends);
+	point.save().then(function(response) {
+        	alert("你已經成功加朋友了");
+        	location.reload(); //refreshes the form
+   		}, function(error) {
+        	alert("error");
+        	location.reload();
+    });	
+  
   })
   $('#me').click(function(){
 	window.location.href = "myprofile.html";
   })
   $('#friend-post').click(function(){
-	window.location.href = "posting.html";
+	window.location.href = "posting.html?sort=friend";
   })
 
   $('#winner-post').click(function(){
-	window.location.href = "posting.html";
+	window.location.href = "posting.html?sort=winner";
   })
   $('#i-exercise').click(function(){
 	window.location.href = "home.html";

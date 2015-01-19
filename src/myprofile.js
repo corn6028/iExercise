@@ -157,12 +157,22 @@ function likes_list(initValue,likers){
     		// Do something with the returned Parse.Object values
     		for (var i = 0; i < results.length; i++) { 
       			var object = results[i];
+				var found = $.inArray(object.get("username"), currentUser.get("friend_list")) > -1;	
 				var like_list = [];
-				like_list.push(	'<div class="item" style="margin:10px;">',
-								'<div class="right floated compact ui button"><i class="add square icon"></i>Add</div>',
+				if(found){
+					like_list.push(	'<div class="item" style="margin:10px;">',
+					//			'<div class="right floated compact ui button"><i class="add square icon"></i>Add</div>',
     							'<img class="ui avatar image" src="'+object.get("my_pic")+'"/>',
 			    				'<div class="content">',
 								'<div class="header">'+object.get("last_name")+'</div></div></div>');
+				}else{
+					like_list.push(	'<div class="item" style="margin:10px;">',
+								'<div class="right floated compact ui button" onclick="add(\''+object.get('username')+'\')"><i class="add square icon"></i>Add</div>',
+    							'<img class="ui avatar image" src="'+object.get("my_pic")+'"/>',
+			    				'<div class="content">',
+								'<div class="header">'+object.get("last_name")+'</div></div></div>');
+	
+				}
 				$('#list').append(like_list.join(''));
     		}
 			$('#likemodal').innerHTML += "</div></div>";
@@ -172,6 +182,24 @@ function likes_list(initValue,likers){
     		alert("Error: " + error.code + " " + error.message);
   		}
 	});
+
+}
+
+function add(user_id){
+	var friends = currentUser.get('friend_list');
+	var Point = Parse.Object.extend("User");
+	var point = new Point();
+	point.id = currentUser.id;
+	friends.push(user_id);
+//	alert(Array.isArray(friends));
+	point.set('friend_list',friends);
+	point.save().then(function(response) {
+        	alert("你已經成功加朋友了");
+        	location.reload(); //refreshes the form
+   		}, function(error) {
+        	alert("error");
+        	location.reload();
+    });	
 
 }
 
@@ -377,6 +405,12 @@ $("#datepicker2").datepicker(opt);
         document.getElementById('ageinput').value=document.getElementById('age').innerHTML;
         document.getElementById('heightinput').value=document.getElementById('height').innerHTML;
         document.getElementById('weightinput').value=document.getElementById('weight').innerHTML;
+		if(currentUser.get("achieve")){
+			document.getElementById('goalinput').style.display='block';
+        	document.getElementById('goalinput').select();
+			document.getElementById('goalinput').value=document.getElementById('goal').innerHTML;
+		}
+
     }
     function CanModify_E(){
         document.getElementById('edinput').style.display='block';
@@ -405,7 +439,8 @@ $("#datepicker2").datepicker(opt);
             document.getElementById('ageinput').style.display='none';
             document.getElementById('heightinput').style.display='none';
             document.getElementById('weightinput').style.display='none';
-            document.getElementById('edinput').style.display='none';
+			document.getElementById('goalinput').style.display='none';
+			document.getElementById('edinput').style.display='none';
             document.getElementById('edisinput').style.display='none';
             document.getElementById('wdinput').style.display='none';
             document.getElementById('wwinput').style.display='none';
@@ -417,6 +452,8 @@ $("#datepicker2").datepicker(opt);
             var contents5=document.getElementById('ageinput').value;
             var contents6=document.getElementById('heightinput').value;
             var contents7=document.getElementById('weightinput').value;
+			var contents8=document.getElementById('goalinput').value;
+			var contents9=document.getElementById('goal').value;
 
             document.getElementById('ed').innerHTML = contents1;
             document.getElementById('edis').innerHTML = contents2;
@@ -425,7 +462,7 @@ $("#datepicker2").datepicker(opt);
             document.getElementById('age').innerHTML = contents5;
             document.getElementById('height').innerHTML = contents6;
             document.getElementById('weight').innerHTML = contents7;
-
+			document.getElementById('goal').innerHTML = contents8;
 
 			var Point = Parse.Object.extend("User");
 			var point = new Point();
@@ -434,7 +471,8 @@ $("#datepicker2").datepicker(opt);
 			point.set("age", parseInt(contents5));
 			point.set("height", parseFloat(contents6));
 			point.set("weight", parseFloat(contents7));
-
+			point.set("goal", parseFloat(contents8));		
+	
 			point.save(null, {
 				success: function(point) {
 				},

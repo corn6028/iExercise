@@ -31,9 +31,6 @@ query.get(currentUser.id, {
 		var weight_gap = thisUser.get('weight')-thisUser.get('goal');
 		$('#howmuch').html(weight_gap.toFixed(1) + " kg");
 		$('#total_dist').html(thisUser.get('total_dist')+ " km");
-		$("#no1").html('name');
-		$("#no2").html('name');
-  		$("#no3").html('name');
 		});
   	},
   	error: function(object, error) {
@@ -108,11 +105,11 @@ $(function() {
 	window.location.href = "myprofile.html";
   })
   $('#friend-post').click(function(){
-	window.location.href = "posting.html";
+	window.location.href = "posting.html?sort=friend";
   })
 
   $('#winner-post').click(function(){
-	window.location.href = "posting.html";
+	window.location.href = "posting.html?sort=winner";
   })
   $('#i-exercise').click(function(){
 	window.location.href = "home.html";

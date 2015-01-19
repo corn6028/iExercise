@@ -360,6 +360,13 @@
 $(document).ready(function(){ 
 	var Post = Parse.Object.extend("p");
 	var post_friend = new Parse.Query(Post);
+	var sort = document.URL.split("?")[1];
+	sort = sort.split("=")[1];
+	if(sort=="friend"){
+		//alert(currentUser.get('friend_list'));
+		post_friend.containedIn('username',currentUser.get('friend_list'));
+		post_friend.notEqualTo("username", currentUser.get("username"));	
+	}
 	post_friend.descending("createdAt");
 	post_friend.find({
   		success: function(results) {
@@ -423,9 +430,9 @@ $(document).ready(function(){
                   				'<div class="ui column grid">'+
                   				'<div class="five wide column" style="padding:8px;padding-left:0px;padding-right:0px">'+
                     			'<p style="font-size:16pt;color:#227700;text-align:center" >'+object.get('pdis')+'</p></div>'+
-                  				'<div class="five wide column" style="padding:8px;padding-left:0px;padding-right:0px">'+
+                  				'<div class="four wide column" style="padding:8px;padding-left:0px;padding-right:0px">'+
                     			'<p style="font-size:16pt;color:#227700;">Km，</p></div>'+
-                  				'<div class="three wide column" style="padding:8px;padding-left:0px;padding-right:0px">'+
+                  				'<div class="four wide column" style="padding:8px;padding-left:0px;padding-right:0px">'+
                     			'<p style="font-size:16pt;color:#227700;" >'+object.get('pweight')+'</p></div>'+
                   				'<div class="three wide column" style="padding:8px;padding-left:0px;padding-right:0px">'+
                     			'<p style="font-size:16pt;color:#227700;">Kg</p></div></div></div></div></div>'+
@@ -499,12 +506,21 @@ function like_list(initValue,likers){
     		// Do something with the returned Parse.Object values
     		for (var i = 0; i < results.length; i++) { 
       			var object = results[i];
+				var found = $.inArray(object.get("username"), currentUser.get("friend_list")) > -1;
 				var like_list = [];
-				like_list.push(	'<div class="item" style="margin:10px;">',
-								'<div class="right floated compact ui button"><i class="add square icon"></i>Add</div>',
+				if(found){
+					like_list.push(	'<div class="item" style="margin:10px;">',
+							//	'<div class="right floated compact ui button"><i class="add square icon"></i>Add</div>',
     							'<img class="ui avatar image" src="'+object.get("my_pic")+'"/>',
 			    				'<div class="content">',
 								'<div class="header">'+object.get("last_name")+'</div></div></div>');
+				}else{
+					like_list.push(	'<div class="item" style="margin:10px;">',
+								'<div class="right floated compact ui button" onclick="add(\''+object.get("username")+'\')"><i class="add square icon"></i>Add</div>',
+    							'<img class="ui avatar image" src="'+object.get("my_pic")+'"/>',
+			    				'<div class="content">',
+								'<div class="header">'+object.get("last_name")+'</div></div></div>');
+				}
 				$('#list').append(like_list.join(''));
     		}
 			$('#likemodal').innerHTML += "</div></div>";
@@ -514,6 +530,24 @@ function like_list(initValue,likers){
     		alert("Error: " + error.code + " " + error.message);
   		}
 	});
+}
+
+function add(user_id){
+	var friends = currentUser.get('friend_list');
+	var Point = Parse.Object.extend("User");
+	var point = new Point();
+	point.id = currentUser.id;
+	friends.push(user_id);
+//	alert(Array.isArray(friends));
+	point.set('friend_list',friends);
+	point.save().then(function(response) {
+        	alert("你已經成功加朋友了");
+        	location.reload(); //refreshes the form
+   		}, function(error) {
+        	alert("error");
+        	location.reload();
+    });	
+
 }
 
 function comments(initValue,post_pic,post_name,post_content,post_time,comment_num){
