@@ -16,11 +16,11 @@ query.get(currentUser.id, {
 		$(document).ready(function() {
 	//	alert(thisUser.get("notFB"));
 		var name = thisUser.get('last_name');
-		if(thisUser.get('notFB')){
+	//	if(thisUser.get('notFB')){
 			$('#me').attr('src',thisUser.get('my_pic'));
 			//alert(thisUser.get('my_pic'));
 			document.getElementById("inner").style.backgroundImage="url('"+thisUser.get('my_pic')+"')";
-		}
+	//	}
 		$("#my_name").html("Hi, "+ name);
   		$("#user_name").html(name);
 
