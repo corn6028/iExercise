@@ -17,7 +17,7 @@ window.fbAsyncInit = function() {
         	Parse.User.current().save();
        		$("#my_name").html("Hi, " + my_name);
 			$("#user_name").html(my_name);
-			alert("no!");
+//			alert("no!");
 		}
         //var my_facebook_id = response.id;
 		//Parse.User.current().set("last_name",my_name);

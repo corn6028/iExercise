@@ -1,33 +1,75 @@
-$(function(){
-$('#eadd').click(function(){
-	$('#eaddmodal').modal('show');
-	//$('.modal').modal('show');
-})
-
+var currentUser = Parse.User.current();
+currentUser.fetch({
+  success: function(currentUser) {
+    // The object was refreshed successfully.
+  },
+  error: function(currentUser, error) {
+    // The object was not refreshed successfully.
+    // error is a Parse.Error with an error code and message.
+  }
+});
+$(document).ready(function() {
+	$('#me').attr('src',currentUser.get('my_pic'));
+	$("#my_name").html("Hi, "+ currentUser.get('last_name'));
 });
 
-$(function(){
-$('#wadd').click(function(){
-  $('#waddmodal').modal('show');
-  //$('.modal').modal('show');
-})
-
+user_id = document.URL.split("?")[1];
+user_id = user_id.split("=")[1];
+var user = Parse.Object.extend("User");
+var query = new Parse.Query(user);
+query.equalTo("username",user_id);
+query.find({
+	success: function(thisUser) {
+   		// The object was retrieved successfully.
+		$(document).ready(function() {
+	//	alert(thisUser.get("notFB"));
+		var name = thisUser[0].get('last_name');
+		document.getElementById("inner").style.backgroundImage="url('"+thisUser[0].get('my_pic')+"')";
+  		$("#user_name").html(name);
+  		$("#age").html(thisUser[0].get('age'));
+  		$("#height").html(thisUser[0].get('height'));
+  		$("#weight").html(thisUser[0].get('weight'));
+		$("#goal").html(thisUser[0].get('goal'));
+	/*	var weight_gap = thisUser.get('weight')-thisUser.get('goal');
+		$('#howmuch').html(weight_gap + " kg");
+		$('#total_dist').html(thisUser.get('total_dist')+ " km");
+		$("#no1").html('name');
+		$("#no2").html('name');
+  		$("#no3").html('name');*/
+		});
+  	},
+  	error: function(object, error) {
+    	// The object was not retrieved successfully.
+    	// error is a Parse.Error with an error code and message.
+  	}
 });
 
-$(function(){
-$('#eedit').click(function(){
-  $('#eeditmodal').modal('show');
-  //$('.modal').modal('show');
-})
+$(function() {
+  $('.green').click(function(){
+	/*Parse.User.logIn(name,{
+  	  success: function(user){
+		alert('hi');
+  	  },
+  	  error: function(user,error) {
+		alert("LOGIN ERROR");
+  	  }
+	});*/
+	Parse.User.logOut();
+	window.location.href = "katy.html";
+  })
+  $('#me').click(function(){
+	window.location.href = "myprofile.html";
+  })
+  $('#friend-post').click(function(){
+	window.location.href = "posting.html";
+  })
 
-});
-
-$(function(){
-$('#wedit').click(function(){
-  $('#weditmodal').modal('show');
-  //$('.modal').modal('show');
-})
-
+  $('#winner-post').click(function(){
+	window.location.href = "posting.html";
+  })
+  $('#i-exercise').click(function(){
+	window.location.href = "home.html";
+  })
 });
 
 function float2int (value) {
@@ -37,7 +79,7 @@ function float2int (value) {
 $(document).ready(function(){ 
 	var Post = Parse.Object.extend("p");
 	var post_mine = new Parse.Query(Post);
-	post_mine.equalTo("username", currentUser.get("username"));
+	post_mine.equalTo("username", user_id);
 	post_mine.descending("createdAt");
 	post_mine.find({
   		success: function(results) {
@@ -90,14 +132,14 @@ $(document).ready(function(){
 				}
 				if(i%2==0){	var bg = "#FDF5E6";}
 				else{	var bg = "white";}
-				var post_pic = currentUser.get("my_pic");
+				var post_pic = object.get("my_pic");
 				var post_name = object.get("last_name");
 				var post_content = object.get("post");
 				var comment_num = object.get("comment");
 				var likers = object.get("like_list");
 				var post_list = "<div class='ui fitted divider'></div>"+
 								"<div style='background:"+bg+";' class='item'>"+
-								"<img class='ui image' src='"+currentUser.get("my_pic")+"' width='20%' height='20%'>"+
+								"<img class='ui image' src='"+object.get("my_pic")+"' width='20%' height='20%'>"+
 								"<div class='content'><div class='row'>"+
           						"<div style='font-size:13pt;' class='ui header'>"+object.get("post")+"</div>"+
 								"<div style='font-size:9pt;color:gray;' class='description'>"+time_z+"・"+object.get('pdis')+"km"+" </div></div>"+
@@ -365,7 +407,7 @@ $("#datepicker1").datepicker(opt);
 $("#datepicker2").datepicker(opt);
 });
 
-    function CanModify_P()
+    /*function CanModify_P()
     {
         document.getElementById('ageinput').style.display='block';
         document.getElementById('ageinput').select();
@@ -443,5 +485,5 @@ $("#datepicker2").datepicker(opt);
 			});
 
         }
-    }
+    }*/
 
