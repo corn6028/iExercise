@@ -16,6 +16,7 @@ if(!currentUser.get('total_dist')){
 	point.set("total_dist", 0);
 	point.set("friend_list",[currentUser.get('username')]);
 	point.set("achieve", true);
+	point.set("goal",0);
 	
 	point.save(null, {
 		success: function(point) {
@@ -55,6 +56,10 @@ query.get(currentUser.id, {
   	}
 });
 
+if(!currentUser){
+	alert("Please signup or login first");
+	window.location.href = "katy.html";
+}
 /*var currentUser = Parse.User.current();
 if (currentUser) {
     // do stuff with the user

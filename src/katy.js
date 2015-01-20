@@ -31,7 +31,9 @@ window.fbAsyncInit = function() {
 			Parse.User.current().set('my_pic',my_picture_url);
 			Parse.User.current().save();
 			$('#me').attr('src',my_picture_url);
-			//document.getElementById("inner").style.backgroundImage="url('"+currentUser.get('my_pic')+"')";
+			if(document.URL.indexOf("?") == -1){
+				document.getElementById("inner").style.backgroundImage="url('"+currentUser.get('my_pic')+"')";
+			}
 		}
     });
 };
