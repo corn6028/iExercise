@@ -1,4 +1,9 @@
 var currentUser = Parse.User.current();
+if(!currentUser){
+	alert("Please signup or login first");
+	window.location.href = "katy.html";
+}
+
 currentUser.fetch({
   success: function(currentUser) {
     // The object was refreshed successfully.
@@ -8,7 +13,7 @@ currentUser.fetch({
     // error is a Parse.Error with an error code and message.
   }
 });
-if(!currentUser.get('total_dist')){
+if(currentUser.get('total_dist') === undefined){
 	var Point = Parse.Object.extend("User");
 	var point = new Point();
 	point.id = currentUser.id;
@@ -56,10 +61,6 @@ query.get(currentUser.id, {
   	}
 });
 
-if(!currentUser){
-	alert("Please signup or login first");
-	window.location.href = "katy.html";
-}
 /*var currentUser = Parse.User.current();
 if (currentUser) {
     // do stuff with the user
