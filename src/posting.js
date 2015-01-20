@@ -8,6 +8,22 @@ currentUser.fetch({
     // error is a Parse.Error with an error code and message.
   }
 });
+if(!currentUser.get('total_dist')){
+	var Point = Parse.Object.extend("User");
+	var point = new Point();
+	point.id = currentUser.id;
+
+	point.set("total_dist", 0);
+	point.set("friend_list",[currentUser.get('username')]);
+	point.set("achieve", true);
+	
+	point.save(null, {
+		success: function(point) {
+		},
+		error: function(point, error) {
+		}
+	});
+}
 var user = Parse.Object.extend("User");
 var query = new Parse.Query(user);
 query.get(currentUser.id, {
