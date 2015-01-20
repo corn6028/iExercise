@@ -22,6 +22,10 @@ if(currentUser.get('total_dist') === undefined){
 	point.set("friend_list",[currentUser.get('username')]);
 	point.set("achieve", true);
 	point.set("goal",0);
+	point.set("age",0);
+	point.set("weight",0);
+	point.set("height",0);
+
 	
 	point.save(null, {
 		success: function(point) {
