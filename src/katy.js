@@ -162,7 +162,7 @@ $(document).ready(function(){
 		//window.location.reload();
       } else {
 		alert("User logged in through Facebook!");
-		window.reload();
+	//	window.reload();
 		window.location.href = "home.html";
       }
 //	  Parse.User.current().set('notFB',false);
